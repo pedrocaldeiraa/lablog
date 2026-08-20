@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kit Arduino - Lab. Logística IFES</title>
+    <style>
+        :root {
+            --cor1: #32A041; /* RGB: 50, 160, 65 - Maincolor */
+            --cor2: #64C878; /* RGB: 100, 200, 120 - Tom claro de maincolor */
+            --cor3: #1E7832; /* RGB: 30, 120, 50 - Tom escuro de maincolor */
+            --cor4: #46B45A; /* RGB: 70, 180, 90 - Tom vibrante de maincolor */
+            --cor5: #96DCA0; /* RGB: 150, 220, 160 - Tom pastel de maincolor */
+            --preto: #000000;
+            --branco: #FFFFFF;
+
+            /* Mapeamento de variáveis do template para a nova paleta */
+            --primary-color: var(--cor1);
+            --secondary-color: var(--cor3);
+            --bg-light: #F8FAF0;
+            --text-dark: var(--preto);
+            --text-muted: #505050;
+            --border-color: #D2E8D5;
+            --sidebar-width: 280px;
+            
+            /* Cores de Status */
+            --status-operacional: var(--cor1);
+            --status-manutencao: #E6A200;
+            --status-inativo: #B41E1E;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
+
+        /* Barra Lateral (Menu Esquerdo) */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--branco);
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.02);
+        }
+
+        .sidebar-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--cor1);
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.25rem;
+            color: var(--cor3);
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-category {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin: 1.5rem 0 0.5rem 0;
+            font-weight: 600;
+        }
+
+        .nav-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            background-color: var(--cor5);
+            border: 1px solid transparent;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            background-color: var(--cor5);
+            color: var(--cor3);
+            border-color: var(--cor2);
+        }
+
+        /* Área de Conteúdo Principal */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 3rem 4rem;
+            flex: 1;
+            max-width: 1200px;
+        }
+
+        .header-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--cor1);
+        }
+
+        h1 {
+            color: var(--cor3);
+            font-size: 2.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;    
+        }
+
+        .badge {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            color: var(--branco);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .badge.operacional { background-color: var(--status-operacional); }
+        .badge.manutencao { background-color: var(--status-manutencao); }
+        .badge.inativo { background-color: var(--status-inativo); }
+
+        .content-card {
+            background-color: var(--branco);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .content-card h3 {
+            color: var(--cor3);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        /* Listas e Textos */
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .info-list {
+            list-style-position: inside;
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+        }
+
+        .info-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-list.bullets li {
+            list-style-type: disc;
+        }
+
+        /* ESTILOS ESPECÍFICOS DO ARDUINO (Módulos Interativos) */
+        .grid-modulos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .caixa-modulo {
+            background-color: var(--bg-light);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .caixa-modulo:hover {
+            border-color: var(--cor1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .caixa-modulo.selecionado {
+            background-color: var(--cor1);
+            color: var(--branco);
+            border-color: var(--cor1);
+        }
+
+        .caixa-modulo .icone {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .caixa-modulo .titulo-modulo {
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+
+        /* ÁREAS DE CONTEÚDO DINÂMICO */
+        .painel-modulo {
+            display: none; /* Esconde os painéis inativos */
+        }
+
+        .painel-modulo.ativo {
+            display: block; /* Mostra apenas o painel ativo */
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo-ifes {
+            max-width: 100%; /* Garante que a logo não ultrapasse a largura do menu lateral */
+            height: auto;    /* Mantém a proporção da imagem */
+            margin-bottom: 15px; /* Adiciona um respiro entre a logo e o título */
+            display: block;
+        } 
+        
+    </style>
+</head>
+<body>
+
+    <!-- Barra Lateral -->
+    <aside class="sidebar">
+
+        <img src="../figuras/ifes-horizontal-cor.png" alt="Logo Instituto Federal Espírito Santo" class="logo-ifes">
+
+        <div class="sidebar-header">
+            <h2>Carta de Serviços</h2>
+        </div>
+        
+        <ul class="nav-menu">
+            <li><a href="../index.html">🏠 Início / Visão Geral</a></li>
+
+            <div class="nav-category">Equipamentos e Hardware</div>
+            <li><a href="impressora_3d.html">🖨️ Impressora 3D</a></li>
+            <li><a href="lousa_interativa.html">📺 Lousa Interativa</a></li>
+            <li><a href="oculos_vr.html">🥽 Óculos VR</a></li>
+            <li><a href="kit_lego.html">🧩 Kit LEGO</a></li>
+            <li><a href="kit_arduino.html" class="active">⚡ Kit Arduino</a></li>
+            
+            <div class="nav-category">Práticas e Simulações</div>
+            <li><a href="simulacoes_logisticas.html">📦 Simulações Logísticas</a></li>
+            <li><a href="experimentos_fisica.html">🧪 Experimentos de Física</a></li>
+        </ul>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        
+        <div class="header-section">
+            <h1>Kit Arduino <span class="badge operacional">OPERACIONAL</span></h1>
+            <span style="color: var(--text-muted);">Categoria: Equipamento e Práticas (Campus Viana - IFES)</span>
+        </div>
+
+        <!-- CARD DE SELEÇÃO DE MÓDULOS -->
+        <section class="content-card">
+            <h3>Navegação da Apostila</h3>
+            <p>Selecione um dos módulos abaixo para acessar a introdução, conceitos teóricos e roteiros de práticas da apostila do Kit Arduino:</p>
+
+            <div class="grid-modulos">
+                <div class="caixa-modulo selecionado" onclick="selecionarModulo('visao-geral', this)">
+                    <span class="icone">📖</span>
+                    <span class="titulo-modulo">Visão Geral & Segurança</span>
+                </div>
+                <div class="caixa-modulo" onclick="selecionarModulo('modulo-1', this)">
+                    <span class="icone">💡</span>
+                    <span class="titulo-modulo">Módulo 1: Primeiros Passos</span>
+                </div>
+                <div class="caixa-modulo" onclick="selecionarModulo('modulo-2', this)">
+                    <span class="icone">🎛️</span>
+                    <span class="titulo-modulo">Módulo 2: Sensores</span>
+                </div>
+                
+            </div>
+        </section>
+
+<!-- PAINEL 1: VISÃO GERAL -->
+        <section id="visao-geral" class="content-card painel-modulo ativo">
+            
+            <h3>Apresentação</h3>
+            <p>O Laboratório de Arduino do Instituto Federal do Espírito Santo (IFES) – Campus Viana foi concebido para proporcionar aos estudantes uma aprendizagem prática em programação, eletrônica e automação.</p>
+            <p>Esta apostila foi desenvolvida para acompanhar as atividades realizadas em laboratório, apresentando os conceitos fundamentais do Arduino de forma gradual, permitindo que alunos sem experiência prévia consigam desenvolver projetos reais.</p>
+            <p>Ao longo das práticas serão utilizados sensores, atuadores, displays, motores e diversos componentes eletrônicos, sempre relacionando teoria e prática.</p>
+            
+            <h4 style="margin: 2rem 0 1rem 0; color: var(--cor3);">Objetivos</h4>
+            <p>Ao concluir esta apostila, espera-se que o estudante seja capaz de:</p>
+            <ul class="info-list bullets">
+                <li>Conhecer a plataforma Arduino;</li>
+                <li>Compreender conceitos básicos de eletrônica;</li>
+                <li>Desenvolver programas simples utilizando a IDE Arduino;</li>
+                <li>Montar circuitos em protoboard;</li>
+                <li>Utilizar sensores e atuadores;</li>
+                <li>Desenvolver pequenos projetos de automação.</li>
+            </ul>
+
+            <!-- Caixas de Destaque (Alertas) -->
+            <div style="background-color: #E8F5E9; border-left: 5px solid var(--cor1); padding: 15px 20px; margin: 2rem 0; border-radius: 4px;">
+                <p style="margin-bottom: 0; color: #1b5e20;"><strong>💡 DICA:</strong> Esta apostila foi elaborada para alunos iniciantes. Não é necessário possuir conhecimentos prévios em programação ou eletrônica. Cada prática introduzirá novos conceitos de forma gradual.</p>
+            </div>
+
+            <div style="background-color: #FFF3E0; border-left: 5px solid #FF9800; padding: 15px 20px; margin: 2rem 0; border-radius: 4px;">
+                <p style="margin-bottom: 0; color: #e65100;"><strong>⚠️ ATENÇÃO:</strong> A programação e a eletrônica são aprendidas principalmente por meio da prática. Leia a teoria, monte o circuito, execute o experimento, teste modificações e registre suas observações. Errar faz parte do processo de aprendizagem.</p>
+            </div>
+
+            <h4 style="margin: 2rem 0 1rem 0; color: var(--cor3);">Normas de Segurança</h4>
+            <p>Durante as atividades práticas, siga as seguintes recomendações:</p>
+            <ul class="info-list bullets">
+                <li>Nunca monte ou altere circuitos com a placa energizada.</li>
+                <li>Verifique a posição correta dos componentes antes de ligar o circuito.</li>
+                <li>Evite curto-circuitos entre os pinos da placa.</li>
+                <li>Utilize apenas cabos e componentes fornecidos pelo laboratório.</li>
+                <li>Em caso de dúvidas, solicite auxílio ao professor.</li>
+                <li>Mantenha a bancada organizada durante toda a prática.</li>
+            </ul>
+
+            <h4 style="margin: 2rem 0 1rem 0; color: var(--cor3);">Materiais Utilizados no Laboratório</h4>
+            <p>Durante as práticas serão utilizados diversos componentes, entre eles:</p>
+            <ul class="info-list bullets" style="column-count: 2; column-gap: 2rem;">
+                <li>Arduino Uno;</li>
+                <li>Protoboard;</li>
+                <li>Jumpers;</li>
+                <li>LEDs;</li>
+                <li>Resistores;</li>
+                <li>Botões;</li>
+                <li>Potenciômetros;</li>
+                <li>Sensores;</li>
+                <li>Displays LCD;</li>
+                <li>Servo motor;</li>
+                <li>Cabos USB.</li>
+            </ul>
+        </section>
+
+	<!-- PAINEL: MÓDULO 1 -->
+        <section id="modulo-1" class="content-card painel-modulo">
+            <h3 style="margin-bottom: 1.5rem;">Módulo 1: Primeiros Passos com o Arduino</h3>
+            
+            <!-- Estilos para o Submenu -->
+            <style>
+                .praticas-menu {
+                    display: flex;
+                    gap: 1rem;
+                    margin-bottom: 2rem;
+                    flex-wrap: wrap;
+                }
+                .pratica-card {
+                    background-color: var(--bg-light, #f4f8fa);
+                    border: 1px solid var(--border-color, #ccc);
+                    border-radius: 8px;
+                    padding: 1rem;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    font-weight: bold;
+                    color: var(--cor3, #333);
+                    flex: 1;
+                    text-align: center;
+                    min-width: 200px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                }
+                .pratica-card:hover {
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    border-color: var(--cor1, #2e7d32);
+                    transform: translateY(-2px);
+                }
+                .pratica-card.active {
+                    background-color: var(--cor1, #2e7d32);
+                    color: white;
+                    border-color: var(--cor1, #2e7d32);
+                }
+                .pratica-content {
+                    display: none;
+                    animation: fadeIn 0.4s ease;
+                }
+                .pratica-content.active {
+                    display: block;
+                }
+                .img-placeholder {
+                    text-align: center;
+                    margin: 1.5rem 0;
+                    padding: 1rem;
+                    background-color: #f9f9f9;
+                    border: 1px dashed #ccc;
+                    border-radius: 8px;
+                }
+                .img-placeholder img {
+                    max-width: 100%;
+                    border-radius: 4px;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                    margin-bottom: 0.5rem;
+                }
+                .img-placeholder p {
+                    font-size: 0.85rem;
+                    color: #666;
+                    margin: 0;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            </style>
+
+            <!-- Menu de Seleção de Práticas -->
+            <div class="praticas-menu">
+                <div class="pratica-card active" onclick="mostrarPratica('mod1-pratica1', this)">
+                    💡 Prática 1: Blink (LED Integrado)
+                </div>
+                <div class="pratica-card" onclick="mostrarPratica('mod1-pratica2', this)">
+                    🔌 Prática 2: LED Externo e Protoboard
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 CONTEÚDO DA PRÁTICA 1
+                 ========================================== -->
+            <div id="mod1-pratica1" class="pratica-content active">
+                <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
+                    <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 1: Controlando o LED Integrado (Blink)</h4>
+                    <p style="margin-bottom: 0;">O experimento <strong>Blink</strong> é considerado o equivalente ao "Olá, Mundo!" dos sistemas embarcados. O objetivo desta etapa inicial é familiarizar-se com o ambiente de programação (Arduino IDE), entender a estrutura básica de um código e testar a comunicação entre o computador e a placa, acendendo o LED interno.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🎯 Objetivos & Competências</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Conhecer e configurar a Arduino IDE.</li>
+                            <li>Identificar os principais componentes físicos do Arduino Uno.</li>
+                            <li>Compreender a função estrutural do <code>setup()</code> e do <code>loop()</code>.</li>
+                            <li>Controlar saídas digitais alternando entre <code>HIGH</code> e <code>LOW</code>.</li>
+                        </ul>
+                    </div>
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧰 Materiais Necessários</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Placa Arduino Uno;</li>
+                            <li>Cabo USB Tipo A/B;</li>
+                            <li>Computador com Arduino IDE instalada.</li>
+                        </ul>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.8rem; margin-bottom: 0;">* Não é necessária protoboard ou circuito externo nesta prática.</p>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Conhecendo a Placa e o Ambiente</h4>
+                <p>Antes de programar, precisamos identificar os componentes essenciais da placa e configurar o nosso ambiente de desenvolvimento de software (IDE).</p>
+
+               <!-- IMAGEM: Placa Arduino (Destaque LED 13) -->
+			<div class="img-placeholder">
+    			<img src="../figuras/arduino.png" alt="Placa Arduino Uno destacando o LED 13" style="max-width: 50%;">
+			</div>
+
+                <p><strong>Passo a passo da configuração:</strong></p>
+                <ol class="info-list" style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                    <li>Conecte o Arduino ao computador utilizando o cabo USB.</li>
+                    <li>Abra o software <strong>Arduino IDE</strong>.</li>
+                    <li>Acesse o menu superior <code>Ferramentas > Placa</code> e selecione <strong>Arduino Uno</strong>.</li>
+                    <li>Acesse o menu <code>Ferramentas > Porta</code> e selecione a porta COM correspondente ao seu Arduino (ex: COM3, COM4).</li>
+                </ol>
+
+                <!-- IMAGEM: Print da Arduino IDE -->
+                <div class="img-placeholder">
+                    <img src="../figuras/arduino_ide_config.png" alt="Captura de tela mostrando a seleção de porta e placa na IDE" style="max-width: 50%;">
+                </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Código da Prática: Blink</h4>
+                <div style="background: #282c34; color: #abb2bf; padding: 1.2rem; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; line-height: 1.5; margin-bottom: 2rem; overflow-x: auto;">
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">setup</span>() {<br>
+                    &nbsp;&nbsp;<span style="color: #5c6370; font-style: italic;">// Configura o pino do LED embutido como SAÍDA (OUTPUT)</span><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">pinMode</span>(LED_BUILTIN, <span style="color: #d19a66;">OUTPUT</span>);<br>
+                    }<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">loop</span>() {<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">digitalWrite</span>(LED_BUILTIN, <span style="color: #d19a66;">HIGH</span>); <span style="color: #5c6370; font-style: italic;">// Liga o LED aplicando 5V</span><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">delay</span>(<span style="color: #d19a66;">1000</span>);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5c6370; font-style: italic;">// Aguarda 1000 milissegundos (1 segundo)</span><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">digitalWrite</span>(LED_BUILTIN, <span style="color: #d19a66;">LOW</span>);&nbsp; <span style="color: #5c6370; font-style: italic;">// Desliga o LED removendo a tensão (0V)</span><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">delay</span>(<span style="color: #d19a66;">1000</span>);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5c6370; font-style: italic;">// Aguarda 1000 milissegundos</span><br>
+                    }
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 CONTEÚDO DA PRÁTICA 2
+                 ========================================== -->
+            <div id="mod1-pratica2" class="pratica-content">
+                <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
+                    <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 2: LED Externo e Protoboard</h4>
+                    <p style="margin-bottom: 0.5rem;">Na prática anterior foi utilizado o LED integrado à placa Arduino Uno, permitindo compreender a estrutura básica de um programa e o funcionamento das funções <code>setup()</code>, <code>loop()</code>, <code>pinMode()</code>, <code>digitalWrite()</code> e <code>delay()</code>.</p>
+                    <p style="margin-bottom: 0;">Nesta prática será dado um passo além: o LED será conectado externamente utilizando uma protoboard. Durante a atividade, serão apresentados conceitos fundamentais de eletrônica, como polaridade dos componentes, utilização de resistores e montagem de circuitos simples. Ao final desta prática, o estudante será capaz de montar seu primeiro circuito eletrônico utilizando o Arduino.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🎯 Objetivos & Competências</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Conhecer a protoboard e montar circuitos simples nela.</li>
+                            <li>Identificar os terminais (polaridade) de um LED.</li>
+                            <li>Compreender a função e utilizar resistores para proteção.</li>
+                            <li>Controlar dispositivos externos por meio das portas digitais.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 2rem 0;">
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Conceitos Fundamentais</h4>
+                
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">Conhecendo a Protoboard</h5>
+                <p>A protoboard é uma matriz de contatos utilizada para montar circuitos eletrônicos sem a necessidade de soldagem, facilitando testes e correções. Embora os furos pareçam independentes, internamente diversos deles estão interligados por trilhas metálicas. Nas laterais, existem barramentos para distribuição de energia: um para o potencial positivo (+5 V, linhas vermelhas) e outro para o potencial negativo (GND, linhas pretas). As linhas azuis realizam o contato elétrico entre os componentes e são isoladas entre si.</p>
+
+                <!-- IMAGEM: Protoboard -->
+                <div class="img-placeholder">
+                    <img src="../figuras/protoboard_interna.png" alt="Visão interna e externa de uma protoboard" style="max-width: 50%;">
+                </div>
+
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">Polaridade do LED</h5>
+                <p>O LED possui dois terminais: o Ânodo (terminal positivo) e o Cátodo (terminal negativo). Para funcionar corretamente, o LED deve ser conectado respeitando sua polaridade; caso seja ligado invertido, ele simplesmente não acenderá.</p>
+
+                <!-- IMAGEM: Terminais do LED -->
+                <div class="img-placeholder">
+                    <img src="../figuras/led_anodo_catodo.png" alt="Ilustração dos terminais do LED" style="max-width: 50%;">
+                </div>
+
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">O Resistor e o Código de Cores</h5>
+                <p>O resistor regula e limita o fluxo da corrente elétrica em um circuito. Os LEDs não podem ser ligados diretamente à alimentação da placa, pois a corrente pode ultrapassar o valor suportado e queimar o componente. Nesta prática utilizaremos um resistor de <strong>220 Ω</strong> em série com o LED.</p>
+                
+                <p>Os valores são indicados por faixas coloridas. O resistor de 220 Ω possui as faixas: <strong>Vermelho – Vermelho – Marrom – Dourado</strong>. As duas primeiras indicam os algarismos (vermelho = 2), a terceira é o multiplicador (marrom = 10) e a quarta é a tolerância (dourado = ±5%). Cálculo: 22 × 10 = 220 Ω.</p>
+
+                <!-- Tabela de Cores (Fiel ao material) -->
+                <div style="overflow-x: auto; margin-top: 1rem; margin-bottom: 2rem;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                        <thead>
+                            <tr style="background-color: var(--cor1); color: var(--branco);">
+                                <th style="padding: 10px 15px; border: 1px solid var(--border-color);">Cor</th>
+                                <th style="padding: 10px 15px; border: 1px solid var(--border-color);">Valor</th>
+                                <th style="padding: 10px 15px; border: 1px solid var(--border-color);">Multiplicador</th>
+                                <th style="padding: 10px 15px; border: 1px solid var(--border-color);">Tolerância</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td style="padding: 5px 15px; border: 1px solid var(--border-color);">Preto</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">0</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">x10^0</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">-</td></tr>
+                            <tr style="background-color: #F9F9F9;"><td style="padding: 5px 15px; border: 1px solid var(--border-color);">Marrom</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">1</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">x10^1</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">±1%</td></tr>
+                            <tr><td style="padding: 5px 15px; border: 1px solid var(--border-color);">Vermelho</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">2</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">x10^2</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">±2%</td></tr>
+                            <tr style="background-color: #F9F9F9;"><td style="padding: 5px 15px; border: 1px solid var(--border-color);">Laranja</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">3</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">x10^3</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">-</td></tr>
+                            <tr><td style="padding: 5px 15px; border: 1px solid var(--border-color);">Amarelo</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">4</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">x10^4</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">-</td></tr>
+                            <tr style="background-color: #F9F9F9;"><td style="padding: 5px 15px; border: 1px solid var(--border-color);">Verde</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">5</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">x10^5</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">±0,5%</td></tr>
+                            <tr><td style="padding: 5px 15px; border: 1px solid var(--border-color);">Azul</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">6</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">x10^6</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">±0,25%</td></tr>
+                            <tr style="background-color: #F9F9F9;"><td style="padding: 5px 15px; border: 1px solid var(--border-color);">Violeta</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">7</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">x10^7</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">±0,1%</td></tr>
+                            <tr><td style="padding: 5px 15px; border: 1px solid var(--border-color);">Cinza</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">8</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">x10^8</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">±0,05%</td></tr>
+                            <tr style="background-color: #F9F9F9;"><td style="padding: 5px 15px; border: 1px solid var(--border-color);">Branco</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">9</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">x10^9</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">-</td></tr>
+                            <tr><td style="padding: 5px 15px; border: 1px solid var(--border-color);">Ouro</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">-</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">x10^-1</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">±5%</td></tr>
+                            <tr style="background-color: #F9F9F9;"><td style="padding: 5px 15px; border: 1px solid var(--border-color);">Prata</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">-</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">x10^-2</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">±10%</td></tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; text-align: center;">Tabela 2: Código de cores para resistores.</p>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 2rem 0;">
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Esquema e Montagem do Circuito</h4>
+                
+                <p>Realize as conexões da seguinte maneira:</p>
+                <ul class="info-list bullets" style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                    <li>Conecte o terminal positivo (ânodo) do LED ao resistor.</li>
+                    <li>Ligue o resistor ao pino digital 13 do Arduino.</li>
+                    <li>Conecte o terminal negativo (cátodo) do LED ao barramento GND da protoboard.</li>
+                    <li>Conecte o barramento GND da protoboard ao pino GND do Arduino.</li>
+                </ul>
+
+                <!-- IMAGEM: Esquema Elétrico e Montagem -->
+                <div class="img-placeholder">
+                    <img src="../figuras/pratica_2.png" alt="Esquema elétrico e montagem do LED externo na Protoboard" style="max-width: 50%;">
+                </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Código da Prática</h4>
+                <p>Neste código, a principal novidade é o uso de uma variável para representar o pino. A instrução <code>const int LED = 13;</code> cria uma constante. Assim, o Arduino entende que "LED" significa o pino 13, organizando melhor o código.</p>
+
+                <div style="background: #282c34; color: #abb2bf; padding: 1.2rem; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; overflow-x: auto;">
+                    <span style="color: #c678dd;">const int</span> LED = <span style="color: #d19a66;">13</span>;<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">setup</span>() {<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">pinMode</span>(LED, <span style="color: #d19a66;">OUTPUT</span>);<br>
+                    }<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">loop</span>() {<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">digitalWrite</span>(LED, <span style="color: #d19a66;">HIGH</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">delay</span>(<span style="color: #d19a66;">1000</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">digitalWrite</span>(LED, <span style="color: #d19a66;">LOW</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">delay</span>(<span style="color: #d19a66;">1000</span>);<br>
+                    }
+                </div>
+
+                <blockquote style="border-left: 4px solid var(--cor2); padding-left: 1rem; margin-left: 0; color: #555; background-color: #f4f8fa; padding: 10px;">
+                    <strong>Dica:</strong> O LED interno da placa também está ligado ao pino digital 13. Ao executar o programa, você verá os dois LEDs (interno e externo) piscando simultaneamente.
+                </blockquote>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+                    <div style="background-color: #E8F5E9; border: 1px solid var(--cor2); padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧪 Experimentando o código</h5>
+                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Faça o LED permanecer aceso por 2 segundos e apagado por 2 segundos.</li>
+                            <li>Faça o LED piscar rapidamente com intervalo de 200 ms.</li>
+                            <li>Faça o LED permanecer aceso por 3 segundos e apagado por 500 ms.</li>
+                            <li>Teste outros valores na função <code>delay()</code> e observe a velocidade.</li>
+                        </ol>
+                    </div>
+
+                    <div style="background-color: #FFF8E1; border: 1px solid #FFE082; padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: #B78103; margin-bottom: 0.8rem; font-size: 1.05rem;">🏆 Desafio Prático</h5>
+                        <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">Desenvolva um programa executando a sequência continuamente:</p>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem; font-size: 0.95rem;">
+                            <li>Acenda o LED por <strong>1 segundo</strong>;</li>
+                            <li>Apague o LED por <strong>500 ms</strong>;</li>
+                            <li>Acenda novamente por <strong>200 ms</strong>;</li>
+                            <li>Apague por <strong>2 segundos</strong> e reinicie.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">❓ Questões de Fixação</h4>
+                <div style="background: var(--bg-light); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                        <li>Qual é a função do resistor no circuito?</li>
+                        <li>O que aconteceria se o LED fosse conectado invertido?</li>
+                        <li>Por que o resistor deve ser ligado em série com o LED?/li>
+                        <li>Qual a função do pino GND?</li>
+                        <li>Qual a diferença entre o LED integrado da placa e o LED utilizado nesta prática?</li>
+                        <li>O que acontece quando o comando <code>digitalWrite(LED, HIGH);</code> é executado?</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Script de Navegação das Práticas -->
+        <script>
+            function mostrarPratica(idPratica, elementoClicado) {
+                const modulo = elementoClicado.closest('.painel-modulo');
+                const conteudos = modulo.querySelectorAll('.pratica-content');
+                conteudos.forEach(c => c.classList.remove('active'));
+                
+                const botoes = modulo.querySelectorAll('.pratica-card');
+                botoes.forEach(b => b.classList.remove('active'));
+                
+                document.getElementById(idPratica).classList.add('active');
+                elementoClicado.classList.add('active');
+            }
+        </script>
+
+<!-- ===== PAINEL: MÓDULO 2 ==== -->
+        <section id="modulo-2" class="content-card painel-modulo">
+            <h3 style="margin-bottom: 1.5rem;">Módulo 2: Sensores e Controle de Sinais</h3>
+            
+            <!-- Estilos para o Submenu -->
+            <style>
+                .praticas-menu {
+                    display: flex;
+                    gap: 1rem;
+                    margin-bottom: 2rem;
+                    flex-wrap: wrap;
+                }
+                .pratica-card {
+                    background-color: var(--bg-light, #f4f8fa);
+                    border: 1px solid var(--border-color, #ccc);
+                    border-radius: 8px;
+                    padding: 1rem;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    font-weight: bold;
+                    color: var(--cor3, #333);
+                    flex: 1;
+                    text-align: center;
+                    min-width: 200px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                }
+                .pratica-card:hover {
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    border-color: var(--cor1, #2e7d32);
+                    transform: translateY(-2px);
+                }
+                .pratica-card.active {
+                    background-color: var(--cor1, #2e7d32);
+                    color: white;
+                    border-color: var(--cor1, #2e7d32);
+                }
+                .pratica-content {
+                    display: none;
+                    animation: fadeIn 0.4s ease;
+                }
+                .pratica-content.active {
+                    display: block;
+                }
+                .img-placeholder {
+                    text-align: center;
+                    margin: 1.5rem 0;
+                    padding: 1rem;
+                    background-color: #f9f9f9;
+                    border: 1px dashed #ccc;
+                    border-radius: 8px;
+                }
+                .img-placeholder img {
+                    max-width: 100%;
+                    border-radius: 4px;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                    margin-bottom: 0.5rem;
+                }
+                .img-placeholder p {
+                    font-size: 0.85rem;
+                    color: #666;
+                    margin: 0;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            </style>
+
+            <!-- Menu de Seleção de Práticas -->
+            <div class="praticas-menu">
+                <div class="pratica-card active" onclick="mostrarPratica('mod2-pratica3', this)">
+                    🔘 Prática 3: Botão (Entrada Digital)
+                </div>
+                <div class="pratica-card" onclick="mostrarPratica('mod2-pratica4', this)">
+                    🎛️ Prática 4: Potenciômetro (Entrada Analógica)
+                </div>
+                <div class="pratica-card" onclick="mostrarPratica('mod2-pratica5', this)">
+                    💡 Prática 5: Controle de Brilho (PWM)
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 CONTEÚDO DA PRÁTICA 3
+                 ========================================== -->
+            <div id="mod2-pratica3" class="pratica-content active">
+                <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
+                    <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 3: Entradas Digitais com Push Button</h4>
+                    <p style="margin-bottom: 0;">Nas práticas anteriores, o Arduino foi utilizado apenas para acionar saídas (LEDs). Nesta prática, faremos a placa ler informações do ambiente externo por meio de um botão (<em>push button</em>), utilizando estruturas condicionais para tomar decisões no código.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🎯 Objetivos & Competências</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Compreender o funcionamento de uma entrada digital.</li>
+                            <li>Aprender a ler o estado de um pino com <code>digitalRead()</code>.</li>
+                            <li>Entender o conceito de resistor de Pull-Down.</li>
+                            <li>Utilizar condicionais <code>if / else</code> na lógica do programa.</li>
+                        </ul>
+                    </div>
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧰 Materiais Necessários</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Placa Arduino Uno e Cabo USB;</li>
+                            <li>Protoboard e Jumpers;</li>
+                            <li>1x Push Button (Botão de pressão);</li>
+                            <li>1x Resistor de 10 kΩ (Pull-Down);</li>
+                            <li>1x LED de 5mm e 1x Resistor de 220 Ω.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Conceitos Fundamentais</h4>
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">O Push Button e o Resistor de Pull-Down</h5>
+                <p>O <em>push button</em> é uma chave táctil de contato momentâneo. Quando o pino do Arduino fica desconectado ("flutuando"), o circuito absorve ruídos elétricos, gerando leituras incertas. Para evitar isso, utilizamos um resistor de <strong>Pull-Down (10 kΩ)</strong> ligado ao GND, garantindo nível lógico LOW (0V) quando o botão está solto, e HIGH (5V) ao ser pressionado.</p>
+
+                <div class="img-placeholder">
+                    <img src="../figuras/p3_botao_esquema.png" alt="Esquema de ligação do resistor Pull-Down" style="max-width: 50%;">
+                    <p>Figura 1: Funcionamento do resistor de Pull-Down no circuito do botão.</p>
+                </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Esquema e Montagem do Circuito</h4>
+                <ul class="info-list bullets" style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                    <li>Conecte um terminal do botão ao pino 5V do Arduino.</li>
+                    <li>Conecte o outro terminal do botão ao pino digital 2 e, no mesmo ponto, ligue o resistor de 10 kΩ ao GND.</li>
+                    <li>Ligue o LED no pino digital 8 através do resistor de 220 Ω.</li>
+                </ul>
+
+                <div class="img-placeholder">
+                    <img src="../figuras/pratica_3.png" alt="Montagem do circuito no Protoboard" style="max-width: 50%;">
+                </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Código da Prática</h4>
+                <div style="background: #282c34; color: #abb2bf; padding: 1.2rem; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; overflow-x: auto;">
+                    <span style="color: #c678dd;">const int</span> pinoBotao = <span style="color: #d19a66;">2</span>;<br>
+                    <span style="color: #c678dd;">const int</span> pinoLED = <span style="color: #d19a66;">8</span>;<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">setup</span>() {<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">pinMode</span>(pinoBotao, <span style="color: #d19a66;">INPUT</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">pinMode</span>(pinoLED, <span style="color: #d19a66;">OUTPUT</span>);<br>
+                    }<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">loop</span>() {<br>
+                    &nbsp;&nbsp;<span style="color: #c678dd;">if</span> (<span style="color: #e06c75;">digitalRead</span>(pinoBotao) == <span style="color: #d19a66;">HIGH</span>) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">digitalWrite</span>(pinoLED, <span style="color: #d19a66;">HIGH</span>); <span style="color: #5c6370; font-style: italic;">// Liga o LED ao pressionar</span><br>
+                    &nbsp;&nbsp;} <span style="color: #c678dd;">else</span> {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">digitalWrite</span>(pinoLED, <span style="color: #d19a66;">LOW</span>);  <span style="color: #5c6370; font-style: italic;">// Desliga o LED ao soltar</span><br>
+                    &nbsp;&nbsp;}<br>
+                    }
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+                    <div style="background-color: #E8F5E9; border: 1px solid var(--cor2); padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧪 Experimentando o código</h5>
+                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Inverta a lógica: faça o LED permanecer aceso e apagar quando o botão for pressionado.</li>
+                            <li>Adicione um segundo LED que acende no estado oposto ao primeiro.</li>
+                        </ol>
+                    </div>
+
+                    <div style="background-color: #FFF8E1; border: 1px solid #FFE082; padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: #B78103; margin-bottom: 0.8rem; font-size: 1.05rem;">🏆 Desafio Prático</h5>
+                        <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">Crie um sistema "liga/desliga" estilo interruptor: um clique no botão acende o LED e ele permanece aceso; outro clique apaga o LED.</p>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">❓ Questões de Fixação</h4>
+                <div style="background: var(--bg-light); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                        <li>O que é o efeito de pino "flutuante" (floating) nas entradas digitais?</li>
+                        <li>Qual a diferença conceitual entre uma configuração Pull-Down e Pull-Up?</li>
+                        <li>Qual é a função do comando <code>digitalRead()</code>?</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 CONTEÚDO DA PRÁTICA 4
+                 ========================================== -->
+            <div id="mod2-pratica4" class="pratica-content">
+                <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
+                    <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 4: Entradas Analógicas com Potenciômetro</h4>
+                    <p style="margin-bottom: 0;">Sinais digitais possuem apenas dois estados (0 V ou 5 V). No entanto, o mundo real é analógico e varia continuamente. Nesta prática, utilizaremos o conversor analógico-digital (ADC) do Arduino para ler a variação de tensão enviada por um potenciômetro e monitorar esses dados via Monitor Serial.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🎯 Objetivos & Competências</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Diferenciar sinais digitais e sinais analógicos.</li>
+                            <li>Utilizar o conversor ADC de 10 bits do Arduino.</li>
+                            <li>Efetuar leituras com a função <code>analogRead()</code>.</li>
+                            <li>Transmitir dados para o PC utilizando a Comunicação Serial (UART).</li>
+                        </ul>
+                    </div>
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧰 Materiais Necessários</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Placa Arduino Uno e Cabo USB;</li>
+                            <li>Protoboard e Jumpers;</li>
+                            <li>1x Potenciômetro de 10 kΩ;</li>
+                            <li>Computador com Arduino IDE.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Conceitos Fundamentais</h4>
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">Entrada Analógica e Resolução do ADC</h5>
+                <p>O Arduino Uno possui 6 portas analógicas (A0 a A5) conectadas a um conversor A/D de <strong>10 bits</strong>. Isso significa que ele mapeia a tensão de entrada (0 a 5 V) em uma escala inteira que vai de <strong>0 até 1023</strong> (2<sup>10</sup> = 1024 níveis).</p>
+
+                <div class="img-placeholder">
+                    <img src="../figuras/diferença_sinal.png" alt="Potenciômetro como divisor de tensão" style="max-width: 60%;">
+                </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Esquema e Montagem do Circuito</h4>
+                <ul class="info-list bullets" style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                    <li>Conecte um dos terminais externos do potenciômetro ao 5V.</li>
+                    <li>Conecte o outro terminal externo ao GND.</li>
+                    <li>Conecte o terminal central (cursor) ao pino analógico <strong>A0</strong>.</li>
+                </ul>
+
+                <div class="img-placeholder">
+                    <img src="../figuras/pratica_4.png" alt="Montagem do Potenciômetro" style="max-width: 70%;">
+                </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Código da Prática</h4>
+                <div style="background: #282c34; color: #abb2bf; padding: 1.2rem; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; overflow-x: auto;">
+                    <span style="color: #c678dd;">const int</span> pinoPot = <span style="color: #d19a66;">A0</span>;<br>
+                    <span style="color: #c678dd;">int</span> valorLido = <span style="color: #d19a66;">0</span>;<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">setup</span>() {<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">Serial</span>.<span style="color: #61afef;">begin</span>(<span style="color: #d19a66;">9600</span>); <span style="color: #5c6370; font-style: italic;">// Inicializa comunicação serial a 9600 baud rate</span><br>
+                    }<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">loop</span>() {<br>
+                    &nbsp;&nbsp;valorLido = <span style="color: #e06c75;">analogRead</span>(pinoPot); <span style="color: #5c6370; font-style: italic;">// Lê valor de 0 a 1023</span><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">Serial</span>.<span style="color: #61afef;">println</span>(valorLido);       <span style="color: #5c6370; font-style: italic;">// Imprime valor no Monitor Serial</span><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">delay</span>(<span style="color: #d19a66;">100</span>);<br>
+                    }
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+                    <div style="background-color: #E8F5E9; border: 1px solid var(--cor2); padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧪 Experimentando o código</h5>
+                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Abra o <strong>Plotter Serial</strong> (Ferramentas > Plotter Serial) na IDE para visualizar um gráfico da rotação do eixo em tempo real.</li>
+                            <li>Calcule a tensão em Volts no programa multiplicando a leitura por <code>(5.0 / 1023.0)</code> e imprima em volts.</li>
+                        </ol>
+                    </div>
+
+                    <div style="background-color: #FFF8E1; border: 1px solid #FFE082; padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: #B78103; margin-bottom: 0.8rem; font-size: 1.05rem;">🏆 Desafio Prático</h5>
+                        <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">Programe um alarme visual: se a leitura do potenciômetro ultrapassar o valor 800, faça um LED piscar como alerta.</p>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">❓ Questões de Fixação</h4>
+                <div style="background: var(--bg-light); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                        <li>Por que os pinos analógicos não exigem declaração na função <code>pinMode()</code>?</li>
+                        <li>O que representa o valor 512 lido na porta analógica A0?</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 CONTEÚDO DA PRÁTICA 5
+                 ========================================== -->
+            <div id="mod2-pratica5" class="pratica-content">
+                <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
+                    <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 5: Controlling LED Brightness com PWM</h4>
+                    <p style="margin-bottom: 0;">Nesta prática, integraremos a leitura analógica do potenciômetro com o conceito de <strong>PWM (Pulse Width Modulation)</strong>. O objetivo é variar proporcionalmente a intensidade luminosa de um LED conforme o movimento do potenciômetro.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🎯 Objetivos & Competências</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Compreender o funcionamento da técnica PWM.</li>
+                            <li>Identificar os pinos PWM no Arduino (assinalados com <code>~</code>).</li>
+                            <li>Utilizar a função <code>analogWrite()</code> para saídas "analógicas".</li>
+                            <li>Utilizar a função <code>map()</code> para adequação de escalas.</li>
+                        </ul>
+                    </div>
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧰 Materiais Necessários</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Placa Arduino Uno e Cabo USB;</li>
+                            <li>Protoboard e Jumpers;</li>
+                            <li>1x Potenciômetro de 10 kΩ;</li>
+                            <li>1x LED de 5mm e 1x Resistor de 220 Ω.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Conceitos Fundamentais</h4>
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">Pulse Width Modulation (PWM) e Função map()</h5>
+                <p>O PWM simula uma tensão analógica alternando o sinal entre HIGH e LOW em alta frequência. A função <code>analogWrite()</code> aceita valores de <strong>8 bits (0 a 255)</strong>. Como a leitura analógica retorna de <strong>0 a 1023 (10 bits)</strong>, utilizamos a função <code>map()</code> para converter a faixa de entrada na faixa de saída proporcional.</p>
+
+                <div class="img-placeholder">
+                    <img src="../figuras/pwm_modulacao.png" alt="Ciclos de trabalho Duty Cycle PWM" style="max-width: 60%;">
+                </div>
+
+                <!-- Tabela de Conversão -->
+                <div style="overflow-x: auto; margin-top: 1rem; margin-bottom: 2rem;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                        <thead>
+                            <tr style="background-color: var(--cor1); color: var(--branco);">
+                                <th style="padding: 10px 15px; border: 1px solid var(--border-color);">Entrada (analogRead)</th>
+                                <th style="padding: 10px 15px; border: 1px solid var(--border-color);">Saída Mapeada (analogWrite)</th>
+                                <th style="padding: 10px 15px; border: 1px solid var(--border-color);">Estado do LED</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td style="padding: 5px 15px; border: 1px solid var(--border-color);">0</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">0</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">Apagado (0%)</td></tr>
+                            <tr style="background-color: #F9F9F9;"><td style="padding: 5px 15px; border: 1px solid var(--border-color);">512</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">128</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">Brilho Médio (50%)</td></tr>
+                            <tr><td style="padding: 5px 15px; border: 1px solid var(--border-color);">1023</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">255</td><td style="padding: 5px 15px; border: 1px solid var(--border-color);">Brilho Máximo (100%)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Esquema e Montagem do Circuito</h4>
+                <ul class="info-list bullets" style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                    <li>Mantenha o potenciômetro conectado ao pino <strong>A0</strong>.</li>
+                    <li>Conecte o LED ao pino digital <strong>9</strong> (porta habilitada para PWM <code>~9</code>).</li>
+                </ul>
+
+                <div class="img-placeholder">
+                    <img src="../figuras/pratica_5.png" alt="Montagem do Circuito PWM" style="max-width: 60%;">
+                </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Código da Prática</h4>
+                <div style="background: #282c34; color: #abb2bf; padding: 1.2rem; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; overflow-x: auto;">
+                    <span style="color: #c678dd;">const int</span> pinoPot = <span style="color: #d19a66;">A0</span>;<br>
+                    <span style="color: #c678dd;">const int</span> pinoLED = <span style="color: #d19a66;">9</span>; <span style="color: #5c6370; font-style: italic;">// Pino PWM com ~</span><br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">setup</span>() {<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">pinMode</span>(pinoLED, <span style="color: #d19a66;">OUTPUT</span>);<br>
+                    }<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">loop</span>() {<br>
+                    &nbsp;&nbsp;<span style="color: #c678dd;">int</span> valorEntrada = <span style="color: #e06c75;">analogRead</span>(pinoPot);<br>
+                    &nbsp;&nbsp;<span style="color: #c678dd;">int</span> valorSaida = <span style="color: #e06c75;">map</span>(valorEntrada, <span style="color: #d19a66;">0</span>, <span style="color: #d19a66;">1023</span>, <span style="color: #d19a66;">0</span>, <span style="color: #d19a66;">255</span>);<br><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">analogWrite</span>(pinoLED, valorSaida);<br>
+                    }
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+                    <div style="background-color: #E8F5E9; border: 1px solid var(--cor2); padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧪 Experimentando o código</h5>
+                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Substitua a instrução <code>map()</code> por uma divisão simples <code>valorEntrada / 4</code> e observe o resultado.</li>
+                        </ol>
+                    </div>
+
+                    <div style="background-color: #FFF8E1; border: 1px solid #FFE082; padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: #B78103; margin-bottom: 0.8rem; font-size: 1.05rem;">🏆 Desafio Prático</h5>
+                        <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">Crie um efeito de escuridão invertida: quanto mais você gira o potenciômetro para a direita, menor fica o brilho do LED (de 100% até apagar).</p>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">❓ Questões de Fixação</h4>
+                <div style="background: var(--bg-light); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                        <li>O que aconteceria se você ligasse o LED no pino digital 8 e tentasse usar a função <code>analogWrite()</code>?</li>
+                        <li>Sintaticamente, quais são os 5 parâmetros exigidos pela função <code>map()</code>?</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+<!-- PAINEL 5: MÓDULO 4 -->
+        <section id="modulo-4" class="content-card painel-modulo">
+            <h3>Módulo 4: Projetos Avançados de Automação</h3>
+            <p>Integre múltiplos sensores e atuadores para criar soluções completas aplicadas à logística e automação industrial.</p>
+            <ul class="info-list bullets">
+                <li><strong>Prática 9:</strong> Medição de Distância com Sensor Ultrassônico HC-SR04.</li>
+                <li><strong>Prática 10:</strong> Sistema Inteligente de Sinalização de Vagas de Estacionamento.</li>
+                <li><strong>Prática 11 a 15:</strong> Controle de Cancela, Alarmes e Automação de Processos.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- SCRIPT DE INTERATIVIDADE -->
+    <script>
+        function selecionarModulo(idModulo, elementoClicado) {
+            // 1. Esconde todos os painéis de conteúdo
+            const paineis = document.querySelectorAll('.painel-modulo');
+            paineis.forEach(painel => painel.classList.remove('ativo'));
+
+            // 2. Remove o destaque visual de todas as caixas
+            const caixas = document.querySelectorAll('.caixa-modulo');
+            caixas.forEach(caixa => caixa.classList.remove('selecionado'));
+
+            // 3. Mostra o painel do módulo selecionado
+            document.getElementById(idModulo).classList.add('ativo');
+
+            // 4. Adiciona o destaque visual na caixa clicada
+            elementoClicado.classList.add('selecionado');
+        }
+    </script>
+
+</body>
+</html>
