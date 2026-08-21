@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incubadora (NIEVI) – Lab. Logística IFES Viana</title>
+    <style>
+        /* ── Paleta e variáveis ── */
+        :root {
+            --cor1: #32A041;
+            --cor2: #64C878;
+            --cor3: #1E7832;
+            --cor4: #46B45A;
+            --cor5: #96DCA0;
+            --preto: #000000;
+            --branco: #FFFFFF;
+            --bg-light: #F8FAF0;
+            --text-dark: #000000;
+            --text-muted: #505050;
+            --border-color: #D2E8D5;
+            --sidebar-width: 280px;
+            --card-radius: 14px;
+            --transition: 0.3s ease;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+
+        body { display: flex; background-color: var(--bg-light); color: var(--text-dark); min-height: 100vh; }
+
+        /* ══════════════════════════════
+           SIDEBAR  
+        ══════════════════════════════ */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--branco);
+            border-right: 1px solid var(--border-color);
+            position: fixed; height: 100vh; overflow-y: auto;
+            padding: 2rem 1.5rem;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.02);
+            z-index: 100;
+        }
+        .sidebar-header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 2px solid var(--cor1); }
+        .sidebar-header h2 { font-size: 1.25rem; color: var(--cor3); }
+        .nav-menu { list-style: none; }
+        .nav-category {
+            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;
+            color: var(--text-muted); margin: 1.5rem 0 0.5rem 0; font-weight: 600;
+        }
+        .nav-menu li { margin-bottom: 0.5rem; }
+        .nav-menu a {
+            display: block; padding: 0.75rem 1rem; color: var(--text-dark);
+            text-decoration: none; border-radius: 6px; transition: all 0.2s ease;
+            background-color: var(--cor5); border: 1px solid transparent;
+        }
+        .nav-menu a:hover { color: var(--cor3); border-color: var(--cor2); }
+        .nav-menu a.ativo { background-color: var(--cor3); color: var(--branco); font-weight: 600; }
+
+        /* ══════════════════════════════
+           LAYOUT PRINCIPAL
+        ══════════════════════════════ */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 3rem 4rem;
+            flex: 1;
+            max-width: 1200px;
+        }
+
+        /* ── Hero ── */
+        .hero-section {
+            background: linear-gradient(135deg, var(--cor3) 0%, var(--cor1) 60%, var(--cor2) 100%);
+            padding: 3rem;
+            border-radius: var(--card-radius);
+            box-shadow: 0 6px 20px rgba(50,160,65,0.25);
+            margin-bottom: 2.5rem;
+            color: var(--branco);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::after {
+            content: "🌱";
+            position: absolute;
+            right: 3rem; top: 50%;
+            transform: translateY(-50%);
+            font-size: 7rem;
+            opacity: 0.18;
+            pointer-events: none;
+        }
+        .hero-section h1 { font-size: 2.4rem; margin-bottom: 0.6rem; color: var(--branco); }
+        .hero-section .subtitulo { font-size: 1.05rem; opacity: 0.92; line-height: 1.6; max-width: 660px; }
+        .hero-secao-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.22);
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 20px;
+            padding: 0.25rem 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            color: var(--branco);
+        }
+
+        /* ── Grid de cards ── */
+        .experimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* ── Card Estilizado ── */
+        .exp-card {
+            background: var(--branco);
+            border-radius: var(--card-radius);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform var(--transition), box-shadow var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .exp-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(50,160,65,0.18);
+        }
+
+        /* Highlight para o card de Estratégia */
+        .exp-card[data-area="estrategia"] {
+            border: 2px solid transparent;
+            background-image: linear-gradient(white, white), linear-gradient(135deg, #16a085, #8e44ad, #e67e22);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+
+        .exp-card-img-placeholder {
+            width: 100%;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .exp-card-area { height: 5px; }
+
+        .exp-card-body { padding: 1.4rem 1.5rem 1rem; flex: 1; }
+        .exp-card-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            margin-bottom: 0.8rem;
+            color: var(--branco);
+        }
+        .exp-card-titulo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--cor3);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        .exp-card-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Rodapé do card */
+        .exp-card-footer {
+            padding: 1rem 1.5rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--border-color);
+            margin-top: auto;
+        }
+        .exp-card-fase {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--cor1);
+            text-transform: uppercase;
+        }
+        .btn-ver-mais {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--cor3);
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.45rem 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-ver-mais:hover { background: var(--cor3); color: var(--branco); border-color: var(--cor3); }
+
+        /* Div oculta para guardar o conteúdo rico do modal */
+        .conteudo-rico-modal { display: none; }
+
+        /* ══════════════════════════════
+           MODAL DE DETALHES
+        ══════════════════════════════ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(3px);
+            z-index: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+        .modal-overlay.aberto { opacity: 1; pointer-events: all; }
+
+        .modal {
+            background: var(--branco);
+            border-radius: var(--card-radius);
+            width: 100%;
+            max-width: 780px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transform: translateY(30px) scale(0.97);
+            transition: transform 0.28s ease;
+            position: relative;
+        }
+        .modal-overlay.aberto .modal { transform: translateY(0) scale(1); }
+
+        .modal-img-placeholder {
+            width: 100%;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border-radius: var(--card-radius) var(--card-radius) 0 0;
+        }
+        .modal-corpo { padding: 2.5rem; }
+        .modal-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            padding: 0.25rem 0.8rem;
+            border-radius: 12px;
+            color: var(--branco);
+            margin-bottom: 0.8rem;
+        }
+        .modal-titulo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--cor3);
+            margin-bottom: 1.5rem;
+            line-height: 1.25;
+        }
+        .modal-fechar {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0,0,0,0.4);
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
+            line-height: 1;
+        }
+        .modal-fechar:hover { background: rgba(0,0,0,0.7); }
+
+        /* ══════════════════════════════
+           ESTILOS DO CONTEÚDO RICO (DENTRO DO MODAL)
+        ══════════════════════════════ */
+        .info-bloco { margin-bottom: 1.8rem; }
+        .info-bloco h3 { 
+            font-size: 1.1rem; color: var(--cor1); margin-bottom: 0.8rem; 
+            display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px;
+        }
+        .info-bloco ul { list-style: none; padding-left: 0.5rem; }
+        .info-bloco li { 
+            position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; color: var(--text-muted); line-height: 1.6;
+        }
+        .info-bloco li::before {
+            content: "✓"; position: absolute; left: 0; color: var(--cor1); font-weight: bold;
+        }
+
+        /* ── Estilo especial: Timeline (Roadmap) ── */
+        .roadmap-timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin-top: 1.5rem;
+            border-left: 3px solid var(--border-color);
+        }
+        .roadmap-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        .roadmap-item:last-child { margin-bottom: 0; }
+        .roadmap-icon {
+            position: absolute;
+            left: -2.9rem;
+            top: 0;
+            width: 36px; height: 36px;
+            background: var(--branco);
+            border: 3px solid var(--cor1);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; z-index: 2;
+        }
+        .roadmap-item h4 {
+            color: var(--cor3); font-size: 1.15rem; margin-bottom: 0.3rem;
+        }
+        .roadmap-item .data {
+            font-size: 0.8rem; font-weight: bold; color: #8e44ad; text-transform: uppercase;
+            display: inline-block; margin-bottom: 0.5rem; background: #f4e8f7; padding: 2px 8px; border-radius: 10px;
+        }
+        .roadmap-item p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+
+        .logo-ifes {
+            max-width: 100%; /* Garante que a logo não ultrapasse a largura do menu lateral */
+            height: auto;    /* Mantém a proporção da imagem */
+            margin-bottom: 15px; /* Adiciona um respiro entre a logo e o título */
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- ══════════════ SIDEBAR ══════════════ -->
+<aside class="sidebar">
+
+    <img src="../figuras/ifes-horizontal-cor.png" alt="Logo Instituto Federal Espírito Santo" class="logo-ifes">
+
+    <div class="sidebar-header"><h2>Carta de Serviços</h2></div>
+    <ul class="nav-menu">
+        <li><a href="../index.html">🏠 Início / Visão Geral</a></li>
+        
+        <div class="nav-category">Equipamentos e Hardware</div>
+        <li><a href="../paginas/impressora_3d.html">🖨️ Impressora 3D</a></li>
+        <li><a href="../paginas/lousa_interativa.html">📺 Lousa Interativa</a></li>
+        <li><a href="../paginas/oculos_vr.html">🥽 Óculos VR</a></li>
+        <li><a href="../paginas/kit_lego.html">🧩 Kit LEGO</a></li>
+        <li><a href="../paginas/kit_arduino.html">⚡ Kit Arduino</a></li>
+        
+        <div class="nav-category">Outros Serviços</div>
+        <li><a href="../paginas/empresa_junior.html">📦 Empresa Júnior</a></li>
+        <li><a href="../paginas/experimentos_fisica.html">🧪 Experimentos de Física</a></li>
+        <li><a href="../paginas/Incubadora.html" class="ativo">🌱 Incubadora</a></li>
+    </ul>
+</aside>
+
+<!-- ══════════════ CONTEÚDO ══════════════ -->
+<main class="main-content">
+
+    <!-- Hero -->
+    <section class="hero-section">
+        <span class="hero-secao-badge">🌱 Ecossistema de Inovação</span>
+        <h1>Núcleo Incubador (NIEVI)</h1>
+        <p class="subtitulo">
+            Impulsionando o futuro do empreendedorismo local! O NIEVI é a ponte que conecta o conhecimento do IFES ao ecossistema produtivo de Viana, oferecendo mentoring, infraestrutura e suporte para transformar ideias em negócios inovadores e de grande impacto.
+        </p>
+    </section>
+
+    <!-- Grid com os 3 CARDS Principais -->
+    <div class="experimentos-grid">
+
+        <!-- ════════════ CARD 1: OBJETIVOS ════════════ -->
+        <article class="exp-card" data-area="objetivos" data-cor="#32A041" data-emoji="💡" data-tag="Visão Geral">
+            <div class="exp-card-area" style="background:#32A041;"></div>
+            <div class="exp-card-img-placeholder" style="background: linear-gradient(135deg, #96DCA0, #64C878);">💡</div>
+            
+            <div class="exp-card-body">
+                <span class="exp-card-tag" style="background:#32A041;">Objetivos</span>
+                <h2 class="exp-card-titulo">Propósito e Missão</h2>
+                <p class="exp-card-desc">Conheça os direcionamentos que guiam o NIEVI na transformação da economia e do empreendedorismo em Viana.</p>
+            </div>
+            <div class="exp-card-footer">
+                <span class="exp-card-fase">Fundamentos</span>
+                <button class="btn-ver-mais" onclick="abrirModal(this.closest('.exp-card'))">Explorar</button>
+            </div>
+
+            <!-- CONTEÚDO QUE VAI APARECER NO MODAL -->
+            <div class="conteudo-rico-modal">
+                <div class="info-bloco">
+                    <h3>🎯 Por que existimos?</h3>
+                    <p style="color:var(--text-muted); line-height:1.6; margin-bottom:1rem;">O Núcleo Incubador de Empreendimentos (NIEVI) foi criado para ser o motor de inovação da nossa região, apoiando desde pequenas associações até empresas de base tecnológica.</p>
+                    <ul>
+                        <li><strong>Potencializar o ecossistema:</strong> Fomentar o surgimento e a sustentabilidade de novos empreendimentos, cooperativas e pequenos negócios locais.</li>
+                        <li><strong>Conexão Academia-Mercado:</strong> Construir uma ponte sólida entre a pesquisa aplicada do IFES e as demandas reais do setor produtivo de Viana.</li>
+                        <li><strong>Inovação com Impacto:</strong> Oferecer suporte gerencial e tecnológico para que ideias promissoras se tornem produtos e serviços sustentáveis.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ════════════ CARD 2: METAS ════════════ -->
+        <article class="exp-card" data-area="metas" data-cor="#2980b9" data-emoji="🎯" data-tag="Resultados Esperados">
+            <div class="exp-card-area" style="background:#2980b9;"></div>
+            <div class="exp-card-img-placeholder" style="background: linear-gradient(135deg, #a9cce3, #5499c7);">🎯</div>
+            
+            <div class="exp-card-body">
+                <span class="exp-card-tag" style="background:#2980b9;">Metas</span>
+                <h2 class="exp-card-titulo">Metas Estratégicas</h2>
+                <p class="exp-card-desc">Nossos alvos quantitativos e qualitativos estabelecidos para garantir a entrega de valor real à comunidade até 2028.</p>
+            </div>
+            <div class="exp-card-footer">
+                <span class="exp-card-fase">Alvos Práticos</span>
+                <button class="btn-ver-mais" onclick="abrirModal(this.closest('.exp-card'))">Explorar</button>
+            </div>
+
+            <!-- CONTEÚDO QUE VAI APARECER NO MODAL -->
+            <div class="conteudo-rico-modal">
+                <div class="info-bloco">
+                    <h3>📈 Onde queremos chegar (Até 2028)</h3>
+                    <ul>
+                        <li><strong>Incubação Ativa:</strong> Incubar no mínimo <strong>5 empresas</strong> de base tecnológica ou de alto impacto social, acompanhando desde a fase de projeto até a maturidade.</li>
+                        <li><strong>Educação Empreendedora:</strong> Realizar ciclos contínuos de capacitação, ofertando cursos, workshops e oficinas abertas à comunidade e alunos.</li>
+                        <li><strong>Infraestrutura Maker:</strong> Disponibilizar e equipar espaços de coworking com internet de alta velocidade e acesso a ferramentas de prototipagem (impressoras 3D, robótica).</li>
+                        <li><strong>Integração de Alunos:</strong> Garantir que os projetos incubados absorvam estudantes como estagiários ou membros de pesquisa, promovendo vivência empresarial.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- ════════════ CARD 3: PLANEJAMENTO ESTRATÉGICO ════════════ -->
+        <article class="exp-card" data-area="estrategia" data-cor="#8e44ad" data-emoji="🚀" data-tag="Roadmap Oficial">
+            <div class="exp-card-area" style="background:#8e44ad;"></div>
+            <div class="exp-card-img-placeholder" style="background: linear-gradient(135deg, #d2b4de, #af7ac5);">🚀</div>
+            
+            <div class="exp-card-body">
+                <span class="exp-card-tag" style="background:#8e44ad;">Roadmap</span>
+                <h2 class="exp-card-titulo">Planejamento Estratégico</h2>
+                <p class="exp-card-desc">O roteiro detalhado (linha do tempo) de como vamos estruturar, operar e expandir a incubadora nos próximos anos.</p>
+            </div>
+            <div class="exp-card-footer">
+                <span class="exp-card-fase">Plano de Ação</span>
+                <button class="btn-ver-mais" onclick="abrirModal(this.closest('.exp-card'))">Explorar</button>
+            </div>
+
+            <!-- CONTEÚDO QUE VAI APARECER NO MODAL (O EMPEREQUETADO!) -->
+            <div class="conteudo-rico-modal">
+                <p style="color:var(--text-muted); line-height:1.6; font-size: 1.05rem; margin-bottom: 1rem;">
+                    Nosso cronograma de evolução é dividido em quatro fases essenciais, projetadas para criar uma fundação sólida antes de escalar as operações.
+                </p>
+                
+                <div class="roadmap-timeline">
+                    
+                    <div class="roadmap-item">
+                        <div class="roadmap-icon" style="border-color:#e67e22;">🗺️</div>
+                        <h4>Fase 1: Diagnóstico e Mapeamento</h4>
+                        <span class="data">Março a Junho / 2026</span>
+                        <p>Realização de um estudo profundo das vocações logísticas, econômicas e sociais de Viana. O objetivo é identificar "dores" do mercado local que possam ser resolvidas por startups e embasar os editais de incubação.</p>
+                    </div>
+
+                    <div class="roadmap-item">
+                        <div class="roadmap-icon" style="border-color:#16a085;">🛠️</div>
+                        <h4>Fase 2: Estruturação Física e Maker</h4>
+                        <span class="data">Março/2026 a Março/2028</span>
+                        <p>Adequação contínua do espaço físico, montagem do coworking, aquisição de equipamentos de prototipagem e formulação dos modelos de mentoria gerencial e tecnológica.</p>
+                    </div>
+
+                    <div class="roadmap-item">
+                        <div class="roadmap-icon" style="border-color:#2980b9;">🤝</div>
+                        <h4>Fase 3: Rede de Parcerias Institucionais</h4>
+                        <span class="data">Agosto a Dezembro / 2026</span>
+                        <p>Conexão ativa do NIEVI com prefeituras, investidores-anjo, associações industriais e incubadoras da Grande Vitória, criando uma teia de networking robusta para os nossos empreendedores.</p>
+                    </div>
+
+                    <div class="roadmap-item">
+                        <div class="roadmap-icon" style="border-color:#8e44ad;">🔬</div>
+                        <h4>Fase 4: P&D Aplicado à Logística</h4>
+                        <span class="data">Julho/2026 a Dezembro/2028</span>
+                        <p>Início do ciclo avançado, onde alunos e empresas incubadas desenvolvem pesquisas aplicadas e soluções tecnológicas de ponta voltadas especificamente para a cadeia de suprimentos e logística da região.</p>
+                    </div>
+
+                </div>
+            </div>
+        </article>
+
+    </div><!-- /grid -->
+
+</main><!-- /main-content -->
+
+<!-- ══════════════════════════════
+     MODAL DINÂMICO
+══════════════════════════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="fecharModalClique(event)">
+    <div class="modal" id="modal">
+        <button class="modal-fechar" onclick="fecharModal()">✕</button>
+        
+        <div id="modal-img-wrapper"></div>
+
+        <div class="modal-corpo">
+            <span class="modal-tag" id="modal-tag"></span>
+            <h2 class="modal-titulo" id="modal-titulo"></h2>
+            
+            <!-- Aqui o JS vai injetar o HTML customizado de cada card -->
+            <div id="modal-conteudo-injetado"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+//  FUNÇÕES DO MODAL (DINÂMICO)
+// ═══════════════════════════════════════════════
+function abrirModal(card) {
+    const d = card.dataset;
+    const cor = d.cor;
+
+    // Header Visual do Modal
+    const wrapper = document.getElementById('modal-img-wrapper');
+    wrapper.innerHTML = `
+        <div class="modal-img-placeholder"
+             style="background:linear-gradient(135deg, ${cor}99, ${cor}); color:#fff;">
+            ${d.emoji}
+        </div>`;
+
+    // Título e Tag
+    document.getElementById('modal-tag').textContent = d.tag;
+    document.getElementById('modal-tag').style.background = cor;
+    
+    const tituloCard = card.querySelector('.exp-card-titulo').textContent;
+    document.getElementById('modal-titulo').textContent = tituloCard;
+    
+    // Injeta o conteúdo rico (HTML) que está escondido no card
+    const conteudoRico = card.querySelector('.conteudo-rico-modal').innerHTML;
+    document.getElementById('modal-conteudo-injetado').innerHTML = conteudoRico;
+
+    // Abre modal
+    document.getElementById('modalOverlay').classList.add('aberto');
+    document.body.style.overflow = 'hidden';
+}
+
+function fecharModal() {
+    document.getElementById('modalOverlay').classList.remove('aberto');
+    document.body.style.overflow = '';
+}
+
+function fecharModalClique(e) {
+    if (e.target === document.getElementById('modalOverlay')) fecharModal();
+}
+
+// Fecha com ESC
+document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
+</script>
+
+</body>
+</html>

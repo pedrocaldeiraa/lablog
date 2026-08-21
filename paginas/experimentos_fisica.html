@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experimentos de Física – Lab. Logística IFES Viana</title>
+    <style>
+        /* ── Paleta e variáveis ── */
+        :root {
+            --cor1: #32A041;
+            --cor2: #64C878;
+            --cor3: #1E7832;
+            --cor4: #46B45A;
+            --cor5: #96DCA0;
+            --preto: #000000;
+            --branco: #FFFFFF;
+            --bg-light: #F8FAF0;
+            --text-dark: #000000;
+            --text-muted: #505050;
+            --border-color: #D2E8D5;
+            --sidebar-width: 280px;
+            --card-radius: 14px;
+            --transition: 0.3s ease;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+
+        body { display: flex; background-color: var(--bg-light); color: var(--text-dark); min-height: 100vh; }
+
+        /* ══════════════════════════════
+           SIDEBAR
+        ══════════════════════════════ */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--branco);
+            border-right: 1px solid var(--border-color);
+            position: fixed; height: 100vh; overflow-y: auto;
+            padding: 2rem 1.5rem;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.02);
+        }
+        .sidebar-header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 2px solid var(--cor1); }
+        .sidebar-header h2 { font-size: 1.25rem; color: var(--cor3); }
+        .nav-menu { list-style: none; }
+        .nav-category {
+            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;
+            color: var(--text-muted); margin: 1.5rem 0 0.5rem 0; font-weight: 600;
+        }
+        .nav-menu li { margin-bottom: 0.5rem; }
+        .nav-menu a {
+            display: block; padding: 0.75rem 1rem; color: var(--text-dark);
+            text-decoration: none; border-radius: 6px; transition: all 0.2s ease;
+            background-color: var(--cor5); border: 1px solid transparent;
+        }
+        .nav-menu a:hover { color: var(--cor3); border-color: var(--cor2); }
+        .nav-menu a.ativo { background-color: var(--cor3); color: var(--branco); font-weight: 600; }
+
+        /* ══════════════════════════════
+           LAYOUT PRINCIPAL
+        ══════════════════════════════ */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 3rem 4rem;
+            flex: 1;
+            max-width: 1200px;
+        }
+
+        /* ── Hero ── */
+        .hero-section {
+            background: linear-gradient(135deg, var(--cor3) 0%, var(--cor1) 60%, var(--cor2) 100%);
+            padding: 3rem;
+            border-radius: var(--card-radius);
+            box-shadow: 0 6px 20px rgba(50,160,65,0.25);
+            margin-bottom: 2.5rem;
+            color: var(--branco);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::after {
+            content: "⚗️";
+            position: absolute;
+            right: 3rem; top: 50%;
+            transform: translateY(-50%);
+            font-size: 7rem;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        .hero-section h1 { font-size: 2.4rem; margin-bottom: 0.6rem; color: var(--branco); }
+        .hero-section .subtitulo { font-size: 1.05rem; opacity: 0.88; line-height: 1.6; max-width: 640px; }
+        .hero-secao-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 20px;
+            padding: 0.25rem 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            color: var(--branco);
+        }
+
+        /* ── Filtros por área ── */
+        .filtros {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .filtro-btn {
+            padding: 0.45rem 1.1rem;
+            border-radius: 20px;
+            border: 2px solid var(--border-color);
+            background: var(--branco);
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+        .filtro-btn:hover  { border-color: var(--cor1); color: var(--cor3); }
+        .filtro-btn.ativo  { background: var(--cor1); border-color: var(--cor1); color: var(--branco); }
+
+        /* ── Grid de cards ── */
+        .experimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.75rem;
+            margin-bottom: 3rem;
+        }
+
+        /* ── Card de experimento ── */
+        .exp-card {
+            background: var(--branco);
+            border-radius: var(--card-radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform var(--transition), box-shadow var(--transition);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+        .exp-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 28px rgba(50,160,65,0.15);
+        }
+        .exp-card[data-visivel="false"] { display: none; }
+
+        .exp-card-img-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--cor5), var(--cor2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .exp-card-area { height: 4px; }
+
+        .exp-card-body { padding: 1.4rem 1.5rem 1rem; flex: 1; }
+        .exp-card-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            padding: 0.2rem 0.65rem;
+            border-radius: 10px;
+            margin-bottom: 0.7rem;
+            color: var(--branco);
+        }
+        .exp-card-titulo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--cor3);
+            margin-bottom: 0.5rem;
+            line-height: 1.35;
+        }
+        .exp-card-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        .exp-card-footer {
+            padding: 0.9rem 1.5rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--border-color);
+            margin-top: 0.8rem;
+        }
+        .exp-card-nivel {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .nivel-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--border-color);
+        }
+        .nivel-dot.ativo { background: var(--cor1); }
+        .btn-ver-mais {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--cor3);
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.35rem 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        .btn-ver-mais:hover { background: var(--cor3); color: var(--branco); border-color: var(--cor3); }
+
+        /* ══════════════════════════════
+           MODAL DE DETALHES
+        ══════════════════════════════ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+        .modal-overlay.aberto { opacity: 1; pointer-events: all; }
+
+        .modal {
+            background: var(--branco);
+            border-radius: var(--card-radius);
+            width: 100%;
+            max-width: 720px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transform: translateY(30px) scale(0.97);
+            transition: transform 0.28s ease;
+            position: relative;
+        }
+        .modal-overlay.aberto .modal { transform: translateY(0) scale(1); }
+
+        /* Capa do modal com Emoji idêntico ao card */
+        .modal-header-bg {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            border-radius: var(--card-radius) var(--card-radius) 0 0;
+        }
+
+        .modal-corpo { padding: 1.5rem 2.2rem 2.5rem; }
+        .modal-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            padding: 0.2rem 0.7rem;
+            border-radius: 10px;
+            color: var(--branco);
+            margin-bottom: 0.8rem;
+        }
+        .modal-titulo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--cor3);
+            margin-bottom: 1rem;
+            line-height: 1.25;
+        }
+        .modal-secao-titulo {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--cor1);
+            margin: 1.4rem 0 0.5rem;
+        }
+        .modal-texto {
+            font-size: 0.97rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+        }
+        .modal-conceitos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .modal-conceito-tag {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 0.3rem 0.85rem;
+            font-size: 0.82rem;
+            color: var(--cor3);
+            font-weight: 600;
+        }
+
+        /* ── Foto Real do Experimento (Exibida ao rolar até o fim) ── */
+        .modal-foto-container {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed var(--border-color);
+        }
+        .modal-foto-real {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            display: block;
+            margin-top: 0.8rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .modal-fechar {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0,0,0,0.4);
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
+            z-index: 10;
+        }
+        .modal-fechar:hover { background: rgba(0,0,0,0.7); }
+
+        .nenhum-resultado {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+            font-size: 1rem;
+            grid-column: 1 / -1;
+        }
+        .nenhum-resultado.visivel { display: block; }
+
+        .logo-ifes {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════ SIDEBAR ══════════════ -->
+<aside class="sidebar">
+    <img src="../figuras/ifes-horizontal-cor.png" alt="Logo Instituto Federal Espírito Santo" class="logo-ifes">
+    <div class="sidebar-header"><h2>Carta de Serviços</h2></div>
+    <ul class="nav-menu">
+        <li><a href="../index.html">🏠 Início / Visão Geral</a></li>
+        
+        <div class="nav-category">Equipamentos e Hardware</div>
+        <li><a href="../paginas/impressora_3d.html">🖨️ Impressora 3D</a></li>
+        <li><a href="../paginas/lousa_interativa.html">📺 Lousa Interativa</a></li>
+        <li><a href="../paginas/oculos_vr.html">🥽 Óculos VR</a></li>
+        <li><a href="../paginas/kit_lego.html">🧩 Kit LEGO</a></li>
+        <li><a href="../paginas/kit_arduino.html">⚡ Kit Arduino</a></li>
+        <div class="nav-category">Outros Serviços</div>
+        <li><a href="../paginas/empresa_junior.html">📦 Empresa Júnior</a></li>
+        <li><a href="../paginas/experimentos_fisica.html" class="ativo">🧪 Experimentos de Física</a></li>
+        <li><a href="../paginas/Incubadora.html">🌱 Incubadora</a></li>
+    </ul>
+</aside>
+
+<!-- ══════════════ CONTEÚDO ══════════════ -->
+<main class="main-content">
+
+    <section class="hero-section">
+        <span class="hero-secao-badge">🧪 Experimentos de Física</span>
+        <h1>Experimentos de Física</h1>
+        <p class="subtitulo">
+            Explore os experimentos disponíveis no laboratório. Cada um conecta
+            conceitos físicos fundamentais à realidade da logística e da engenharia,
+            tornando o aprendizado concreto e investigativo.
+        </p>
+    </section>
+
+    <!-- Filtros por área temática -->
+    <div class="filtros" id="filtros">
+        <button class="filtro-btn ativo" data-area="todos">Todos</button>
+        <button class="filtro-btn" data-area="mecanica">Mecânica</button>
+        <button class="filtro-btn" data-area="hidrostatica">Hidrostática</button>
+        <button class="filtro-btn" data-area="acustica">Acústica e Ondulatória</button>
+        <button class="filtro-btn" data-area="optica">Óptica</button>
+        <button class="filtro-btn" data-area="eletromagnetismo">Eletricidade e Magnetismo</button>
+    </div>
+
+    <!-- Grid de experimentos -->
+    <div class="experimentos-grid" id="grid">
+
+        <!-- ── MECÂNICA ─────────────────────────────────────── -->
+        <article class="exp-card" data-area="mecanica"
+                 data-titulo="Plano Inclinado"
+                 data-emoji="📐" data-area-nome="Mecânica" data-area-cor="#e67e22" data-nivel="1"
+                 data-foto="foto_plano_inclinado.jpeg"
+                 data-resumo="Estudo de cinemática e dinâmica através do deslizamento de um carrinho em uma rampa com inclinação ajustável."
+                 data-objetivo="Analisar a decomposição de forças, o cálculo da aceleração e os efeitos do atrito no movimento de corpos em planos inclinados."
+                 data-funcionamento="Um carrinho é posicionado em uma rampa equipada com sensores. À medida que o ângulo de inclinação varia, medem-se os tempos de descida para obter a aceleração e calcular os coeficientes de atrito e forças atuantes."
+                 data-conceitos="Cinemática, Dinâmica, Decomposição de forças, Atrito estático e cinético, 2ª Lei de Newton">
+            <div class="exp-card-area" style="background:#e67e22;"></div>
+            <div class="exp-card-img-placeholder">📐</div>
+            <div class="exp-card-body">
+                <span class="exp-card-tag" style="background:#e67e22;">Mecânica</span>
+                <h2 class="exp-card-titulo">Plano Inclinado</h2>
+                <p class="exp-card-desc">Equipamento com rampa e carrinho com sensores para o estudo prático de cinemática e dinâmica.</p>
+            </div>
+            <div class="exp-card-footer">
+                <div class="exp-card-nivel"><span class="nivel-dot ativo"></span><span class="nivel-dot"></span><span class="nivel-dot"></span> Introdutório</div>
+                <button class="btn-ver-mais" onclick="abrirModal(this.closest('.exp-card'))">Ver detalhes</button>
+            </div>
+        </article>
+
+        <article class="exp-card" data-area="mecanica"
+                 data-titulo="Duplo Cone (Paradoxo Mecânico)"
+                 data-emoji="🔺🔺" data-area-nome="Mecânica" data-area-cor="#e67e22" data-nivel="2"
+                 data-foto="foto_duplo_cone.jpeg"
+                 data-resumo="Demonstração visual contraintuitiva onde um cone duplo parece subir uma rampa inclinada espontaneamente."
+                 data-objetivo="Compreender o conceito de centro de massa, energia potencial gravitacional e as condições de equilíbrio estável em sistemas rígidos."
+                 data-funcionamento="Um cone duplo é apoiado sobre dois trilhos metálicos divergentes e inclinados. Visualmente o cone parece subir, mas devido à divergência dos trilhos, o seu centro de massa está na verdade se deslocando para baixo."
+                 data-conceitos="Centro de massa, Equilíbrio estável, Energia potencial gravitacional, Geometria espacial">
+            <div class="exp-card-area" style="background:#e67e22;"></div>
+            <div class="exp-card-img-placeholder">🔺🔺</div>
+            <div class="exp-card-body">
+                <span class="exp-card-tag" style="background:#e67e22;">Mecânica</span>
+                <h2 class="exp-card-titulo">Duplo Cone (Paradoxo Mecânico)</h2>
+                <p class="exp-card-desc">Cone duplo sobre trilhos divergentes que demonstra visualmente os conceitos de centro de massa e equilíbrio.</p>
+            </div>
+            <div class="exp-card-footer">
+                <div class="exp-card-nivel"><span class="nivel-dot ativo"></span><span class="nivel-dot ativo"></span><span class="nivel-dot"></span> Intermediário</div>
+                <button class="btn-ver-mais" onclick="abrirModal(this.closest('.exp-card'))">Ver detalhes</button>
+            </div>
+        </article>
+
+        <!-- ── HIDROSTÁTICA ─────────────────────────────────────── -->
+        <article class="exp-card" data-area="hidrostatica"
+                 data-titulo="Empuxômetro"
+                 data-emoji="⚓" data-area-nome="Hidrostática" data-area-cor="#16a085" data-nivel="1"
+                 data-foto="foto_empuxometro.jpeg"
+                 data-resumo="Conjunto experimental para medição da força de empuxo exercida por fluidos sobre corpos submersos."
+                 data-objetivo="Verificar experimentalmente o Princípio de Arquimedes e determinar a densidade de corpos sólidos de prova."
+                 data-funcionamento="Um corpo de prova é pesado no ar através de um dinamômetro e, em seguida, totalmente submerso em um recipiente com fluido. A redução aparente no peso corresponde exatamente à força de empuxo do líquido deslocado."
+                 data-conceitos="Empuxo, Princípio de Arquimedes, Densidade de fluidos, Peso aparente, Pressão hidrostática">
+            <div class="exp-card-area" style="background:#16a085;"></div>
+            <div class="exp-card-img-placeholder">⚓</div>
+            <div class="exp-card-body">
+                <span class="exp-card-tag" style="background:#16a085;">Hidrostática</span>
+                <h2 class="exp-card-titulo">Empuxômetro</h2>
+                <p class="exp-card-desc">Conjunto com dinamômetro e corpos de prova para validação quantitativa do Princípio de Arquimedes.</p>
+            </div>
+            <div class="exp-card-footer">
+                <div class="exp-card-nivel"><span class="nivel-dot ativo"></span><span class="nivel-dot"></span><span class="nivel-dot"></span> Introdutório</div>
+                <button class="btn-ver-mais" onclick="abrirModal(this.closest('.exp-card'))">Ver detalhes</button>
+            </div>
+        </article>
+
+        <!-- ── ACÚSTICA E ONDULATÓRIA ─────────────────────────────────────── -->
+        <article class="exp-card" data-area="acustica"
+                 data-titulo="Diapasões em Caixa de Ressonância"
+                 data-emoji="🎵" data-area-nome="Acústica e Ondulatória" data-area-cor="#2980b9" data-nivel="1"
+                 data-foto="foto_diapasoes.jpeg"
+                 data-resumo="Estudo detalhado das frequências sonoras, ondas mecânicas e ressonância acústica."
+                 data-objetivo="Demonstrar o fenômeno da ressonância, a propagação do som no ar e como caixas harmônicas amplificam frequências específicas."
+                 data-funcionamento="Um diapasão metálico em forma de 'U' acoplado a uma caixa de ressonância em madeira é percutido com um martelo. O som emitido excita por ressonância um segundo diapasão idêntico posicionado próximo."
+                 data-conceitos="Frequência fundamental, Ressonância acústica, Ondas de pressão, Batimentos, Caixas de ressonância">
+            <div class="exp-card-area" style="background:#2980b9;"></div>
+            <div class="exp-card-img-placeholder">🎵</div>
+            <div class="exp-card-body">
+                <span class="exp-card-tag" style="background:#2980b9;">Acústica e Ondulatória</span>
+                <h2 class="exp-card-titulo">Diapasões em Caixa de Ressonância</h2>
+                <p class="exp-card-desc">Diapasões metálicos acoplados a caixas de madeira para o estudo de ondas sonoras, frequências e ressonância.</p>
+            </div>
+            <div class="exp-card-footer">
+                <div class="exp-card-nivel"><span class="nivel-dot ativo"></span><span class="nivel-dot"></span><span class="nivel-dot"></span> Introdutório</div>
+                <button class="btn-ver-mais" onclick="abrirModal(this.closest('.exp-card'))">Ver detalhes</button>
+            </div>
+        </article>
+
+        <!-- ── ÓPTICA ─────────────────────────────────────── -->
+        <article class="exp-card" data-area="optica"
+                 data-titulo="Banco Óptico e Reflexão / Refração"
+                 data-emoji="🔦" data-area-nome="Óptica" data-area-cor="#f39c12" data-nivel="2"
+                 data-foto="foto_banco_optico.jpeg"
+                 data-resumo="Bancada para investigações de óptica geométrica com fonte de feixes de luz e transferidor graduado."
+                 data-objetivo="Medir ângulos incidentes e refratados, determinar o índice de refração de materiais e comprovar a lei de Snell-Descartes."
+                 data-funcionamento="Uma fonte emissora projeta feixes paralelos sobre um disco graduado de 0 a 90 graus. Ao posicionar corpos semicirculares ou prismas no centro, observa-se diretamente os desvios e reflexões dos raios."
+                 data-conceitos="Óptica geométrica, Reflexão total, Refração da luz, Lei de Snell, Disco graduado">
+            <div class="exp-card-area" style="background:#f39c12;"></div>
+            <div class="exp-card-img-placeholder">🔦</div>
+            <div class="exp-card-body">
+                <span class="exp-card-tag" style="background:#f39c12;">Óptica</span>
+                <h2 class="exp-card-titulo">Banco Óptico</h2>
+                <p class="exp-card-desc">Equipamento com fonte de luz fenda e disco graduado circular para medição de refração e reflexão.</p>
+            </div>
+            <div class="exp-card-footer">
+                <div class="exp-card-nivel"><span class="nivel-dot ativo"></span><span class="nivel-dot ativo"></span><span class="nivel-dot"></span> Intermediário</div>
+                <button class="btn-ver-mais" onclick="abrirModal(this.closest('.exp-card'))">Ver detalhes</button>
+            </div>
+        </article>
+
+        <!-- ── ELETRICIDADE E MAGNETISMO ─────────────────────────────────────── -->
+        <article class="exp-card" data-area="eletromagnetismo"
+                 data-titulo="Conjunto Eletricidade e Eletrônica CA/CC"
+                 data-emoji="🔌" data-area-nome="Eletricidade e Magnetismo" data-area-cor="#8e44ad" data-nivel="2"
+                 data-foto="foto_conjunto_eletricidade.jpeg"
+                 data-resumo="Bancada modular para montagem de circuitos elétricos em corrente contínua e alternada."
+                 data-objetivo="Compreender a Lei de Ohm, associação de resistores e capacitores, além da diferença operacional entre fontes CA e CC."
+                 data-funcionamento="Através de um painel modular, conecta-se resistores, chaves e fontes para medir tensões e correntes, permitindo montar circuitos em série, paralelo e mistos com facilidade."
+                 data-conceitos="Lei de Ohm, Corrente Contínua (CC), Corrente Alternada (CA), Circuitos Elétricos, Associação de componentes">
+            <div class="exp-card-area" style="background:#8e44ad;"></div>
+            <div class="exp-card-img-placeholder">🔌</div>
+            <div class="exp-card-body">
+                <span class="exp-card-tag" style="background:#8e44ad;">Eletricidade e Magnetismo</span>
+                <h2 class="exp-card-titulo">Conjunto Eletricidade e Eletrônica CA/CC</h2>
+                <p class="exp-card-desc">Bancada modular para montagem e análise de circuitos elétricos fundamentais em CA e CC.</p>
+            </div>
+            <div class="exp-card-footer">
+                <div class="exp-card-nivel"><span class="nivel-dot ativo"></span><span class="nivel-dot ativo"></span><span class="nivel-dot"></span> Intermediário</div>
+                <button class="btn-ver-mais" onclick="abrirModal(this.closest('.exp-card'))">Ver detalhes</button>
+            </div>
+        </article>
+
+        <article class="exp-card" data-area="eletromagnetismo"
+                 data-titulo="Gerador de Van de Graaff"
+                 data-emoji="⚡" data-area-nome="Eletricidade e Magnetismo" data-area-cor="#8e44ad" data-nivel="2"
+                 data-foto="gerador_vg.jpeg"
+                 data-resumo="Aparelho de eletrostática que acumula altíssimas tensões elétricas em sua cúpula metálica."
+                 data-objetivo="Demonstrar eletrização por atrito, repulsão de cargas do mesmo sinal, indução eletrostática e rigidez dielétrica."
+                 data-funcionamento="Uma correia móvel transporta cargas elétricas contínuas geradas por atrito até a esfera de metal oca. A alta voltagem acumulada produz descargas visíveis no ar ao aproximar uma haste aterrada."
+                 data-conceitos="Eletrostática, Cargas elétricas, Campo elétrico, Descarga dielétrica, Potencial elétrico">
+            <div class="exp-card-area" style="background:#8e44ad;"></div>
+            <div class="exp-card-img-placeholder">⚡</div>
+            <div class="exp-card-body">
+                <span class="exp-card-tag" style="background:#8e44ad;">Eletricidade e Magnetismo</span>
+                <h2 class="exp-card-titulo">Gerador de Van de Graaff</h2>
+                <p class="exp-card-desc">Aparelho para geração de alta voltagem eletrostática e demonstração de fenômenos de repulsão e campo elétrico.</p>
+            </div>
+            <div class="exp-card-footer">
+                <div class="exp-card-nivel"><span class="nivel-dot ativo"></span><span class="nivel-dot ativo"></span><span class="nivel-dot"></span> Intermediário</div>
+                <button class="btn-ver-mais" onclick="abrirModal(this.closest('.exp-card'))">Ver detalhes</button>
+            </div>
+        </article>
+
+        <article class="exp-card" data-area="eletromagnetismo"
+                 data-titulo="Eletroscópio de Folhas"
+                 data-emoji="🍃" data-area-nome="Eletricidade e Magnetismo" data-area-cor="#8e44ad" data-nivel="1"
+                 data-foto="eletroscopio.jpeg"
+                 data-resumo="Instrumento sensível utilizado para detectar a presença e o sinal de cargas elétricas estáticas."
+                 data-objetivo="Identificar os processos de eletrização por contato e indução através do afastamento de finas folhas metálicas."
+                 data-funcionamento="Ao aproximar ou encostar um corpo eletrizado na haste condutora superior, as folhas finas no interior da garrafa adquirem cargas de mesmo sinal e repelem-se mutuamente."
+                 data-conceitos="Indução eletrostática, Cargas do mesmo sinal, Eletrização por contato, Detecção de carga">
+            <div class="exp-card-area" style="background:#8e44ad;"></div>
+            <div class="exp-card-img-placeholder">🍃</div>
+            <div class="exp-card-body">
+                <span class="exp-card-tag" style="background:#8e44ad;">Eletricidade e Magnetismo</span>
+                <h2 class="exp-card-titulo">Eletroscópio de Folhas</h2>
+                <p class="exp-card-desc">Dispositivo clássico para detecção e verificação do estado de eletrização de objetos.</p>
+            </div>
+            <div class="exp-card-footer">
+                <div class="exp-card-nivel"><span class="nivel-dot ativo"></span><span class="nivel-dot"></span><span class="nivel-dot"></span> Introdutório</div>
+                <button class="btn-ver-mais" onclick="abrirModal(this.closest('.exp-card'))">Ver detalhes</button>
+            </div>
+        </article>
+
+        <article class="exp-card" data-area="eletromagnetismo"
+                 data-titulo="Medidores Elétricos Analógicos"
+                 data-emoji="🎛️" data-area-nome="Eletricidade e Magnetismo" data-area-cor="#8e44ad" data-nivel="1"
+                 data-foto="medidores.jpeg"
+                 data-resumo="Aparelhos com ponteiro móvel (Galvanômetro, Amperímetro e Voltímetro) para medições elétricas precisas."
+                 data-objetivo="Aprender o manuseio e a ligação adequada de instrumentos analógicos de medida em circuitos."
+                 data-funcionamento="O voltímetro (V) mede diferenças de potencial conectado em paralelo; o amperímetro (A) mede correntes em série; o galvanômetro (G) detecta correntes mínimas e indica seu sentido."
+                 data-conceitos="Tensão elétrica, Corrente elétrica, Galvanômetro, Medição de circuitos, Escalas graduadas">
+            <div class="exp-card-area" style="background:#8e44ad;"></div>
+            <div class="exp-card-img-placeholder">🎛️</div>
+            <div class="exp-card-body">
+                <span class="exp-card-tag" style="background:#8e44ad;">Eletricidade e Magnetismo</span>
+                <h2 class="exp-card-titulo">Medidores Elétricos Analógicos</h2>
+                <p class="exp-card-desc">Trio de instrumentos analógicos (Galvanômetro, Amperímetro e Voltímetro) com escalas graduadas em arco.</p>
+            </div>
+            <div class="exp-card-footer">
+                <div class="exp-card-nivel"><span class="nivel-dot ativo"></span><span class="nivel-dot"></span><span class="nivel-dot"></span> Introdutório</div>
+                <button class="btn-ver-mais" onclick="abrirModal(this.closest('.exp-card'))">Ver detalhes</button>
+            </div>
+        </article>
+
+        <article class="exp-card" data-area="eletromagnetismo"
+                 data-titulo="Visualizadores de Campo Magnético 3D"
+                 data-emoji="🧲" data-area-nome="Eletricidade e Magnetismo" data-area-cor="#8e44ad" data-nivel="1"
+                 data-foto="ima.jpeg"
+                 data-resumo="Cilindros transparentes com agulhas imantadas para visualização espacial do campo magnético."
+                 data-objetivo="Mapear tridimensionalmente a topologia das linhas de campo geradas por ímãs em barra e em formato de 'U'."
+                 data-funcionamento="Ao alojar um ímã permanente no cavidade central do cilindro, centenas de agulhas magnéticas suspensas orientam-se instantaneamente na direção dos vetores de campo magnético 3D."
+                 data-conceitos="Campo magnético tridimensional, Linhas de indução, Magnetismo, Polos Magnéticos, Dipolo">
+            <div class="exp-card-area" style="background:#8e44ad;"></div>
+            <div class="exp-card-img-placeholder">🧲</div>
+            <div class="exp-card-body">
+                <span class="exp-card-tag" style="background:#8e44ad;">Eletricidade e Magnetismo</span>
+                <h2 class="exp-card-titulo">Visualizadores de Campo Magnético 3D</h2>
+                <p class="exp-card-desc">Cilindros de acrílico com agulhas magnéticas que alinham-se relevando o campo magnético tridimensional.</p>
+            </div>
+            <div class="exp-card-footer">
+                <div class="exp-card-nivel"><span class="nivel-dot ativo"></span><span class="nivel-dot"></span><span class="nivel-dot"></span> Introdutório</div>
+                <button class="btn-ver-mais" onclick="abrirModal(this.closest('.exp-card'))">Ver detalhes</button>
+            </div>
+        </article>
+
+        <p class="nenhum-resultado" id="nenhum-resultado">
+            Nenhum experimento encontrado nessa área.
+        </p>
+
+    </div>
+
+</main>
+
+<!-- ══════════════════════════════
+     MODAL DE DETALHES
+══════════════════════════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="fecharModalClique(event)">
+    <div class="modal" id="modal">
+        <button class="modal-fechar" onclick="fecharModal()">✕</button>
+        
+        <!-- Topo do modal com o mesmo Emoji do card -->
+        <div class="modal-header-bg" id="modal-header-bg"></div>
+
+        <div class="modal-corpo">
+            <span class="modal-tag" id="modal-tag"></span>
+            <h2 class="modal-titulo" id="modal-titulo"></h2>
+
+            <p class="modal-secao-titulo">📋 Resumo</p>
+            <p class="modal-texto" id="modal-resumo"></p>
+
+            <p class="modal-secao-titulo">🎯 Objetivo</p>
+            <p class="modal-texto" id="modal-objetivo"></p>
+
+            <p class="modal-secao-titulo">⚙️ Como funciona</p>
+            <p class="modal-texto" id="modal-funcionamento"></p>
+
+            <p class="modal-secao-titulo">💡 Conceitos trabalhados</p>
+            <div class="modal-conceitos" id="modal-conceitos"></div>
+
+            <!-- Imagem Ilustrativa Real (aparece ao rolar o modal para baixo) -->
+            <div id="modal-img-wrapper"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+//  FILTROS DINÂMICOS
+// ═══════════════════════════════════════════════
+document.querySelectorAll('.filtro-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+
+        const area = btn.dataset.area;
+        let visiveis = 0;
+
+        document.querySelectorAll('.exp-card').forEach(card => {
+            const mostrar = (area === 'todos' || card.dataset.area === area);
+            card.dataset.visivel = mostrar ? 'true' : 'false';
+            if (mostrar) visiveis++;
+        });
+
+        document.getElementById('nenhum-resultado').classList.toggle('visivel', visiveis === 0);
+    });
+});
+
+// ═══════════════════════════════════════════════
+//  CONTROLE DO MODAL
+// ═══════════════════════════════════════════════
+function abrirModal(card) {
+    const d = card.dataset;
+    const cor = d.areaCor;
+
+    // Preenche o topo do modal com o Emoji e a cor do card
+    const headerBg = document.getElementById('modal-header-bg');
+    headerBg.style.background = `linear-gradient(135deg, ${cor}88, ${cor})`;
+    headerBg.textContent = d.emoji;
+
+    // Preenche os textos descritivos
+    document.getElementById('modal-tag').textContent = d.areaNome;
+    document.getElementById('modal-tag').style.background = cor;
+    document.getElementById('modal-titulo').textContent = d.titulo;
+    document.getElementById('modal-resumo').textContent = d.resumo;
+    document.getElementById('modal-objetivo').textContent = d.objetivo;
+    document.getElementById('modal-funcionamento').textContent = d.funcionamento;
+
+    // Preenche as tags de conceitos
+    const conceitosEl = document.getElementById('modal-conceitos');
+    conceitosEl.innerHTML = '';
+    d.conceitos.split(',').forEach(c => {
+        const tag = document.createElement('span');
+        tag.className = 'modal-conceito-tag';
+        tag.textContent = c.trim();
+        conceitosEl.appendChild(tag);
+    });
+
+    // Anexa a imagem real no final da página do modal (abaixo dos conceitos)
+    const wrapper = document.getElementById('modal-img-wrapper');
+    wrapper.innerHTML = '';
+    
+    if (d.foto) {
+        const container = document.createElement('div');
+        container.className = 'modal-foto-container';
+
+        const tituloFoto = document.createElement('p');
+        tituloFoto.className = 'modal-secao-titulo';
+        tituloFoto.textContent = '📸 Registro em Laboratório';
+
+        const img = document.createElement('img');
+        img.className = 'modal-foto-real';
+        img.src = `../figuras/${d.foto}`;
+        img.alt = `Fotografia real do equipamento: ${d.titulo}`;
+        img.onerror = () => { container.style.display = 'none'; };
+
+        container.appendChild(tituloFoto);
+        container.appendChild(img);
+        wrapper.appendChild(container);
+    }
+
+    // Exibe o modal e reseta a rolagem para o topo
+    const modalEl = document.getElementById('modal');
+    modalEl.scrollTop = 0;
+    document.getElementById('modalOverlay').classList.add('aberto');
+    document.body.style.overflow = 'hidden';
+}
+
+function fecharModal() {
+    document.getElementById('modalOverlay').classList.remove('aberto');
+    document.body.style.overflow = '';
+}
+
+function fecharModalClique(e) {
+    if (e.target === document.getElementById('modalOverlay')) fecharModal();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
+</script>
+
+</body>
+</html>

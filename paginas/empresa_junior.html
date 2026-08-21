@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresa Júnior – Log Jr. | IFES Viana</title>
+    <style>
+        /* ── Paleta e Variáveis do Modelo ── */
+        :root {
+            --cor1: #32A041;
+            --cor2: #64C878;
+            --cor3: #1E7832;
+            --cor4: #46B45A;
+            --cor5: #96DCA0;
+            --preto: #000000;
+            --branco: #FFFFFF;
+            --bg-light: #F8FAF0;
+            --text-dark: #000000;
+            --text-muted: #505050;
+            --border-color: #D2E8D5;
+            --sidebar-width: 280px;
+            --card-radius: 14px;
+            --transition: 0.3s ease;
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+        }
+
+        body { 
+            display: flex; 
+            background-color: var(--bg-light); 
+            color: var(--text-dark); 
+            min-height: 100vh; 
+        }
+
+        /* ══════════════════════════════
+           SIDEBAR
+        ══════════════════════════════ */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--branco);
+            border-right: 1px solid var(--border-color);
+            position: fixed; 
+            height: 100vh; 
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.02);
+            z-index: 100;
+        }
+        .logo-ifes {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            display: block;
+        }
+        .sidebar-header { 
+            margin-bottom: 2rem; 
+            padding-bottom: 1rem; 
+            border-bottom: 2px solid var(--cor1); 
+        }
+        .sidebar-header h2 { 
+            font-size: 1.25rem; 
+            color: var(--cor3); 
+        }
+        .nav-menu { list-style: none; }
+        .nav-category {
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            color: var(--text-muted); 
+            margin: 1.5rem 0 0.5rem 0; 
+            font-weight: 600;
+        }
+        .nav-menu li { margin-bottom: 0.5rem; }
+        .nav-menu a {
+            display: block; 
+            padding: 0.75rem 1rem; 
+            color: var(--text-dark);
+            text-decoration: none; 
+            border-radius: 6px; 
+            transition: all 0.2s ease;
+            background-color: var(--cor5); 
+            border: 1px solid transparent;
+        }
+        .nav-menu a:hover { 
+            color: var(--cor3); 
+            border-color: var(--cor2); 
+        }
+        .nav-menu a.ativo { 
+            background-color: var(--cor3); 
+            color: var(--branco); 
+            font-weight: 600; 
+        }
+
+        /* ══════════════════════════════
+           LAYOUT PRINCIPAL
+        ══════════════════════════════ */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 3rem 4rem;
+            flex: 1;
+            max-width: 1200px;
+        }
+
+        /* ── Hero Section ── */
+        .hero-section {
+            background: linear-gradient(135deg, var(--cor3) 0%, var(--cor1) 60%, var(--cor2) 100%);
+            padding: 3rem;
+            border-radius: var(--card-radius);
+            box-shadow: 0 6px 20px rgba(50,160,65,0.25);
+            margin-bottom: 2.5rem;
+            color: var(--branco);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::after {
+            content: "📦";
+            position: absolute;
+            right: 3rem; 
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 7rem;
+            opacity: 0.18;
+            pointer-events: none;
+        }
+        .hero-section h1 { font-size: 2.4rem; margin-bottom: 0.6rem; color: var(--branco); }
+        .hero-section .subtitulo { font-size: 1.05rem; opacity: 0.9; line-height: 1.6; max-width: 680px; }
+        .hero-secao-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 20px;
+            padding: 0.25rem 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            color: var(--branco);
+        }
+
+        /* ── Estilização dos Blocos de Conteúdo ── */
+        .content-card {
+            background: var(--branco);
+            border-radius: var(--card-radius);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .content-card h2 {
+            color: var(--cor3);
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--cor5);
+        }
+        .content-card p {
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        /* Listas personalizadas */
+        .info-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .info-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        .info-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--cor1);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Tabela de Serviços */
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 1.2rem;
+        }
+        .log-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .log-table th {
+            background-color: var(--cor3);
+            color: var(--branco);
+            text-align: left;
+            padding: 1rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .log-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.92rem;
+            color: var(--text-dark);
+        }
+        .log-table tr:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+
+        /* Botões de Ação (CTA) */
+        .cta-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition);
+        }
+        .btn-primary {
+            background: var(--cor1);
+            color: var(--branco);
+        }
+        .btn-primary:hover {
+            background: var(--cor3);
+        }
+        .btn-secondary {
+            background: var(--bg-light);
+            color: var(--cor3);
+            border: 1px solid var(--border-color);
+        }
+        .btn-secondary:hover {
+            background: var(--cor5);
+        }
+
+        /* ══════════════════════════════
+           ANIMAÇÕES SCROLL REVEAL
+        ══════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+        .reveal-fade { transform: translateY(35px); }
+        .reveal-slide { transform: translateX(-40px); }
+        .reveal-zoom { transform: scale(0.93); }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translate(0) scale(1);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════ SIDEBAR ══════════════ -->
+<aside class="sidebar">
+    <img src="../figuras/ifes-horizontal-cor.png" alt="Logo Instituto Federal Espírito Santo" class="logo-ifes">
+
+    <div class="sidebar-header"><h2>Carta de Serviços</h2></div>
+    <ul class="nav-menu">
+        <li><a href="../index.html">🏠 Início / Visão Geral</a></li>
+        
+        <div class="nav-category">Equipamentos e Hardware</div>
+        <li><a href="../paginas/impressora_3d.html">🖨️ Impressora 3D</a></li>
+        <li><a href="../paginas/lousa_interativa.html">📺 Lousa Interativa</a></li>
+        <li><a href="../paginas/oculos_vr.html">🥽 Óculos VR</a></li>
+        <li><a href="../paginas/kit_lego.html">🧩 Kit LEGO</a></li>
+        <li><a href="../paginas/kit_arduino.html">⚡ Kit Arduino</a></li>
+        
+        <div class="nav-category">Outros Serviços</div>
+        <li><a href="empresa_junior.html" class="ativo">📦 Empresa Júnior</a></li>
+        <li><a href="../paginas/experimentos_fisica.html">🧪 Experimentos de Física</a></li>
+        <li><a href="../paginas/Incubadora.html">🌱 Incubadora</a></li>
+    </ul>
+</aside>
+
+<!-- ══════════════ CONTEÚDO PRINCIPAL ══════════════ -->
+<main class="main-content">
+
+    <!-- Hero Header -->
+    <section class="hero-section">
+        <span class="hero-secao-badge">📦 Empresa Júnior</span>
+        <h1>Log Jr. – Empresa Júnior de Logística</h1>
+        <p class="subtitulo">
+            Formando jovens empreendedores e entregando soluções logísticas de alto impacto para a comunidade e o mercado, integrando conhecimento prático e inovação no IFES Viana.
+        </p>
+    </section>
+
+    <!-- Seção 1: Quem Somos (Fade In) -->
+    <section class="content-card reveal reveal-fade">
+        <h2>Quem Somos</h2>
+        <p>A Log Jr. é uma empresa júnior sem fins lucrativos vinculada ao IFES - Campus Viana. Nosso propósito fundamental é vivenciar na prática os conceitos acadêmicos de logística, desenvolvendo soluções eficientes para nossos clientes e capacitando estudantes.</p>
+        <ul class="info-list">
+            <li><strong>Missão:</strong> Incentivar jovens empreendedores a realizarem seus sonhos com eficiência, responsabilidade e excelência nos serviços prestados.</li>
+            <li><strong>Visão:</strong> Consolidar a presença no mercado por meio da entrega de serviços de qualidade e da promoção de oportunidades transformadoras.</li>
+            <li><strong>Valores:</strong> Jovialidade, ética, comprometimento, foco no cliente e estímulo constante ao desenvolvimento profissional.</li>
+        </ul>
+    </section>
+
+    <!-- Seção 2: Nossos Serviços (Slide) -->
+    <section class="content-card reveal reveal-slide">
+        <h2>Nossos Serviços</h2>
+        <p>Desenvolvemos projetos personalizados aplicando a metodologia acadêmica à solução de problemas reais do mercado de logística e gestão.</p>
+        
+        <div class="table-responsive">
+            <table class="log-table">
+                <thead>
+                    <tr>
+                        <th>Área de Atuação</th>
+                        <th>Descrição do Serviço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Consultoria e Gestão</strong></td>
+                        <td>Desenvolvimento de planos de gestão, soluções empresariais e consultorias especializadas em logística reversa.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Logística Operacional</strong></td>
+                        <td>Gestão de estoque, mapeamento de rotas e projetos de armazenagem para otimização de processos e arranjos físicos.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Análise e Indicadores</strong></td>
+                        <td>Análise de dados operacionais, criação de indicadores de desempenho (KPIs) e redução de desperdícios.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Marketing e Vendas</strong></td>
+                        <td>Estratégias de marketing digital e suporte prático para a implementação de operações de e-commerce.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Soluções Integradas</strong></td>
+                        <td>Projetos de logística aplicados a eventos e consultorias multidisciplinares completas.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Seção 3: Nossa Estrutura (Fade In) -->
+    <section class="content-card reveal reveal-fade">
+        <h2>Nossa Estrutura</h2>
+        <p>A Log Jr. adota uma gestão democrática e pautada na transparência e governança institucional:</p>
+        <ul class="info-list">
+            <li><strong>Assembleia Geral:</strong> Órgão supremo de deliberação, reunindo-se ordinariamente no mínimo duas vezes ao ano.</li>
+            <li><strong>Diretoria Executiva:</strong> Estruturada nas áreas de Presidência, Administração/Finanças/Jurídico, Projetos, Marketing e Gestão de Pessoas.</li>
+            <li><strong>Conselho Fiscal:</strong> Responsável por supervisionar a gestão financeira e garantir a conformidade estatutária.</li>
+            <li><strong>Quadro de Membros:</strong> Composto por membros efetivos (estudantes de Logística com direito a voto), associados (apoiadores) e honorários.</li>
+        </ul>
+    </section>
+
+    <!-- Seção 4: Próximos Passos e Contato (Zoom In) -->
+    <section class="content-card reveal reveal-zoom">
+        <h2>Próximos Passos</h2> 
+        <p>A consolidação da Log Jr. representa um marco para o fortalecimento da formação empreendedora no IFES Campus Viana.</p>
+        <ul class="info-list">
+            <li><strong>Aprovação:</strong> Tramitação e validação do projeto junto ao colegiado do curso de Logística.</li>
+            <li><strong>Homologação:</strong> Avaliação técnica pelo Conselho de Gestão e Direção do Campus.</li>
+            <li><strong>Oficialização:</strong> Encaminhamento e registro cartorial da documentação fundacional.</li>
+        </ul>
+
+    </section>
+
+</main>
+
+<!-- ══════════════ SCRIPT DE SCROLL REVEAL ══════════════ -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const reveals = document.querySelectorAll('.reveal');
+
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -40px 0px"
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        reveals.forEach(reveal => {
+            revealOnScroll.observe(reveal);
+        });
+    });
+</script>
+
+</body>
+</html>

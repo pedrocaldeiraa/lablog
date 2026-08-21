@@ -13,8 +13,6 @@
             --cor5: #96DCA0;
             --preto: #000000;
             --branco: #FFFFFF;
-            --primary-color: var(--cor1);
-            --secondary-color: var(--cor3);
             --bg-light: #F8FAF0;
             --text-dark: var(--preto);
             --text-muted: #505050;
@@ -22,252 +20,179 @@
             --sidebar-width: 280px;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
 
-        body {
-            display: flex;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            min-height: 100vh;
-        }
+        body { display: flex; background-color: var(--bg-light); color: var(--text-dark); min-height: 100vh; }
 
-        /* Barra Lateral */
+        /* ── Sidebar ── */
         .sidebar {
             width: var(--sidebar-width);
             background-color: var(--branco);
             border-right: 1px solid var(--border-color);
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
+            position: fixed; height: 100vh; overflow-y: auto;
             padding: 2rem 1.5rem;
             box-shadow: 2px 0 5px rgba(0,0,0,0.02);
         }
-
-        .sidebar-header {
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--cor1);
-        }
-
-        .sidebar-header h2 {
-            font-size: 1.25rem;
-            color: var(--cor3);
-        }
-
+        .sidebar-header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 2px solid var(--cor1); }
+        .sidebar-header h2 { font-size: 1.25rem; color: var(--cor3); }
         .nav-menu { list-style: none; }
-
         .nav-category {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            margin: 1.5rem 0 0.5rem 0;
-            font-weight: 600;
+            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;
+            color: var(--text-muted); margin: 1.5rem 0 0.5rem 0; font-weight: 600;
         }
-
         .nav-menu li { margin-bottom: 0.5rem; }
-
         .nav-menu a {
-            display: block;
-            padding: 0.75rem 1rem;
-            color: var(--text-dark);
-            text-decoration: none;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-            background-color: var(--cor5);
-            border: 1px solid transparent;
+            display: block; padding: 0.75rem 1rem; color: var(--text-dark);
+            text-decoration: none; border-radius: 6px; transition: all 0.2s ease;
+            background-color: var(--cor5); border: 1px solid transparent;
         }
+        .nav-menu a:hover { color: var(--cor3); border-color: var(--cor2); }
 
-        .nav-menu a:hover {
-            background-color: var(--cor5);
-            color: var(--cor3);
-            border-color: var(--cor2);
-        }
-
-        /* Conteúdo Principal */
-        .main-content {
-            margin-left: var(--sidebar-width);
-            padding: 3rem 4rem;
-            flex: 1;
-            max-width: 1200px;
-        }
+        /* ── Layout principal ── */
+        .main-content { margin-left: var(--sidebar-width); padding: 3rem 4rem; flex: 1; max-width: 1200px; }
 
         .hero-section {
-            background-color: var(--branco);
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
+            background-color: var(--branco); padding: 3rem; border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 2rem;
             border-top: 5px solid var(--cor1);
         }
-
-        h1 {
-            color: var(--cor3);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
+        h1 { color: var(--cor3); font-size: 2.5rem; margin-bottom: 1rem; }
+        .subtitle { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.6; }
 
         .content-card {
-            background-color: var(--branco);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
-            line-height: 1.8;
+            background-color: var(--branco); padding: 2.5rem; border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 2rem; line-height: 1.8;
         }
-
         .content-card h3 {
-            color: var(--cor3);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
+            color: var(--cor3); border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem; margin-bottom: 1.5rem;
         }
-
         .content-card p { margin-bottom: 1rem; }
 
-        .living-labs-list {
-            list-style-position: inside;
-            margin-top: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
+        .living-labs-list { list-style-position: inside; margin-top: 1rem; margin-bottom: 1.5rem; }
         .living-labs-list li {
-            margin-bottom: 0.75rem;
-            padding-left: 1rem;
-            border-left: 3px solid var(--cor4);
-            list-style-type: none;
+            margin-bottom: 0.75rem; padding-left: 1rem;
+            border-left: 3px solid var(--cor4); list-style-type: none;
         }
+        .citation { font-size: 0.8rem; color: var(--text-muted); vertical-align: super; }
 
-        .citation {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            vertical-align: super;
-        }
-
-        /* ===== SEÇÃO DO MAPA ===== */
+        /* ── Seção do mapa ── */
         .secao-mapa {
-            background-color: var(--branco);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
+            background-color: var(--branco); padding: 2.5rem; border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 2rem;
         }
-
-        .secao-mapa h3 {
-            color: var(--cor3);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 0.75rem;
-            font-size: 1.2rem;
+        .secao-mapa > h3 {
+            color: var(--cor3); border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem; margin-bottom: 0.75rem; font-size: 1.2rem;
         }
+        .secao-mapa > p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem; }
 
-        .secao-mapa > p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        /* Container do SVG com overflow visível */
-        .mapa-container {
-            width: 100%;
+        /* ── Stack de imagens ──────────────────────────────────────────
+           Todas as imagens ficam empilhadas no mesmo espaço.
+           A base (branco) é sempre visível.
+           As coloridas ficam com opacity:0 e transition suave.
+           As zonas hover (divs transparentes absolutas) ativam cada imagem.
+        ──────────────────────────────────────────────────────────────── */
+        .mapa-wrapper {
             position: relative;
-            border: 1px solid var(--border-color);
+            width: 100%;
             border-radius: 8px;
             overflow: hidden;
-            background: #fff;
+            border: 1px solid var(--border-color);
+            /* altura definida pela imagem base (aspect-ratio preservado) */
         }
 
-        .mapa-container svg {
+        /* Imagem base: sempre visível, define o tamanho do container */
+        .mapa-base {
             display: block;
             width: 100%;
             height: auto;
         }
 
-        /* Zonas clicáveis */
-        .zona-lab {
-            cursor: pointer;
-            fill: transparent;
-            stroke: none;
-            transition: fill 0.25s ease;
+        /* Imagens coloridas: empilhadas sobre a base, invisíveis por padrão */
+        .mapa-colorido {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            pointer-events: none; /* não capturam mouse — quem faz isso são as zonas */
         }
 
-        .zona-lab:hover,
-        .zona-lab.ativa {
-            /* cor definida inline via JS */
+        /* ── Zonas de hover (divs transparentes sobre as imagens) ── */
+        .zonas-container {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex; /* divide horizontalmente em 3 faixas */
         }
 
-        /* Legenda colorida abaixo do mapa */
-        .legenda-labs {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
+        .zona-hover {
+            height: 100%;
+            cursor: crosshair;
+            /* larguras proporcionais ao viewBox original: 790 / 660 / 461 de 1911 total */
         }
+        .zona-hover.verde    { width: 41.34%; } /* 790/1911  */
+        .zona-hover.azul     { width: 34.54%; } /* 660/1911  */
+        .zona-hover.vermelho { width: 24.12%; } /* 461/1911  */
 
-        .legenda-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            cursor: pointer;
-            padding: 0.4rem 0.8rem;
+        /* Quando a zona é hovered, ativa a imagem correspondente via JS */
+
+        /* ── Label de nome (aparece sobre a imagem ao hover) ── */
+        .mapa-label {
+            position: absolute;
+            bottom: 6%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.55rem 1.4rem;
             border-radius: 6px;
-            border: 1px solid transparent;
-            transition: border-color 0.2s;
+            font-size: clamp(0.5rem, 0.8vw, 1.9rem);
+            font-weight: 700;
+            color: #fff;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            pointer-events: none;
         }
 
+        /* Cada label fica centralizado dentro da sua faixa */
+        .mapa-label.verde    { left: 20.67%;  background: #27ae60; }
+        .mapa-label.azul     { left: 58.61%;  background: #2980b9; } /* 41.34 + 34.54/2 */
+        .mapa-label.vermelho { left: 87.94%;  background: #c0392b; } /* 41.34+34.54 + 24.12/2 */
+
+        /* ── Legenda ── */
+        .legenda-labs {
+            display: flex; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap;
+        }
+        .legenda-item {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.88rem; color: var(--text-muted); cursor: pointer;
+            padding: 0.4rem 0.8rem; border-radius: 6px;
+            border: 1px solid transparent; transition: border-color 0.2s;
+        }
         .legenda-item:hover { border-color: var(--border-color); }
+        .legenda-cor { width: 16px; height: 16px; border-radius: 3px; flex-shrink: 0; }
 
-        .legenda-cor {
-            width: 16px;
-            height: 16px;
-            border-radius: 3px;
-            flex-shrink: 0;
-        }
-
-        /* Caixa de informação que aparece ao hover */
+        /* ── Caixa de info ── */
         .caixa-info-lab {
-            margin-top: 1.25rem;
-            padding: 1.25rem 1.5rem;
+            margin-top: 1.25rem; padding: 1.25rem 1.5rem;
             border-left: 5px solid var(--cor1);
             background-color: var(--bg-light);
-            border-radius: 0 8px 8px 0;
-            min-height: 90px;
+            border-radius: 0 8px 8px 0; min-height: 90px;
             transition: border-left-color 0.3s ease;
         }
-
-        .caixa-info-lab h4 {
-            font-size: 1rem;
-            color: var(--cor3);
-            margin-bottom: 0.4rem;
-        }
-
-        .caixa-info-lab p {
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin: 0;
-        }
-
+        .caixa-info-lab h4 { font-size: 1rem; color: var(--cor3); margin-bottom: 0.4rem; }
+        .caixa-info-lab p  { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+        
         .logo-ifes {
             max-width: 100%; /* Garante que a logo não ultrapasse a largura do menu lateral */
             height: auto;    /* Mantém a proporção da imagem */
             margin-bottom: 15px; /* Adiciona um respiro entre a logo e o título */
             display: block;
         }
+    
     </style>
 </head>
 <body>
@@ -277,9 +202,7 @@
 
         <img src="figuras/ifes-horizontal-cor.png" alt="Logo Instituto Federal Espírito Santo" class="logo-ifes">
 
-        <div class="sidebar-header">
-            <h2>Carta de Serviços</h2>
-        </div>
+        <div class="sidebar-header"><h2>Carta de Serviços</h2></div>
         <ul class="nav-menu">
             <div class="nav-category">Equipamentos e Hardware</div>
             <li><a href="paginas/impressora_3d.html">🖨️ Impressora 3D</a></li>
@@ -287,10 +210,10 @@
             <li><a href="paginas/oculos_vr.html">🥽 Óculos VR</a></li>
             <li><a href="paginas/kit_lego.html">🧩 Kit LEGO</a></li>
             <li><a href="paginas/kit_arduino.html">⚡ Kit Arduino</a></li>
-            <div class="nav-category">Práticas e Simulações</div>
-            <li><a href="paginas/simulacoes_logisticas.html">📦 Simulações Logísticas</a></li>
+            <div class="nav-category">Outros Serviços</div>
+            <li><a href="paginas/empresa_junior.html">📦 Empresa Júnior</a></li>
             <li><a href="paginas/experimentos_fisica.html">🧪 Experimentos de Física</a></li>
-            <li><a href="paginas/Incubadora.html"> Incubadora</a></li>
+            <a href="paginas/Incubadora.html">🌱 Incubadora</a>
         </ul>
     </aside>
 
@@ -302,305 +225,70 @@
             <p class="subtitle">Campus Viana - Instituto Federal do Espírito Santo (IFES)</p>
             <p>O Laboratório de Logística e Desenvolvimento Regional Sustentável do IFES Campus Viana, instalado em 2020 através do processo nº 23147.003943/2020-54, é um complexo concebido para oferecer à comunidade ambientes de vivência e experimentação.</p>
             <img
-            src="figuras/visao_lab.png"
-            alt="Vista externa do Laboratório de Logística e Desenvolvimento Regional Sustentável - IFES Viana"
-            style="
-                display: block;
-                width: 100%;
-                max-height: 380px;
-                object-fit: cover;
-                object-position: center 30%;
-                border-radius: 8px;
-                margin-top: 2rem;
-            "
+                src="figuras/visao_lab.png"
+                alt="Vista externa do Laboratório de Logística e Desenvolvimento Regional Sustentável - IFES Viana"
+                style="display:block;width:100%;max-height:380px;object-fit:cover;object-position:center 30%;border-radius:8px;margin-top:2rem;"
+            >
         </section>
 
         <section class="content-card">
             <h3>Propósito e Visão Estratégica</h3>
-            <p>Nosso propósito é atuar como um ambiente dinâmico de simulação e prática, capacitando os discentes para a modelagem, implementação e gestão eficiente de redes de distribuição. Com foco no desenvolvimento de uma visão sistêmica e estratégica, preparamos nossos alunos para dominar a programação de fluxos, o monitoramento de pedidos e o controle integrado de processos complexos do mundo real.</p>
+            <p>O propósito central do laboratório é servir como um instrumento de simulação de práticas que capacitem o discente a desenvolver e gerenciar redes de distribuição e unidades logísticas. O foco está no desenvolvimento da visão macro, preparando o aluno para a programação, monitoramento de fluxo de pedidos e controle de processos complexos.</p>
         </section>
 
-        <!-- SEÇÃO DO MAPA INTERATIVO -->
+        <!-- ═══════════════════════════════════════════════════
+             SEÇÃO DO MAPA INTERATIVO — lógica por imagens
+        ════════════════════════════════════════════════════ -->
         <section class="secao-mapa">
             <h3>Conheça os Nossos Living Labs</h3>
-            <p>Passe o mouse sobre uma área colorida do croqui para conhecer a vocação do espaço.</p>
+            <p>Passe o mouse sobre cada área do croqui para identificar o laboratório correspondente.</p>
 
-            <div class="mapa-container">
-                <!--
-                    SVG ÚNICO: o croqui original + os <rect> de zona interativa
-                    ficam DENTRO do mesmo <svg>. Assim as coordenadas batem certo.
-                -->
-                <svg width="100%" height="auto" viewBox="0 0 1911 593" fill="none"
-                     xmlns="http://www.w3.org/2000/svg"
-                     xmlns:xlink="http://www.w3.org/1999/xlink">
+            <div class="mapa-wrapper" id="mapaWrapper">
 
-                    <!-- ========== CROQUI ORIGINAL ========== -->
-                    <path d="M1370.5 511.66H1230.5V581.66H1370.5V511.66Z" fill="white" stroke="black"/>
-                    <path d="M1230.5 511.66H1090.5V581.66H1230.5V511.66Z" fill="white" stroke="black"/>
-                    <path d="M1090.5 511.66H950.5V581.66H1090.5V511.66Z" fill="white" stroke="black"/>
-                    <path d="M950.5 511.66H810.5V581.66H950.5V511.66Z" fill="white" stroke="black"/>
-                    <path d="M373.17 372.71L370.93 354.65C370.5 352 371.67 349.34 373.92 347.88C381.59 346.67 389.41 346.67 397.08 347.88C399.33 349.34 400.5 352 400.07 354.65L397.83 372.71C397.4 374.71 395.26 376.25 392.6 376.47H378.4C375.74 376.25 373.6 374.71 373.17 372.71Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M373.75 376.84C373.13 376.61 372.79 375.86 373 375.16C373.21 374.47 373.88 374.09 374.5 374.32C381.88 376.14 389.53 376.14 396.92 374.32C397.38 374.46 397.76 374.85 397.91 375.36C398.06 375.86 397.97 376.43 397.67 376.84C389.8 378.92 381.62 378.92 373.75 376.84Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M473.17 372.71L470.93 354.65C470.5 352 471.67 349.34 473.92 347.88C481.59 346.67 489.41 346.67 497.08 347.88C499.33 349.34 500.5 352 500.07 354.65L497.83 372.71C497.4 374.71 495.26 376.25 492.6 376.47H478.4C475.74 376.25 473.6 374.71 473.17 372.71Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M473.75 376.84C473.13 376.61 472.79 375.86 473 375.16C473.21 374.47 473.88 374.09 474.5 374.32C481.88 376.14 489.53 376.14 496.92 374.32C497.38 374.46 497.76 374.85 497.91 375.36C498.06 375.86 497.97 376.43 497.67 376.84C489.8 378.92 481.62 378.92 473.75 376.84Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M573.17 372.71L570.93 354.65C570.5 352 571.67 349.34 573.92 347.88C581.59 346.67 589.41 346.67 597.08 347.88C599.33 349.34 600.5 352 600.07 354.65L597.83 372.71C597.4 374.71 595.26 376.25 592.6 376.47H578.4C575.74 376.25 573.6 374.71 573.17 372.71Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M573.75 376.84C573.13 376.61 572.79 375.86 573 375.16C573.21 374.47 573.88 374.09 574.5 374.32C581.88 376.14 589.53 376.14 596.92 374.32C597.38 374.46 597.76 374.85 597.91 375.36C598.06 375.86 597.97 376.43 597.67 376.84C589.8 378.92 581.62 378.92 573.75 376.84Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M663.17 372.71L660.93 354.65C660.5 352 661.67 349.34 663.92 347.88C671.59 346.67 679.41 346.67 687.08 347.88C689.33 349.34 690.5 352 690.07 354.65L687.83 372.71C687.4 374.71 685.26 376.25 682.6 376.47H668.4C665.74 376.25 663.6 374.71 663.17 372.71Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M663.75 376.84C663.13 376.61 662.79 375.86 663 375.16C663.21 374.47 663.88 374.09 664.5 374.32C671.88 376.14 679.53 376.14 686.92 374.32C687.38 374.46 687.76 374.85 687.91 375.36C688.06 375.86 687.97 376.43 687.67 376.84C679.8 378.92 671.62 378.92 663.75 376.84Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M763.17 372.71L760.93 354.65C760.5 352 761.67 349.34 763.92 347.88C771.59 346.67 779.41 346.67 787.08 347.88C789.33 349.34 790.5 352 790.07 354.65L787.83 372.71C787.4 374.71 785.26 376.25 782.6 376.47H768.4C765.74 376.25 763.6 374.71 763.17 372.71Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M763.75 376.84C763.13 376.61 762.79 375.86 763 375.16C763.21 374.47 763.88 374.09 764.5 374.32C771.88 376.14 779.53 376.14 786.92 374.32C787.38 374.46 787.76 374.85 787.91 375.36C788.06 375.86 787.97 376.43 787.67 376.84C779.8 378.92 771.62 378.92 763.75 376.84Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M792.66 291.66H370.5V361.66H792.66V291.66Z" fill="white" stroke="black"/>
-                    <path d="M417.41 291.66H370.5V301.46H417.41V291.66Z" stroke="black"/>
-                    <path d="M417.41 351.86H370.5V361.66H417.41V351.86Z" stroke="black"/>
-                    <path d="M792.66 291.66H745.75V301.46H792.66V291.66Z" stroke="black"/>
-                    <path d="M792.66 351.86H745.75V361.66H792.66V351.86Z" stroke="black"/>
-                    <path d="M787.83 209.87L790.07 227.93C790.5 230.58 789.33 233.24 787.08 234.7C779.41 235.91 771.59 235.91 763.92 234.7C761.67 233.24 760.5 230.58 760.93 227.93L763.17 209.87C763.6 207.87 765.74 206.33 768.4 206.11H782.6C785.26 206.33 787.4 207.87 787.83 209.87Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M787.25 205.74C787.87 205.97 788.21 206.72 788 207.42C787.79 208.11 787.12 208.49 786.5 208.26C779.12 206.44 771.47 206.44 764.08 208.26C763.62 208.12 763.24 207.73 763.09 207.22C762.94 206.72 763.03 206.15 763.33 205.74C771.2 203.66 779.38 203.66 787.25 205.74Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M497.83 209.87L500.07 227.93C500.5 230.58 499.33 233.24 497.08 234.7C489.41 235.91 481.59 235.91 473.92 234.7C471.67 233.24 470.5 230.58 470.93 227.93L473.17 209.87C473.6 207.87 475.74 206.33 478.4 206.11H492.6C495.26 206.33 497.4 207.87 497.83 209.87Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M497.25 205.74C497.87 205.97 498.21 206.72 498 207.42C497.79 208.11 497.12 208.49 496.5 208.26C489.12 206.44 481.47 206.44 474.08 208.26C473.62 208.12 473.24 207.73 473.09 207.22C472.94 206.72 473.03 206.15 473.33 205.74C481.2 203.66 489.38 203.66 497.25 205.74Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M687.83 209.87L690.07 227.93C690.5 230.58 689.33 233.24 687.08 234.7C679.41 235.91 671.59 235.91 663.92 234.7C661.67 233.24 660.5 230.58 660.93 227.93L663.17 209.87C663.6 207.87 665.74 206.33 668.4 206.11H682.6C685.26 206.33 687.4 207.87 687.83 209.87Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M687.25 205.74C687.87 205.97 688.21 206.72 688 207.42C687.79 208.11 687.12 208.49 686.5 208.26C679.12 206.44 671.47 206.44 664.08 208.26C663.62 208.12 663.24 207.73 663.09 207.22C662.94 206.72 663.03 206.15 663.33 205.74C671.2 203.66 679.38 203.66 687.25 205.74Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M587.83 209.87L590.07 227.93C590.5 230.58 589.33 233.24 587.08 234.7C579.41 235.91 571.59 235.91 563.92 234.7C561.67 233.24 560.5 230.58 560.93 227.93L563.17 209.87C563.6 207.87 565.74 206.33 568.4 206.11H582.6C585.26 206.33 587.4 207.87 587.83 209.87Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M587.25 205.74C587.87 205.97 588.21 206.72 588 207.42C587.79 208.11 587.12 208.49 586.5 208.26C579.12 206.44 571.47 206.44 564.08 208.26C563.62 208.12 563.24 207.73 563.09 207.22C562.94 206.72 563.03 206.15 563.33 205.74C571.2 203.66 579.38 203.66 587.25 205.74Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M397.83 209.87L400.07 227.93C400.5 230.58 399.33 233.24 397.08 234.7C389.41 235.91 381.59 235.91 373.92 234.7C371.67 233.24 370.5 230.58 370.93 227.93L373.17 209.87C373.6 207.87 375.74 206.33 378.4 206.11H392.6C395.26 206.33 397.4 207.87 397.83 209.87Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M397.25 205.74C397.87 205.97 398.21 206.72 398 207.42C397.79 208.11 397.12 208.49 396.5 208.26C389.12 206.44 381.47 206.44 374.08 208.26C373.62 208.12 373.24 207.73 373.09 207.22C372.94 206.72 373.03 206.15 373.33 205.74C381.2 203.66 389.38 203.66 397.25 205.74Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M792.66 221.66H370.5V291.66H792.66V221.66Z" fill="white" stroke="black"/>
-                    <path d="M417.41 221.66H370.5V231.46H417.41V221.66Z" stroke="black"/>
-                    <path d="M417.41 281.86H370.5V291.66H417.41V281.86Z" stroke="black"/>
-                    <path d="M792.66 221.66H745.75V231.46H792.66V221.66Z" stroke="black"/>
-                    <path d="M792.66 281.86H745.75V291.66H792.66V281.86Z" stroke="black"/>
-                    <path d="M373.17 93L370.93 74.94C370.5 72.29 371.67 69.63 373.92 68.17C381.59 66.96 389.41 66.96 397.08 68.17C399.33 69.63 400.5 72.29 400.07 74.94L397.83 93C397.4 95 395.26 96.54 392.6 96.76H378.4C375.74 96.54 373.6 95 373.17 93Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M373.75 97.13C373.13 96.9 372.79 96.15 373 95.45C373.21 94.76 373.88 94.38 374.5 94.61C381.88 96.43 389.53 96.43 396.92 94.61C397.38 94.75 397.76 95.14 397.91 95.65C398.06 96.15 397.97 96.72 397.67 97.13C389.8 99.21 381.62 99.21 373.75 97.13Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1765.43 523.12L1747.37 525.36C1744.71 525.79 1742.06 524.61 1740.6 522.37C1739.38 514.69 1739.38 506.88 1740.6 499.2C1742.06 496.96 1744.71 495.78 1747.37 496.21L1765.43 498.45C1767.43 498.88 1768.96 501.02 1769.19 503.68V517.89C1768.96 520.55 1767.43 522.69 1765.43 523.12Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1769.56 522.53C1769.33 523.15 1768.58 523.49 1767.88 523.28C1767.18 523.08 1766.81 522.41 1767.04 521.79C1768.86 514.4 1768.86 506.75 1767.04 499.36C1767.17 498.9 1767.56 498.53 1768.07 498.38C1768.58 498.23 1769.14 498.32 1769.56 498.62C1771.63 506.48 1771.63 514.67 1769.56 522.53Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1615.58 498.46L1633.64 496.22C1636.3 495.79 1638.95 496.97 1640.41 499.21C1641.63 506.89 1641.63 514.7 1640.41 522.38C1638.95 524.62 1636.3 525.8 1633.64 525.37L1615.58 523.13C1613.58 522.7 1612.05 520.56 1611.82 517.9V503.69C1612.05 501.03 1613.58 498.89 1615.58 498.46Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1611.45 499.05C1611.68 498.43 1612.43 498.09 1613.13 498.3C1613.83 498.5 1614.2 499.17 1613.97 499.79C1612.15 507.18 1612.15 514.83 1613.97 522.22C1613.84 522.68 1613.45 523.05 1612.94 523.2C1612.43 523.35 1611.87 523.26 1611.45 522.96C1609.38 515.1 1609.38 506.91 1611.45 499.05Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1702.83 209.87L1705.07 227.93C1705.5 230.58 1704.33 233.24 1702.08 234.7C1694.41 235.91 1686.59 235.91 1678.92 234.7C1676.67 233.24 1675.5 230.58 1675.93 227.93L1678.17 209.87C1678.6 207.87 1680.74 206.33 1683.4 206.11H1697.6C1700.26 206.33 1702.4 207.87 1702.83 209.87Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1702.25 205.74C1702.87 205.97 1703.21 206.72 1703 207.42C1702.79 208.11 1702.12 208.49 1701.5 208.26C1694.12 206.44 1686.47 206.44 1679.08 208.26C1678.62 208.12 1678.24 207.73 1678.09 207.22C1677.94 206.72 1678.03 206.15 1678.33 205.74C1686.2 203.66 1694.38 203.66 1702.25 205.74Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1678.17 372.71L1675.93 354.65C1675.5 352 1676.67 349.34 1678.92 347.88C1686.59 346.67 1694.41 346.67 1702.08 347.88C1704.33 349.34 1705.5 352 1705.07 354.65L1702.83 372.71C1702.4 374.71 1700.26 376.25 1697.6 376.47H1683.4C1680.74 376.25 1678.6 374.71 1678.17 372.71Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1678.75 376.84C1678.13 376.61 1677.79 375.86 1678 375.16C1678.21 374.47 1678.88 374.09 1679.5 374.32C1686.88 376.14 1694.53 376.14 1701.92 374.32C1702.38 374.46 1702.76 374.85 1702.91 375.36C1703.06 375.86 1702.97 376.43 1702.67 376.84C1694.8 378.92 1686.62 378.92 1678.75 376.84Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1772.42 304.12L1754.36 306.36C1751.71 306.79 1749.05 305.62 1747.59 303.37C1746.38 295.7 1746.38 287.88 1747.59 280.21C1749.05 277.96 1751.71 276.79 1754.36 277.22L1772.42 279.46C1774.42 279.89 1775.96 282.03 1776.18 284.69V298.89C1775.96 301.55 1774.42 303.69 1772.42 304.12Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1776.55 303.54C1776.32 304.16 1775.57 304.5 1774.87 304.29C1774.18 304.08 1773.8 303.41 1774.03 302.79C1775.85 295.41 1775.85 287.76 1774.03 280.37C1774.17 279.91 1774.56 279.53 1775.07 279.38C1775.57 279.23 1776.14 279.32 1776.55 279.62C1778.63 287.49 1778.63 295.67 1776.55 303.54Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1609.58 279.46L1627.64 277.22C1630.29 276.79 1632.95 277.96 1634.41 280.21C1635.62 287.88 1635.62 295.7 1634.41 303.37C1632.95 305.62 1630.29 306.79 1627.64 306.36L1609.58 304.12C1607.58 303.69 1606.04 301.55 1605.82 298.89V284.69C1606.04 282.03 1607.58 279.89 1609.58 279.46Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1605.45 280.04C1605.68 279.42 1606.43 279.08 1607.13 279.29C1607.82 279.5 1608.2 280.17 1607.97 280.79C1606.15 288.17 1606.15 295.82 1607.97 303.21C1607.83 303.67 1607.44 304.05 1606.93 304.2C1606.43 304.35 1605.86 304.26 1605.45 303.96C1603.37 296.09 1603.37 287.91 1605.45 280.04Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M875.58 245.46L893.64 243.22C896.29 242.79 898.95 243.96 900.41 246.21C901.62 253.88 901.62 261.7 900.41 269.37C898.95 271.62 896.29 272.79 893.64 272.36L875.58 270.12C873.58 269.69 872.04 267.55 871.82 264.89V250.69C872.04 248.03 873.58 245.89 875.58 245.46Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M871.45 246.04C871.68 245.42 872.43 245.08 873.13 245.29C873.82 245.5 874.2 246.17 873.97 246.79C872.15 254.17 872.15 261.82 873.97 269.21C873.83 269.67 873.44 270.05 872.93 270.2C872.43 270.35 871.86 270.26 871.45 269.96C869.37 262.09 869.37 253.91 871.45 246.04Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M875.58 325.46L893.64 323.22C896.29 322.79 898.95 323.96 900.41 326.21C901.62 333.88 901.62 341.7 900.41 349.37C898.95 351.62 896.29 352.79 893.64 352.36L875.58 350.12C873.58 349.69 872.04 347.55 871.82 344.89V330.69C872.04 328.03 873.58 325.89 875.58 325.46Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M871.45 326.04C871.68 325.42 872.43 325.08 873.13 325.29C873.82 325.5 874.2 326.17 873.97 326.79C872.15 334.17 872.15 341.82 873.97 349.21C873.83 349.67 873.44 350.05 872.93 350.2C872.43 350.35 871.86 350.26 871.45 349.96C869.37 342.09 869.37 333.91 871.45 326.04Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1385.42 350.12L1367.36 352.36C1364.71 352.79 1362.05 351.62 1360.59 349.37C1359.38 341.7 1359.38 333.88 1360.59 326.21C1362.05 323.96 1364.71 322.79 1367.36 323.22L1385.42 325.46C1387.42 325.89 1388.96 328.03 1389.18 330.69V344.89C1388.96 347.55 1387.42 349.69 1385.42 350.12Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1389.55 349.54C1389.32 350.16 1388.57 350.5 1387.87 350.29C1387.18 350.08 1386.8 349.41 1387.03 348.79C1388.85 341.41 1388.85 333.76 1387.03 326.37C1387.17 325.91 1387.56 325.53 1388.07 325.38C1388.57 325.23 1389.14 325.32 1389.55 325.62C1391.63 333.49 1391.63 341.67 1389.55 349.54Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1385.42 270.12L1367.36 272.36C1364.71 272.79 1362.05 271.62 1360.59 269.37C1359.38 261.7 1359.38 253.88 1360.59 246.21C1362.05 243.96 1364.71 242.79 1367.36 243.22L1385.42 245.46C1387.42 245.89 1388.96 248.03 1389.18 250.69V264.89C1388.96 267.55 1387.42 269.69 1385.42 270.12Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1389.55 269.54C1389.32 270.16 1388.57 270.5 1387.87 270.29C1387.18 270.08 1386.8 269.41 1387.03 268.79C1388.85 261.41 1388.85 253.76 1387.03 246.37C1387.17 245.91 1387.56 245.53 1388.07 245.38C1388.57 245.23 1389.14 245.32 1389.55 245.62C1391.63 253.49 1391.63 261.67 1389.55 269.54Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M932.83 215.62L935.07 233.68C935.5 236.33 934.33 238.99 932.08 240.45C924.41 241.66 916.59 241.66 908.92 240.45C906.67 238.99 905.5 236.33 905.93 233.68L908.17 215.62C908.6 213.62 910.74 212.08 913.4 211.86H927.6C930.26 212.08 932.4 213.62 932.83 215.62Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M932.25 211.49C932.87 211.72 933.21 212.47 933 213.17C932.79 213.86 932.12 214.24 931.5 214.01C924.12 212.19 916.47 212.19 909.08 214.01C908.62 213.87 908.24 213.48 908.09 212.97C907.94 212.47 908.03 211.9 908.33 211.49C916.2 209.41 924.38 209.41 932.25 211.49Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M992.83 215.62L995.07 233.68C995.5 236.33 994.33 238.99 992.08 240.45C984.41 241.66 976.59 241.66 968.92 240.45C966.67 238.99 965.5 236.33 965.93 233.68L968.17 215.62C968.6 213.62 970.74 212.08 973.4 211.86H987.6C990.26 212.08 992.4 213.62 992.83 215.62Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M992.25 211.49C992.87 211.72 993.21 212.47 993 213.17C992.79 213.86 992.12 214.24 991.5 214.01C984.12 212.19 976.47 212.19 969.08 214.01C968.62 213.87 968.24 213.48 968.09 212.97C967.94 212.47 968.03 211.9 968.33 211.49C976.2 209.41 984.38 209.41 992.25 211.49Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1052.83 215.62L1055.07 233.68C1055.5 236.33 1054.33 238.99 1052.08 240.45C1044.41 241.66 1036.59 241.66 1028.92 240.45C1026.67 238.99 1025.5 236.33 1025.93 233.68L1028.17 215.62C1028.6 213.62 1030.74 212.08 1033.4 211.86H1047.6C1050.26 212.08 1052.4 213.62 1052.83 215.62Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1052.25 211.49C1052.87 211.72 1053.21 212.47 1053 213.17C1052.79 213.86 1052.12 214.24 1051.5 214.01C1044.12 212.19 1036.47 212.19 1029.08 214.01C1028.62 213.87 1028.24 213.48 1028.09 212.97C1027.94 212.47 1028.03 211.9 1028.33 211.49C1036.2 209.41 1044.38 209.41 1052.25 211.49Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1112.83 215.62L1115.07 233.68C1115.5 236.33 1114.33 238.99 1112.08 240.45C1104.41 241.66 1096.59 241.66 1088.92 240.45C1086.67 238.99 1085.5 236.33 1085.93 233.68L1088.17 215.62C1088.6 213.62 1090.74 212.08 1093.4 211.86H1107.6C1110.26 212.08 1112.4 213.62 1112.83 215.62Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1112.25 211.49C1112.87 211.72 1113.21 212.47 1113 213.17C1112.79 213.86 1112.12 214.24 1111.5 214.01C1104.12 212.19 1096.47 212.19 1089.08 214.01C1088.62 213.87 1088.24 213.48 1088.09 212.97C1087.94 212.47 1088.03 211.9 1088.33 211.49C1096.2 209.41 1104.38 209.41 1112.25 211.49Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1172.83 215.62L1175.07 233.68C1175.5 236.33 1174.33 238.99 1172.08 240.45C1164.41 241.66 1156.59 241.66 1148.92 240.45C1146.67 238.99 1145.5 236.33 1145.93 233.68L1148.17 215.62C1148.6 213.62 1150.74 212.08 1153.4 211.86H1167.6C1170.26 212.08 1172.4 213.62 1172.83 215.62Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1172.25 211.49C1172.87 211.72 1173.21 212.47 1173 213.17C1172.79 213.86 1172.12 214.24 1171.5 214.01C1164.12 212.19 1156.47 212.19 1149.08 214.01C1148.62 213.87 1148.24 213.48 1148.09 212.97C1147.94 212.47 1148.03 211.9 1148.33 211.49C1156.2 209.41 1164.38 209.41 1172.25 211.49Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1232.83 215.62L1235.07 233.68C1235.5 236.33 1234.33 238.99 1232.08 240.45C1224.41 241.66 1216.59 241.66 1208.92 240.45C1206.67 238.99 1205.5 236.33 1205.93 233.68L1208.17 215.62C1208.6 213.62 1210.74 212.08 1213.4 211.86H1227.6C1230.26 212.08 1232.4 213.62 1232.83 215.62Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1232.25 211.49C1232.87 211.72 1233.21 212.47 1233 213.17C1232.79 213.86 1232.12 214.24 1231.5 214.01C1224.12 212.19 1216.47 212.19 1209.08 214.01C1208.62 213.87 1208.24 213.48 1208.09 212.97C1207.94 212.47 1208.03 211.9 1208.33 211.49C1216.2 209.41 1224.38 209.41 1232.25 211.49Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1292.83 215.62L1295.07 233.68C1295.5 236.33 1294.33 238.99 1292.08 240.45C1284.41 241.66 1276.59 241.66 1268.92 240.45C1266.67 238.99 1265.5 236.33 1265.93 233.68L1268.17 215.62C1268.6 213.62 1270.74 212.08 1273.4 211.86H1287.6C1290.26 212.08 1292.4 213.62 1292.83 215.62Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1292.25 211.49C1292.87 211.72 1293.21 212.47 1293 213.17C1292.79 213.86 1292.12 214.24 1291.5 214.01C1284.12 212.19 1276.47 212.19 1269.08 214.01C1268.62 213.87 1268.24 213.48 1268.09 212.97C1267.94 212.47 1268.03 211.9 1268.33 211.49C1276.2 209.41 1284.38 209.41 1292.25 211.49Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1353.57 215.62L1355.81 233.68C1356.24 236.33 1355.07 238.99 1352.82 240.45C1345.15 241.66 1337.33 241.66 1329.66 240.45C1327.41 238.99 1326.24 236.33 1326.67 233.68L1328.91 215.62C1329.34 213.62 1331.48 212.08 1334.14 211.86H1348.34C1351 212.08 1353.14 213.62 1353.57 215.62Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1352.99 211.49C1353.61 211.72 1353.95 212.47 1353.74 213.17C1353.53 213.86 1352.86 214.24 1352.24 214.01C1344.86 212.19 1337.21 212.19 1329.82 214.01C1329.36 213.87 1328.98 213.48 1328.83 212.97C1328.68 212.47 1328.77 211.9 1329.07 211.49C1336.94 209.41 1345.12 209.41 1352.99 211.49Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1329.17 377.71L1326.93 359.65C1326.5 357 1327.67 354.34 1329.92 352.88C1337.59 351.67 1345.41 351.67 1353.08 352.88C1355.33 354.34 1356.5 357 1356.07 359.65L1353.83 377.71C1353.4 379.71 1351.26 381.25 1348.6 381.47H1334.4C1331.74 381.25 1329.6 379.71 1329.17 377.71Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1329.75 381.84C1329.13 381.61 1328.79 380.86 1329 380.16C1329.21 379.47 1329.88 379.09 1330.5 379.32C1337.88 381.14 1345.53 381.14 1352.92 379.32C1353.38 379.46 1353.76 379.85 1353.91 380.36C1354.06 380.86 1353.97 381.43 1353.67 381.84C1345.8 383.92 1337.62 383.92 1329.75 381.84Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1269.17 377.71L1266.93 359.65C1266.5 357 1267.67 354.34 1269.92 352.88C1277.59 351.67 1285.41 351.67 1293.08 352.88C1295.33 354.34 1296.5 357 1296.07 359.65L1293.83 377.71C1293.4 379.71 1291.26 381.25 1288.6 381.47H1274.4C1271.74 381.25 1269.6 379.71 1269.17 377.71Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1269.75 381.84C1269.13 381.61 1268.79 380.86 1269 380.16C1269.21 379.47 1269.88 379.09 1270.5 379.32C1277.88 381.14 1285.53 381.14 1292.92 379.32C1293.38 379.46 1293.76 379.85 1293.91 380.36C1294.06 380.86 1293.97 381.43 1293.67 381.84C1285.8 383.92 1277.62 383.92 1269.75 381.84Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1209.17 377.71L1206.93 359.65C1206.5 357 1207.67 354.34 1209.92 352.88C1217.59 351.67 1225.41 351.67 1233.08 352.88C1235.33 354.34 1236.5 357 1236.07 359.65L1233.83 377.71C1233.4 379.71 1231.26 381.25 1228.6 381.47H1214.4C1211.74 381.25 1209.6 379.71 1209.17 377.71Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1209.75 381.84C1209.13 381.61 1208.79 380.86 1209 380.16C1209.21 379.47 1209.88 379.09 1210.5 379.32C1217.88 381.14 1225.53 381.14 1232.92 379.32C1233.38 379.46 1233.76 379.85 1233.91 380.36C1234.06 380.86 1233.97 381.43 1233.67 381.84C1225.8 383.92 1217.62 383.92 1209.75 381.84Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1149.17 377.71L1146.93 359.65C1146.5 357 1147.67 354.34 1149.92 352.88C1157.59 351.67 1165.41 351.67 1173.08 352.88C1175.33 354.34 1176.5 357 1176.07 359.65L1173.83 377.71C1173.4 379.71 1171.26 381.25 1168.6 381.47H1154.4C1151.74 381.25 1149.6 379.71 1149.17 377.71Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1149.75 381.84C1149.13 381.61 1148.79 380.86 1149 380.16C1149.21 379.47 1149.88 379.09 1150.5 379.32C1157.88 381.14 1165.53 381.14 1172.92 379.32C1173.38 379.46 1173.76 379.85 1173.91 380.36C1174.06 380.86 1173.97 381.43 1173.67 381.84C1165.8 383.92 1157.62 383.92 1149.75 381.84Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1089.17 377.71L1086.93 359.65C1086.5 357 1087.67 354.34 1089.92 352.88C1097.59 351.67 1105.41 351.67 1113.08 352.88C1115.33 354.34 1116.5 357 1116.07 359.65L1113.83 377.71C1113.4 379.71 1111.26 381.25 1108.6 381.47H1094.4C1091.74 381.25 1089.6 379.71 1089.17 377.71Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1089.75 381.84C1089.13 381.61 1088.79 380.86 1089 380.16C1089.21 379.47 1089.88 379.09 1090.5 379.32C1097.88 381.14 1105.53 381.14 1112.92 379.32C1113.38 379.46 1113.76 379.85 1113.91 380.36C1114.06 380.86 1113.97 381.43 1113.67 381.84C1105.8 383.92 1097.62 383.92 1089.75 381.84Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1029.17 377.71L1026.93 359.65C1026.5 357 1027.67 354.34 1029.92 352.88C1037.59 351.67 1045.41 351.67 1053.08 352.88C1055.33 354.34 1056.5 357 1056.07 359.65L1053.83 377.71C1053.4 379.71 1051.26 381.25 1048.6 381.47H1034.4C1031.74 381.25 1029.6 379.71 1029.17 377.71Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1029.75 381.84C1029.13 381.61 1028.79 380.86 1029 380.16C1029.21 379.47 1029.88 379.09 1030.5 379.32C1037.88 381.14 1045.53 381.14 1052.92 379.32C1053.38 379.46 1053.76 379.85 1053.91 380.36C1054.06 380.86 1053.97 381.43 1053.67 381.84C1045.8 383.92 1037.62 383.92 1029.75 381.84Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M969.17 377.71L966.93 359.65C966.5 357 967.67 354.34 969.92 352.88C977.59 351.67 985.41 351.67 993.08 352.88C995.33 354.34 996.5 357 996.07 359.65L993.83 377.71C993.4 379.71 991.26 381.25 988.6 381.47H974.4C971.74 381.25 969.6 379.71 969.17 377.71Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M969.75 381.84C969.13 381.61 968.79 380.86 969 380.16C969.21 379.47 969.88 379.09 970.5 379.32C977.88 381.14 985.53 381.14 992.92 379.32C993.38 379.46 993.76 379.85 993.91 380.36C994.06 380.86 993.97 381.43 993.67 381.84C985.8 383.92 977.62 383.92 969.75 381.84Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M908.17 377.71L905.93 359.65C905.5 357 906.67 354.34 908.92 352.88C916.59 351.67 924.41 351.67 932.08 352.88C934.33 354.34 935.5 357 935.07 359.65L932.83 377.71C932.4 379.71 930.26 381.25 927.6 381.47H913.4C910.74 381.25 908.6 379.71 908.17 377.71Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M908.75 381.84C908.13 381.61 907.79 380.86 908 380.16C908.21 379.47 908.88 379.09 909.5 379.32C916.88 381.14 924.53 381.14 931.92 379.32C932.38 379.46 932.76 379.85 932.91 380.36C933.06 380.86 932.97 381.43 932.67 381.84C924.8 383.92 916.62 383.92 908.75 381.84Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M788.91 500.87L791.15 518.93C791.58 521.58 790.41 524.24 788.16 525.7C780.49 526.91 772.67 526.91 765 525.7C762.75 524.24 761.58 521.58 762.01 518.93L764.25 500.87C764.68 498.87 766.82 497.33 769.48 497.11H783.68C786.34 497.33 788.48 498.87 788.91 500.87Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M788.33 496.74C788.95 496.97 789.29 497.72 789.08 498.42C788.87 499.11 788.2 499.49 787.58 499.26C780.2 497.44 772.55 497.44 765.16 499.26C764.7 499.12 764.32 498.73 764.17 498.22C764.02 497.72 764.11 497.15 764.41 496.74C772.28 494.66 780.46 494.66 788.33 496.74Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M688.91 500.87L691.15 518.93C691.58 521.58 690.41 524.24 688.16 525.7C680.49 526.91 672.67 526.91 665 525.7C662.75 524.24 661.58 521.58 662.01 518.93L664.25 500.87C664.68 498.87 666.82 497.33 669.48 497.11H683.68C686.34 497.33 688.48 498.87 688.91 500.87Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M688.33 496.74C688.95 496.97 689.29 497.72 689.08 498.42C688.87 499.11 688.2 499.49 687.58 499.26C680.2 497.44 672.55 497.44 665.16 499.26C664.7 499.12 664.32 498.73 664.17 498.22C664.02 497.72 664.11 497.15 664.41 496.74C672.28 494.66 680.46 494.66 688.33 496.74Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M588.91 500.87L591.15 518.93C591.58 521.58 590.41 524.24 588.16 525.7C580.49 526.91 572.67 526.91 565 525.7C562.75 524.24 561.58 521.58 562.01 518.93L564.25 500.87C564.68 498.87 566.82 497.33 569.48 497.11H583.68C586.34 497.33 588.48 498.87 588.91 500.87Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M588.33 496.74C588.95 496.97 589.29 497.72 589.08 498.42C588.87 499.11 588.2 499.49 587.58 499.26C580.2 497.44 572.55 497.44 565.16 499.26C564.7 499.12 564.32 498.73 564.17 498.22C564.02 497.72 564.11 497.15 564.41 496.74C572.28 494.66 580.46 494.66 588.33 496.74Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M498.91 500.87L501.15 518.93C501.58 521.58 500.41 524.24 498.16 525.7C490.49 526.91 482.67 526.91 475 525.7C472.75 524.24 471.58 521.58 472.01 518.93L474.25 500.87C474.68 498.87 476.82 497.33 479.48 497.11H493.68C496.34 497.33 498.48 498.87 498.91 500.87Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M498.33 496.74C498.95 496.97 499.29 497.72 499.08 498.42C498.87 499.11 498.2 499.49 497.58 499.26C490.2 497.44 482.55 497.44 475.16 499.26C474.7 499.12 474.32 498.73 474.17 498.22C474.02 497.72 474.11 497.15 474.41 496.74C482.28 494.66 490.46 494.66 498.33 496.74Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M398.91 500.87L401.15 518.93C401.58 521.58 400.41 524.24 398.16 525.7C390.49 526.91 382.67 526.91 375 525.7C372.75 524.24 371.58 521.58 372.01 518.93L374.25 500.87C374.68 498.87 376.82 497.33 379.48 497.11H393.68C396.34 497.33 398.48 498.87 398.91 500.87Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M398.33 496.74C398.95 496.97 399.29 497.72 399.08 498.42C398.87 499.11 398.2 499.49 397.58 499.26C390.2 497.44 382.55 497.44 375.16 499.26C374.7 499.12 374.32 498.73 374.17 498.22C374.02 497.72 374.11 497.15 374.41 496.74C382.28 494.66 390.46 494.66 398.33 496.74Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M473.17 93L470.93 74.94C470.5 72.29 471.67 69.63 473.92 68.17C481.59 66.96 489.41 66.96 497.08 68.17C499.33 69.63 500.5 72.29 500.07 74.94L497.83 93C497.4 95 495.26 96.54 492.6 96.76H478.4C475.74 96.54 473.6 95 473.17 93Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M473.75 97.13C473.13 96.9 472.79 96.15 473 95.45C473.21 94.76 473.88 94.38 474.5 94.61C481.88 96.43 489.53 96.43 496.92 94.61C497.38 94.75 497.76 95.14 497.91 95.65C498.06 96.15 497.97 96.72 497.67 97.13C489.8 99.21 481.62 99.21 473.75 97.13Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M663.17 93L660.93 74.94C660.5 72.29 661.67 69.63 663.92 68.17C671.59 66.96 679.41 66.96 687.08 68.17C689.33 69.63 690.5 72.29 690.07 74.94L687.83 93C687.4 95 685.26 96.54 682.6 96.76H668.4C665.74 96.54 663.6 95 663.17 93Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M663.75 97.13C663.13 96.9 662.79 96.15 663 95.45C663.21 94.76 663.88 94.38 664.5 94.61C671.88 96.43 679.53 96.43 686.92 94.61C687.38 94.75 687.76 95.14 687.91 95.65C688.06 96.15 687.97 96.72 687.67 97.13C679.8 99.21 671.62 99.21 663.75 97.13Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M573.17 93L570.93 74.94C570.5 72.29 571.67 69.63 573.92 68.17C581.59 66.96 589.41 66.96 597.08 68.17C599.33 69.63 600.5 72.29 600.07 74.94L597.83 93C597.4 95 595.26 96.54 592.6 96.76H578.4C575.74 96.54 573.6 95 573.17 93Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M573.75 97.13C573.13 96.9 572.79 96.15 573 95.45C573.21 94.76 573.88 94.38 574.5 94.61C581.88 96.43 589.53 96.43 596.92 94.61C597.38 94.75 597.76 95.14 597.91 95.65C598.06 96.15 597.97 96.72 597.67 97.13C589.8 99.21 581.62 99.21 573.75 97.13Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M763.17 93L760.93 74.94C760.5 72.29 761.67 69.63 763.92 68.17C771.59 66.96 779.41 66.96 787.08 68.17C789.33 69.63 790.5 72.29 790.07 74.94L787.83 93C787.4 95 785.26 96.54 782.6 96.76H768.4C765.74 96.54 763.6 95 763.17 93Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M763.75 97.13C763.13 96.9 762.79 96.15 763 95.45C763.21 94.76 763.88 94.38 764.5 94.61C771.88 96.43 779.53 96.43 786.92 94.61C787.38 94.75 787.76 95.14 787.91 95.65C788.06 96.15 787.97 96.72 787.67 97.13C779.8 99.21 771.62 99.21 763.75 97.13Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M10.5 591.66L10.5 1.65997L0.5 1.65997L0.5 591.66H10.5Z" fill="black" stroke="black"/>
-                    <path d="M0.5 591.66L1910.5 591.66V581.66L0.5 581.66V591.66Z" fill="black" stroke="black"/>
-                    <path d="M1910.5 591.66V1.66003L1900.5 1.66003V591.66H1910.5Z" fill="black" stroke="black"/>
-                    <path d="M96.75 11.65L1800.5 11.65V1.65003L96.75 1.65003V11.65Z" fill="black" stroke="black"/>
-                    <path d="M1890.5 11.66H1800.5V16.66H1890.5V11.66Z" fill="white" stroke="black"/>
-                    <path d="M1800.5 16.66C1800.5 66.37 1840.79 106.66 1890.5 106.66V16.66" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1460.5 581.66V101.66H1450.5V581.66H1460.5Z" fill="black" stroke="black"/>
-                    <path d="M1910.5 1.65997H1890.5V11.66H1910.5V1.65997Z" fill="black" stroke="black"/>
-                    <path d="M1453.76 100.19V19.47H1448.76V100.19H1453.76Z" fill="white" stroke="black"/>
-                    <path d="M1448.76 100.19C1427.35 100.19 1406.82 91.69 1391.68 76.55C1376.54 61.41 1368.04 40.88 1368.04 19.47L1448.76 19.47" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1460.5 21.66V1.66003L1450.5 1.66003V21.66H1460.5Z" fill="black" stroke="black"/>
-                    <path d="M95.8 11.66H20.5V16.66H95.8V11.66Z" fill="white" stroke="black"/>
-                    <path d="M95.8 16.66C95.8 36.63 87.87 55.78 73.75 69.91C59.62 84.03 40.47 91.96 20.5 91.96V16.66" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M20.5 1.65997H1.22V11.66H20.5V1.65997Z" fill="black" stroke="black"/>
-                    <path d="M1680.5 1.65997H1460.5V11.66H1680.5V1.65997Z" fill="white" stroke="black"/>
-                    <path d="M1460.5 6.65997H1680.5" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1680.5 581.66H1460.5V591.66H1680.5V581.66Z" fill="white" stroke="black"/>
-                    <path d="M1460.5 586.66H1680.5" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M480.5 1.65997H260.5V11.66H480.5V1.65997Z" fill="white" stroke="black"/>
-                    <path d="M260.5 6.65997H480.5" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M700.5 1.65997H480.5V11.66H700.5V1.65997Z" fill="white" stroke="black"/>
-                    <path d="M480.5 6.65997H700.5" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1451.24 1.65997H1231.24V11.66H1451.24V1.65997Z" fill="white" stroke="black"/>
-                    <path d="M1231.24 6.65997H1451.24" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1450.5 581.66H1230.5V591.66H1450.5V581.66Z" fill="white" stroke="black"/>
-                    <path d="M1230.5 586.66H1450.5" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M460.5 581.66H240.5V591.66H460.5V581.66Z" fill="white" stroke="black"/>
-                    <path d="M240.5 586.66H460.5" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M680.5 581.66H460.5V591.66H680.5V581.66Z" fill="white" stroke="black"/>
-                    <path d="M460.5 586.66H680.5" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M15.86 541.66C9.19335 541.66 5.86002 466.66 5.86002 316.66C5.86002 166.66 9.19335 91.66 15.86 91.66C12.5267 241.66 12.5267 391.66 15.86 541.66Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1760.5 221.66H1620.5V361.66H1760.5V221.66Z" fill="white" stroke="black"/>
-                    <path d="M1636.06 221.66H1620.5V241.26H1636.06V221.66Z" stroke="black"/>
-                    <path d="M1636.06 342.06H1620.5V361.66H1636.06V342.06Z" stroke="black"/>
-                    <path d="M1760.5 221.66H1744.94V241.26H1760.5V221.66Z" stroke="black"/>
-                    <path d="M1760.5 342.06H1744.94V361.66H1760.5V342.06Z" stroke="black"/>
-                    <path d="M1900.5 411.66H1850.5V491.66H1900.5V411.66Z" fill="white" stroke="black"/>
-                    <path d="M1690.5 451.66H1630.5V581.66H1690.5V451.66Z" fill="white" stroke="black"/>
-                    <path d="M1637.17 451.66H1630.5V469.86H1637.17V451.66Z" stroke="black"/>
-                    <path d="M1637.17 563.46H1630.5V581.66H1637.17V563.46Z" stroke="black"/>
-                    <path d="M1690.5 451.66H1683.83V469.86H1690.5V451.66Z" stroke="black"/>
-                    <path d="M1690.5 563.46H1683.83V581.66H1690.5V563.46Z" stroke="black"/>
-                    <path d="M1510.5 401.66H1460.5V481.66H1510.5V401.66Z" fill="white" stroke="black"/>
-                    <path d="M1520.5 297.29H1460.5V392.92H1520.5V297.29Z" fill="white" stroke="black"/>
-                    <path d="M1467.17 297.29H1460.5V310.68H1467.17V297.29Z" stroke="black"/>
-                    <path d="M1467.17 379.53H1460.5V392.92H1467.17V379.53Z" stroke="black"/>
-                    <path d="M1520.5 297.29H1513.83V310.68H1520.5V297.29Z" stroke="black"/>
-                    <path d="M1520.5 379.53H1513.83V392.92H1520.5V379.53Z" stroke="black"/>
-                    <path d="M1520.5 201.66H1460.5V297.29H1520.5V201.66Z" fill="white" stroke="black"/>
-                    <path d="M1467.17 201.66H1460.5V215.05H1467.17V201.66Z" stroke="black"/>
-                    <path d="M1467.17 283.9H1460.5V297.29H1467.17V283.9Z" stroke="black"/>
-                    <path d="M1520.5 201.66H1513.83V215.05H1520.5V201.66Z" stroke="black"/>
-                    <path d="M1520.5 283.9H1513.83V297.29H1520.5V283.9Z" stroke="black"/>
-                    <path d="M1520.5 107.29H1460.5V202.92H1520.5V107.29Z" fill="white" stroke="black"/>
-                    <path d="M1467.17 107.29H1460.5V120.68H1467.17V107.29Z" stroke="black"/>
-                    <path d="M1467.17 189.53H1460.5V202.92H1467.17V189.53Z" stroke="black"/>
-                    <path d="M1520.5 107.29H1513.83V120.68H1520.5V107.29Z" stroke="black"/>
-                    <path d="M1520.5 189.53H1513.83V202.92H1520.5V189.53Z" stroke="black"/>
-                    <path d="M1710.5 11.66H1570.5V71.66H1710.5V11.66Z" fill="white" stroke="black"/>
-                    <path d="M1586.06 11.66H1570.5V20.06H1586.06V11.66Z" stroke="black"/>
-                    <path d="M1586.06 63.2599H1570.5V71.66H1586.06V63.2599Z" stroke="black"/>
-                    <path d="M1710.5 11.66H1694.94V20.06H1710.5V11.66Z" stroke="black"/>
-                    <path d="M1710.5 63.2599H1694.94V71.66H1710.5V63.2599Z" stroke="black"/>
-                    <path d="M1740.5 11.66H1720.5V36.03H1740.5V11.66Z" fill="white" stroke="black"/>
-                    <path d="M1770.5 11.66H1750.5V36.03H1770.5V11.66Z" fill="white" stroke="black"/>
-                    <path d="M1900.5 196.66L1890.5 206.66V286.66L1900.5 296.66" stroke="black" stroke-width="3" stroke-miterlimit="10"/>
-                    <path d="M1750.5 451.66H1690.5V581.66H1750.5V451.66Z" fill="white" stroke="black"/>
-                    <path d="M1697.17 451.66H1690.5V469.86H1697.17V451.66Z" stroke="black"/>
-                    <path d="M1697.17 563.46H1690.5V581.66H1697.17V563.46Z" stroke="black"/>
-                    <path d="M1750.5 451.66H1743.83V469.86H1750.5V451.66Z" stroke="black"/>
-                    <path d="M1750.5 563.46H1743.83V581.66H1750.5V563.46Z" stroke="black"/>
-                    <path d="M792.66 11.66H370.5V81.66H792.66V11.66Z" fill="white" stroke="black"/>
-                    <path d="M417.41 11.66H370.5V21.46H417.41V11.66Z" stroke="black"/>
-                    <path d="M417.41 71.86H370.5V81.66H417.41V71.86Z" stroke="black"/>
-                    <path d="M792.66 11.66H745.75V21.46H792.66V11.66Z" stroke="black"/>
-                    <path d="M792.66 71.86H745.75V81.66H792.66V71.86Z" stroke="black"/>
-                    <path d="M814 276.66L827.5 290.16V293.16L814 306.66L800.5 293.16V290.16L814 276.66Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M950.5 357.66V235.66C950.5 230.689 946.471 226.66 941.5 226.66H899.5C894.529 226.66 890.5 230.689 890.5 235.66V357.66C890.5 362.631 894.529 366.66 899.5 366.66H941.5C946.471 366.66 950.5 362.631 950.5 357.66Z" fill="white" stroke="black"/>
-                    <path d="M1010.5 357.66V235.66C1010.5 230.689 1006.47 226.66 1001.5 226.66H959.5C954.529 226.66 950.5 230.689 950.5 235.66V357.66C950.5 362.631 954.529 366.66 959.5 366.66H1001.5C1006.47 366.66 1010.5 362.631 1010.5 357.66Z" fill="white" stroke="black"/>
-                    <path d="M1130.5 357.66V235.66C1130.5 230.689 1126.47 226.66 1121.5 226.66H1079.5C1074.53 226.66 1070.5 230.689 1070.5 235.66V357.66C1070.5 362.631 1074.53 366.66 1079.5 366.66H1121.5C1126.47 366.66 1130.5 362.631 1130.5 357.66Z" fill="white" stroke="black"/>
-                    <path d="M1070.5 357.66V235.66C1070.5 230.689 1066.47 226.66 1061.5 226.66H1019.5C1014.53 226.66 1010.5 230.689 1010.5 235.66V357.66C1010.5 362.631 1014.53 366.66 1019.5 366.66H1061.5C1066.47 366.66 1070.5 362.631 1070.5 357.66Z" fill="white" stroke="black"/>
-                    <path d="M1370.5 357.66V235.66C1370.5 230.689 1366.47 226.66 1361.5 226.66H1319.5C1314.53 226.66 1310.5 230.689 1310.5 235.66V357.66C1310.5 362.631 1314.53 366.66 1319.5 366.66H1361.5C1366.47 366.66 1370.5 362.631 1370.5 357.66Z" fill="white" stroke="black"/>
-                    <path d="M1310.5 357.66V235.66C1310.5 230.689 1306.47 226.66 1301.5 226.66H1259.5C1254.53 226.66 1250.5 230.689 1250.5 235.66V357.66C1250.5 362.631 1254.53 366.66 1259.5 366.66H1301.5C1306.47 366.66 1310.5 362.631 1310.5 357.66Z" fill="white" stroke="black"/>
-                    <path d="M1250.5 357.66V235.66C1250.5 230.689 1246.47 226.66 1241.5 226.66H1199.5C1194.53 226.66 1190.5 230.689 1190.5 235.66V357.66C1190.5 362.631 1194.53 366.66 1199.5 366.66H1241.5C1246.47 366.66 1250.5 362.631 1250.5 357.66Z" fill="white" stroke="black"/>
-                    <path d="M1190.5 357.66V235.66C1190.5 230.689 1186.47 226.66 1181.5 226.66H1139.5C1134.53 226.66 1130.5 230.689 1130.5 235.66V357.66C1130.5 362.631 1134.53 366.66 1139.5 366.66H1181.5C1186.47 366.66 1190.5 362.631 1190.5 357.66Z" fill="white" stroke="black"/>
-                    <path d="M1241.74 81.66L1350.74 81.66C1356.54 81.66 1361.24 76.959 1361.24 71.16V22.16C1361.24 16.361 1356.54 11.66 1350.74 11.66L1241.74 11.66C1235.94 11.66 1231.24 16.361 1231.24 22.16V71.16C1231.24 76.959 1235.94 81.66 1241.74 81.66Z" fill="white" stroke="black"/>
-                    <path d="M1210.5 11.66H1110.5V71.66H1210.5V11.66Z" fill="white" stroke="black"/>
-                    <path d="M1100.5 11.66H1000.5V71.66H1100.5V11.66Z" fill="white" stroke="black"/>
-                    <path d="M990.5 11.66H890.5V71.66H990.5V11.66Z" fill="white" stroke="black"/>
-                    <path d="M241 81.66L350 81.66C355.799 81.66 360.5 76.959 360.5 71.16V22.16C360.5 16.361 355.799 11.66 350 11.66L241 11.66C235.201 11.66 230.5 16.361 230.5 22.16V71.16C230.5 76.959 235.201 81.66 241 81.66Z" fill="white" stroke="black"/>
-                    <path d="M130.5 16.95H200.5V66.95H130.5V16.95Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M110.5 216.66H120.5V366.66H110.5V216.66Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M170.5 256.66H120.5V326.66H170.5V256.66Z" fill="white"/>
-                    <path d="M120.5 263.71L127.55 256.66M120.5 270.76L134.6 256.66M120.5 277.81L141.65 256.66M120.5 284.86L148.7 256.66M120.5 291.91L155.75 256.66M120.5 298.96L162.8 256.66M120.5 306.01L169.85 256.66M120.5 313.06L170.5 263.06M120.5 320.11L170.5 270.11M121 326.66L170.5 277.16M128.05 326.66L170.5 284.21M135.1 326.66L170.5 291.26M142.15 326.66L170.5 298.31M149.2 326.66L170.5 305.36M156.25 326.66L170.5 312.41M163.3 326.66L170.5 319.46M170.35 326.66L170.5 326.51" stroke="black" stroke-width="0.2" stroke-miterlimit="10"/>
-                    <path d="M120.5 256.66H170.5V326.66H120.5V256.66Z" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M106.83 491.46L120.45 473.45C122.36 470.72 125.71 469.38 128.98 470.04C136.9 475.64 143.9 482.45 149.72 490.21C150.46 493.47 149.22 496.85 146.54 498.84L128.91 512.93C126.79 514.33 123.55 513.84 120.97 511.72L108.26 499.35C106.07 496.83 105.49 493.61 106.83 491.46Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M103.78 495.64C103.42 494.89 103.77 493.93 104.56 493.49C105.34 493.05 106.27 493.3 106.63 494.04C111.66 502.1 118.51 508.76 126.69 513.58C126.99 514.1 126.98 514.77 126.68 515.35C126.37 515.93 125.81 516.35 125.18 516.46C116.35 511.46 109.02 504.33 103.78 495.64Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M180.5 436.66V576.66H143.17V520.66L96.5 473.99H40.5V436.66H180.5Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M240.5 521.66H280.5V571.66H240.5V521.66Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M280.5 521.66H320.5V571.66H280.5V521.66Z" fill="white" stroke="black" stroke-miterlimit="10"/>
-                    <path d="M1380.5 462.16V571.16C1380.5 576.959 1385.2 581.66 1391 581.66H1440C1445.8 581.66 1450.5 576.959 1450.5 571.16V462.16C1450.5 456.361 1445.8 451.66 1440 451.66H1391C1385.2 451.66 1380.5 456.361 1380.5 462.16Z" fill="white" stroke="black"/>
-                    <path d="M850.5 581.66L840.5 571.66H760.5L750.5 581.66" stroke="black" stroke-width="3" stroke-miterlimit="10"/>
-                    <path d="M450.5 581.66L440.5 571.66H360.5L350.5 581.66" stroke="black" stroke-width="3" stroke-miterlimit="10"/>
-                    <path d="M1270.5 581.66L1260.5 571.66H1180.5L1170.5 581.66" stroke="black" stroke-width="3" stroke-miterlimit="10"/>
-                    <path d="M350.5 11.66L360.5 21.66H440.5L450.5 11.66" stroke="black" stroke-width="3" stroke-miterlimit="10"/>
-                    <path d="M1170.5 11.66L1180.5 21.66H1260.5L1270.5 11.66" stroke="black" stroke-width="3" stroke-miterlimit="10"/>
-                    <path d="M792.66 511.66H370.5V581.66H792.66V511.66Z" fill="white" stroke="black"/>
-                    <path d="M417.41 511.66H370.5V521.46H417.41V511.66Z" stroke="black"/>
-                    <path d="M417.41 571.86H370.5V581.66H417.41V571.86Z" stroke="black"/>
-                    <path d="M792.66 511.66H745.75V521.46H792.66V511.66Z" stroke="black"/>
-                    <path d="M792.66 571.86H745.75V581.66H792.66V571.86Z" stroke="black"/>
-                    <path d="M810.5 11.66H880.5V61.66H810.5V11.66Z" fill="white" stroke="black" stroke-miterlimit="10"/>
+                <!-- 1. Imagem base (croqui todo sem cor) — define o tamanho do bloco -->
+                <img class="mapa-base"
+                     src="figuras/croqui_base.png"
+                     alt="Croqui do Laboratório de Logística IFES Viana">
 
-                    <!-- ========== ZONAS INTERATIVAS (por cima do croqui) ========== -->
-                    <!-- Cada <rect> cobre a faixa horizontal correspondente ao seu lab   -->
-                    <!-- fill e opacity controlados pelo JS via atributo direto           -->
-                    <rect id="zona-verde"    class="zona-lab" x="0"    y="0" width="790"  height="593"
-                          data-lab="verde"   fill="transparent" />
-                    <rect id="zona-azul"     class="zona-lab" x="790"  y="0" width="660"  height="593"
-                          data-lab="azul"    fill="transparent" />
-                    <rect id="zona-vermelho" class="zona-lab" x="1450" y="0" width="461"  height="593"
-                          data-lab="vermelho" fill="transparent" />
+                <!-- 2. Imagens coloridas empilhadas — opacity controlada pelo JS -->
+                <img class="mapa-colorido" id="img-verde"
+                     src="figuras/croqui_verde.png"
+                     alt="Lab. de Sistemas Logísticos em destaque">
 
-                    <!-- Labels de nome exibidos dentro do SVG ao hover -->
-                    <g id="label-verde" opacity="0" pointer-events="none">
-                        <rect x="170" y="490" width="450" height="60" rx="6" fill="#2ecc71"/>
-                        <text x="395" y="530" text-anchor="middle"
-                        font-family="sans-serif" font-size="26" font-weight="bold"
-                        fill="white">Lab. Sistemas Logísticos</text>
-                    </g>
+                <img class="mapa-colorido" id="img-azul"
+                     src="figuras/croqui_azul.png"
+                     alt="Lab. de Operações e Práticas Logísticas em destaque">
 
-                   <g id="label-azul" opacity="0" pointer-events="none">
-                        <rect x="895" y="490" width="450" height="60" rx="6" fill="#3498db"/>
-                        <text x="1120" y="530" text-anchor="middle"
-                        font-family="sans-serif" font-size="26" font-weight="bold"
-                        fill="white">Lab. Operações e Práticas</text>
-                    </g>
-                    
-                    <g id="label-vermelho" opacity="0" pointer-events="none">
-                        <rect x="1455" y="490" width="450" height="60" rx="6" fill="#e74c3c"/>
-                        <text x="1680" y="530" text-anchor="middle"
-                        font-family="sans-serif" font-size="26" font-weight="bold"
-                        fill="white">Lab. Inteligência Logística</text>
-                    </g>
+                <img class="mapa-colorido" id="img-vermelho"
+                     src="figuras/croqui_vermelho.png"
+                     alt="Lab. de Inteligência Logística em destaque">
 
-                </svg>
-            </div>
+                <!-- 3. Labels de nome que aparecem sobre cada zona -->
+                <span class="mapa-label verde"    id="label-verde">Lab. de Sistemas Logísticos</span>
+                <span class="mapa-label azul"     id="label-azul">Lab. de Operações e Práticas</span>
+                <span class="mapa-label vermelho" id="label-vermelho">Lab. de Inteligência Logística</span>
 
-            <!-- Legenda clicável abaixo do mapa -->
+                <!-- 4. Zonas de hover transparentes — capturam o mouse -->
+                <div class="zonas-container">
+                    <div class="zona-hover verde"    data-lab="verde"></div>
+                    <div class="zona-hover azul"     data-lab="azul"></div>
+                    <div class="zona-hover vermelho" data-lab="vermelho"></div>
+                </div>
+
+            </div><!-- /mapa-wrapper -->
+
+            <!-- Legenda clicável -->
             <div class="legenda-labs">
                 <div class="legenda-item" data-lab="verde">
-                    <span class="legenda-cor" style="background:#2ecc71;"></span>
+                    <span class="legenda-cor" style="background:#27ae60;"></span>
                     Lab. de Sistemas Logísticos
                 </div>
                 <div class="legenda-item" data-lab="azul">
-                    <span class="legenda-cor" style="background:#3498db;"></span>
+                    <span class="legenda-cor" style="background:#2980b9;"></span>
                     Lab. de Operações e Práticas Logísticas
                 </div>
                 <div class="legenda-item" data-lab="vermelho">
-                    <span class="legenda-cor" style="background:#e74c3c;"></span>
+                    <span class="legenda-cor" style="background:#c0392b;"></span>
                     Lab. de Inteligência Logística e Economia Criativa
                 </div>
             </div>
@@ -608,101 +296,100 @@
             <!-- Caixa de informação reativa -->
             <div class="caixa-info-lab" id="caixa-info">
                 <h4 id="info-titulo">Passe o mouse sobre uma área do croqui</h4>
-                <p  id="info-texto">Cada zona colorida representa um Living Lab com vocação específica. Explore o mapa para conhecê-los.</p>
+                <p  id="info-texto">Cada zona representa um Living Lab com vocação específica. Explore o mapa para conhecê-los.</p>
             </div>
         </section>
 
+        <section class="content-card">
+            <h3>Os Living Labs (Laboratórios Vivos)</h3>
+            <p>Diferente de um laboratório tradicional, este espaço organiza-se em três living labs (laboratórios vivos), cada um com uma vocação específica:</p>
+            <ul class="living-labs-list">
+                <li><strong>Laboratório de Sistemas Logísticos:</strong> Espaço destinado a simulações computacionais e uso de sistemas integrados, equipado com bancadas e projetor.</li>
+                <li><strong>Laboratório de Operações e Práticas Logísticas:</strong> Ambiente voltado para a movimentação física, onde são disponibilizados instrumentos como Flow Racks, mini paletes e estantes para simular o armazenamento e embalagem de materiais.</li>
+                <li><strong>Laboratório de Inteligência Logística e Economia Criativa:</strong> Lugar de experimentações e mentorias para coletivos empresariais e culturais, focado em inovação regional.</li>
+            </ul>
+        </section>
 
     </main>
 
     <script>
-        // ====================================================
-        // Dados de cada Living Lab
-        // ====================================================
-        const labs = {
-            verde: {
-                titulo: "Laboratório de Sistemas Logísticos",
-                texto:  "O coração tecnológico e o centro nervoso digital do complexo. Dedicado a simulações computacionais avançadas e à operação de sistemas integrados de gestão, este ambiente conta com infraestrutura moderna para imersão tecnológica. O espaço oferece suporte completo para treinamentos interativos e tomada de decisão baseada na análise de fluxos e dados em tempo real.",
-                cor:    "#2ecc71",
-                zona:   document.getElementById('zona-verde'),
-                label:  document.getElementById('label-verde')
-            },
-            azul: {
-                titulo: "Laboratório de Operações e Práticas Logísticas",
-                texto:  "O espaço onde a estratégia logística ganha movimento e materialidade. Equipado com estruturas operacionais em escala didática, o laboratório proporciona uma vivência prática imersiva. Aqui, os alunos simulam, com precisão, as rotinas de recebimento, armazenamento, movimentação e embalagem de materiais.",
-                cor:    "#3498db",
-                zona:   document.getElementById('zona-azul'),
-                label:  document.getElementById('label-azul')
-            },
-            vermelho: {
-                titulo: "Laboratório de Inteligência Logística e Economia Criativa",
-                texto:  "Posicionado como o verdadeiro hub de inovação do complexo, este é um espaço colaborativo desenhado para experimentações e mentorias. Focado no engajamento com coletivos empresariais e culturais, o ambiente impulsiona o desenvolvimento de soluções criativas e sustentáveis, conectando o conhecimento acadêmico aos desafios reais da cadeia produtiva regional.",
-                cor:    "#e74c3c",
-                zona:   document.getElementById('zona-vermelho'),
-                label:  document.getElementById('label-vermelho')
-            }
-        };
-
-        const caixaInfo = document.getElementById('caixa-info');
-        const infoTitulo = document.getElementById('info-titulo');
-        const infoTexto  = document.getElementById('info-texto');
-
-        // Cor padrão da borda da caixa
-        const COR_PADRAO = '#32A041';
-
-        // ── Helpers ──────────────────────────────────────────
-        function ativarLab(key) {
-            const lab = labs[key];
-
-            // Colore a zona no SVG
-            lab.zona.setAttribute('fill', lab.cor);
-            lab.zona.setAttribute('opacity', '0.25');
-
-            // Exibe o label de nome dentro do SVG
-            lab.label.setAttribute('opacity', '1');
-
-            // Atualiza a caixa de informação
-            infoTitulo.textContent = lab.titulo;
-            infoTexto.textContent  = lab.texto;
-            caixaInfo.style.borderLeftColor = lab.cor;
+    // ═══════════════════════════════════════════════════════
+    //  Dados dos labs
+    // ═══════════════════════════════════════════════════════
+    const dadosLabs = {
+        verde: {
+            titulo: "Laboratório de Sistemas Logísticos",
+            texto:  "O centro nervoso digital do complexo. Destinado a simulações computacionais e ao uso de sistemas integrados de gestão, o espaço conta com bancadas modernas e projetor para suportar treinamentos e análises de fluxo em tempo real.",
+            cor:    "#27ae60",
+            img:    document.getElementById('img-verde'),
+            label:  document.getElementById('label-verde')
+        },
+        azul: {
+            titulo: "Laboratório de Operações e Práticas Logísticas",
+            texto:  "Onde a logística ganha movimento concreto. Equipado com Flow Racks, mini paletes e estantes, o espaço permite simular operações de armazenamento, movimentação e embalagem de materiais em escala didática.",
+            cor:    "#2980b9",
+            img:    document.getElementById('img-azul'),
+            label:  document.getElementById('label-azul')
+        },
+        vermelho: {
+            titulo: "Laboratório de Inteligência Logística e Economia Criativa",
+            texto:  "O hub de inovação regional do laboratório. Projetado para experimentações e mentorias voltadas a coletivos empresariais e culturais, com foco em desenvolvimento de soluções criativas e sustentáveis para a cadeia logística regional.",
+            cor:    "#c0392b",
+            img:    document.getElementById('img-vermelho'),
+            label:  document.getElementById('label-vermelho')
         }
+    };
 
-        function desativarTodos() {
-            Object.values(labs).forEach(lab => {
-                lab.zona.setAttribute('fill', 'transparent');
-                lab.zona.removeAttribute('opacity');
-                lab.label.setAttribute('opacity', '0');
-            });
-        }
+    const caixaInfo  = document.getElementById('caixa-info');
+    const infoTitulo = document.getElementById('info-titulo');
+    const infoTexto  = document.getElementById('info-texto');
+    const COR_PADRAO = '#32A041';
 
-        function resetarCaixa() {
-            infoTitulo.textContent = 'Passe o mouse sobre uma área do croqui';
-            infoTexto.textContent  = 'Cada zona colorida representa um Living Lab com vocação específica. Explore o mapa para conhecê-los.';
-            caixaInfo.style.borderLeftColor = COR_PADRAO;
-        }
+    function ativar(key) {
+        const lab = dadosLabs[key];
+        lab.img.style.opacity   = '1';
+        lab.label.style.opacity = '1';
+        infoTitulo.textContent  = lab.titulo;
+        infoTexto.textContent   = lab.texto;
+        caixaInfo.style.borderLeftColor = lab.cor;
+    }
 
-        // ── Eventos nas zonas SVG ─────────────────────────────
-        Object.entries(labs).forEach(([key, lab]) => {
-            lab.zona.addEventListener('mouseenter', () => {
-                desativarTodos();
-                ativarLab(key);
-            });
-            lab.zona.addEventListener('mouseleave', () => {
-                desativarTodos();
-                resetarCaixa();
-            });
+    function desativarTodos() {
+        Object.values(dadosLabs).forEach(lab => {
+            lab.img.style.opacity   = '0';
+            lab.label.style.opacity = '0';
         });
+    }
 
-        // ── Eventos na legenda (clique) ────────────────────────
-        document.querySelectorAll('.legenda-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const key = item.dataset.lab;
-                desativarTodos();
-                ativarLab(key);
-                // Scrolla suavemente até a caixa de info
-                caixaInfo.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            });
+    function resetarCaixa() {
+        infoTitulo.textContent = 'Passe o mouse sobre uma área do croqui';
+        infoTexto.textContent  = 'Cada zona representa um Living Lab com vocação específica. Explore o mapa para conhecê-los.';
+        caixaInfo.style.borderLeftColor = COR_PADRAO;
+    }
+
+    // Eventos nas zonas de hover do mapa
+    document.querySelectorAll('.zona-hover').forEach(zona => {
+        zona.addEventListener('mouseenter', () => {
+            desativarTodos();
+            ativar(zona.dataset.lab);
         });
+        zona.addEventListener('mouseleave', () => {
+            desativarTodos();
+            resetarCaixa();
+        });
+    });
+
+    // Eventos na legenda (clique mantém o destaque)
+    let labFixado = null;
+    document.querySelectorAll('.legenda-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const key = item.dataset.lab;
+            desativarTodos();
+            ativar(key);
+            labFixado = key;
+            caixaInfo.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+    });
     </script>
 
 </body>
