@@ -266,7 +266,8 @@
             <div class="nav-category">Outros Serviços</div>
             <li><a href="../paginas/empresa_junior.html">📦 Empresa Júnior</a></li>
             <li><a href="experimentos_fisica.html">🧪 Experimentos de Física</a></li>
-            <a href="../paginas/Incubadora.html">🌱 Incubadora</a>
+            <li><a href="../paginas/Incubadora.html">🌱 Incubadora</a></li>
+            <li><a href="../paginas/melpolinario.html">🐝 Melpolinário</a></li>
         </ul>
     </aside>
 
@@ -295,6 +296,10 @@
                 <div class="caixa-modulo" onclick="selecionarModulo('modulo-2', this)">
                     <span class="icone">🎛️</span>
                     <span class="titulo-modulo">Módulo 2: Sensores</span>
+                </div>
+                <div class="caixa-modulo" onclick="selecionarModulo('modulo-3', this)">
+                    <span class="icone">📟</span>
+                    <span class="titulo-modulo">Módulo 3: Automações e Interfaces</span>
                 </div>
                 
             </div>
@@ -1041,6 +1046,387 @@
             </ul>
         </section>
 
+<!-- ===== PAINEL: MÓDULO 3 ==== -->
+        <section id="modulo-3" class="content-card painel-modulo">
+            <h3 style="margin-bottom: 1.5rem;">Módulo 3: Automações e Interfaces</h3>
+             <!-- Estilos para o Submenu -->
+            <style>
+                .praticas-menu {
+                    display: flex;
+                    gap: 1rem;
+                    margin-bottom: 2rem;
+                    flex-wrap: wrap;
+                }
+                .pratica-card {
+                    background-color: var(--bg-light, #f4f8fa);
+                    border: 1px solid var(--border-color, #ccc);
+                    border-radius: 8px;
+                    padding: 1rem;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    font-weight: bold;
+                    color: var(--cor3, #333);
+                    flex: 1;
+                    text-align: center;
+                    min-width: 200px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                }
+                .pratica-card:hover {
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    border-color: var(--cor1, #2e7d32);
+                    transform: translateY(-2px);
+                }
+                .pratica-card.active {
+                    background-color: var(--cor1, #2e7d32);
+                    color: white;
+                    border-color: var(--cor1, #2e7d32);
+                }
+                .pratica-content {
+                    display: none;
+                    animation: fadeIn 0.4s ease;
+                }
+                .pratica-content.active {
+                    display: block;
+                }
+                .img-placeholder {
+                    text-align: center;
+                    margin: 1.5rem 0;
+                    padding: 1rem;
+                    background-color: #f9f9f9;
+                    border: 1px dashed #ccc;
+                    border-radius: 8px;
+                }
+                .img-placeholder img {
+                    max-width: 100%;
+                    border-radius: 4px;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                    margin-bottom: 0.5rem;
+                }
+                .img-placeholder p {
+                    font-size: 0.85rem;
+                    color: #666;
+                    margin: 0;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            </style>
+
+            <!-- Menu de Seleção de Práticas -->
+            <div class="praticas-menu">
+                <div class="pratica-card active" onclick="mostrarPratica('mod3-pratica6', this)">
+                    ☀️ Prática 6: Sensor LDR (Estrutura Condicional)
+                </div>
+                <div class="pratica-card" onclick="mostrarPratica('mod3-pratica7', this)">
+                    📟 Prática 7: Display LCD (Comunicação I2C)
+                </div>
+                <div class="pratica-card" onclick="mostrarPratica('mod3-pratica8', this)">
+                    ⚙️ Prática 8: Servo Motor (Controle de posição)
+                </div>
+            </div>
+
+             <!-- ==========================================
+                 CONTEÚDO DA PRÁTICA 6
+                 ========================================== -->
+            <div id="mod3-pratica6" class="pratica-content active">
+                <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
+                    <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 6: Sensor LDR (Estrutura Condicional)</h4>
+                    <p style="margin-bottom: 0;">Nesta prática, utilizaremos um LDR (Light Dependent Resistor) para desenvolver um sistema simples de iluminação automática. O objetivo é permitir que o Arduino perceba a intensidade luminosa do ambiente ao seu redor por meio de uma leitura analógica e, utilizando estruturas condicionais, tome a decisão de acender ou apagar um LED de forma automática.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🎯 Objetivos & Competências</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Conhecer o funcionamento do sensor LDR e interpretar valores obtidos por sensores analógicos.</li>
+                            <li>Compreender o princípio de funcionamento e montar um circuito utilizando um divisor de tensão.</li>
+                            <li>Utilizar estruturas condicionais (if/else) em programas para o Arduino tomar decisões.</li>
+                            <li>Desenvolver aplicações capazes de responder automaticamente às condições do ambiente.</li>
+                        </ul>
+                    </div>
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧰 Materiais Necessários</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Placa Arduino Uno e Cabo USB;</li>
+                            <li>Protoboard e Jumpers;</li>
+                            <li>1x Sensor de luminosidade (LDR);</li>
+                            <li>1x Resistor de 10 kΩ;</li>
+                            <li>1x LED de 5mm;</li> 
+                            <li>1x Resistor de 220 Ω.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Conceitos Fundamentais</h4>
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">Divisor de Tensão e Estruturas Condicionais</h5>
+            <p>O LDR altera sua resistência elétrica quando exposto à luz: em ambientes muito iluminados a resistência é baixa, e no escuro ela aumenta consideravelmente. Como as entradas analógicas do Arduino medem apenas tensão (entre 0 V e 5 V), é necessário montar um divisor de tensão usando o LDR em série com um resistor de 10 kΩ. A variação da resistência do LDR causa uma variação proporcional na tensão, que é lida pelo pino A0. Em seguida, a estrutura condicional if avalia se o valor lido ultrapassa um limite pré-determinado (ex: 400) para acender ou apagar o LED.</p>
+
+            <div class="img-placeholder">
+                    <img src="../figuras/divisor_tensao_ldr.png" alt="Esquema de ligação do resistor Pull-Down" style="max-width: 50%;">
+                    <p>Figura 1: Funcionamento divisor de tensão LDR.</p>
+            </div>
+
+            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Esquema e Montagem do Circuito</h4>
+                <ul class="info-list bullets" style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                    <li>Conecte um terminal do LDR ao barramento de 5 V da protoboard.</li>
+                    <li>Conecte o outro terminal do LDR ao pino A0 do Arduino.</li>
+                    <li>Ligue um resistor de 10 kΩ entre o pino A0 e o barramento GND, formando o divisor de tensão.</li>
+                    <li>Conecte um resistor de 220 Ω entre o pino digital 8 e o ânodo do LED.</li>
+                    <li>Ligue o cátodo do LED ao barramento GND.</li>
+                    <li>Conecte os barramentos da protoboard aos pinos 5 V e GND do Arduino.</li>
+            </ul>
+            
+            <div class="img-placeholder">
+                    <img src="../figuras/circuito_ldr.png" alt="Montagem do circuito no Protoboard" style="max-width: 50%;">
+            </div>
+
+            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Código da Prática</h4>
+                <div style="background: #282c34; color: #abb2bf; padding: 1.2rem; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; overflow-x: auto;">
+                    <span style="color: #c678dd;">int</span> LED = <span style="color: #d19a66;">8</span>;<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">setup</span>() {<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">Serial</span>.<span style="color: #61afef;">begin</span>(<span style="color: #d19a66;">9600</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">pinMode</span>(LED, <span style="color: #d19a66;">OUTPUT</span>);<br>
+                    }<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">loop</span>() {<br>
+                    &nbsp;&nbsp;<span style="color: #c678dd;">int</span> LDR = <span style="color: #e06c75;">analogRead</span>(<span style="color: #d19a66;">A0</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">Serial</span>.<span style="color: #61afef;">println</span>(LDR);<br><br>
+                    &nbsp;&nbsp;<span style="color: #c678dd;">if</span> (LDR > <span style="color: #d19a66;">400</span>) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">digitalWrite</span>(LED, <span style="color: #d19a66;">HIGH</span>);<br>
+                    &nbsp;&nbsp;} <span style="color: #c678dd;">else</span> {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">digitalWrite</span>(LED, <span style="color: #d19a66;">LOW</span>);<br>
+                    &nbsp;&nbsp;}<br><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">delay</span>(<span style="color: #d19a66;">500</span>);<br>
+                    }
+            </div> 
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+                    <div style="background-color: #E8F5E9; border: 1px solid var(--cor2); padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧪 Experimentando o código</h5>
+                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Cubra completamente o sensor LDR utilizando a mão e veja a reação do circuito.</li>
+                            <li>Ilumine diretamente o sensor utilizando a lanterna de um celular.</li>
+                            <li>Altere o valor da condição de 400 para 200 e observe a diferença no acionamento do LED.</li>
+                            <li>Em seguida, altere esse valor limite para 700 e compare os resultados.</li>
+                            <li>Observe como os valores numéricos apresentados no Monitor Serial variam conforme a intensidade luminosa.</li>
+                        </ol>
+                    </div>
+
+                    <div style="background-color: #FFF8E1; border: 1px solid #FFE082; padding: 1.2rem; border-radius: 8px;">
+                                            <h5 style="color: #B78103; margin-bottom: 0.8rem; font-size: 1.05rem;">🏆 Desafio Prático</h5>
+                                            <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">Em vez de acender o LED quando houver muita luz, altere a lógica (a condição do if) para que ele acenda apenas quando o ambiente estiver escuro.</p>
+                                        </div>
+                                    </div>
+
+                                    <h4 style="color: var(--cor3); margin-bottom: 1rem;">❓ Questões de Fixação</h4>
+                                    <div style="background: var(--bg-light); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                                            <li>Qual é a função do sensor LDR no circuito?</li>
+                                            <li>Por que é necessário utilizar um divisor de tensão neste circuito com o Arduino?</li>
+                                            <li>Qual é a faixa de valores retornada pela função analogRead()?</li>
+                                            <li>Qual é a finalidade da estrutura condicional if utilizada neste programa?</li>
+                                            <li>O que acontece com o comportamento do sistema se o valor de referência utilizado na comparação for alterado?</li>
+                                        </ol>
+                    </div>
+            </div>
+                    
+            <!-- ==========================================
+                 CONTEÚDO DA PRÁTICA 7
+                 ========================================== -->
+            <div id="mod3-pratica7" class="pratica-content active">
+                <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
+                    <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 7: Display LCD (Comunicação I2C)</h4>
+                    <p style="margin-bottom: 0;">Nesta prática será utilizado um display LCD 16×2 com interface I²C, permitindo exibir textos, números e mensagens em tempo real sem a necessidade do Monitor Serial. Além disso, será apresentado um novo protocolo de comunicação bastante utilizado em sistemas embarcados: o barramento I²C</p>
+            </div>
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🎯 Objetivos & Competências</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Conhecer o funcionamento do display LCD 16×2.</li>
+                            <li>Compreender a comunicação I²C.</li>
+                            <li>Aprender a utilizar bibliotecas no Arduino.</li>
+                            <li>Exibir mensagens em um display LCD.</li>
+                            <li>Integrar um novo dispositivo ao Arduino.</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧰 Materiais Necessários</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Placa Arduino Uno e Cabo USB;</li>
+                            <li>Protoboard;</li>
+                            <li>4x Jumpers;</li>
+                            <li>Display LCD 16×2 com interface I²C;</li>
+                        </ul>
+                    </div>
+            </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Conceitos Fundamentais</h4>
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">Divisor de Tensão e Estruturas Condicionais</h5>
+            <p>O display LCD 16x2 é um visor de cristal líquido capaz de exibir até 32 caracteres distribuídos em duas linhas de 16 colunas sem depender do Monitor Serial. Para evitar o uso excessivo de pinos do Arduino, utiliza-se um módulo I²C, que converte a comunicação paralela em serial e reduz as conexões para apenas quatro fios: alimentação (VCC/GND), dados (SDA) e sincronismo (SCL). Nesse protocolo de comunicação mestre-escravo, o Arduino gerencia a transmissão dos dados com auxílio das bibliotecas Wire.h e LiquidCrystal_I2C.h, utilizando comandos específicos como lcd.setCursor() e lcd.print() para posicionar e exibir mensagens na tela de forma simples e eficiente.</p>
+
+            <div class="img-placeholder">
+                    <img src="../figuras/lcd.png" alt="Esquema de ligação do resistor Pull-Down" style="max-width: 50%;">
+                    <p>Figura 1: Funcionamento display.</p>
+            </div>
+
+            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Esquema e Montagem do Circuito</h4>
+                <ul class="info-list bullets" style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                    <li>Conecte o pino VCC do módulo ao pino 5 V do Arduino.</li>
+                    <li>Conecte o pino GND ao pino GND do Arduino.</li>
+                    <li>Conecte o pino SDA ao pino A4.</li>
+                    <li>Conecte o pino SCL ao pino A5.</li>
+            </ul>
+            
+            <div class="img-placeholder">
+                    <img src="../figuras/pratica_7.png" alt="Montagem do circuito no Protoboard" style="max-width: 50%;">
+            </div>
+
+            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Código da Prática</h4>
+                <div style="background: #282c34; color: #abb2bf; padding: 1.2rem; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; overflow-x: auto;">
+                    <span style="color: #c678dd;">#include</span> <span style="color: #98c379;">&lt;LiquidCrystal_I2C.h&gt;</span><br><br>
+                    <span style="color: #e5c07b;">LiquidCrystal_I2C</span> <span style="color: #e06c75;">lcd</span>(<span style="color: #d19a66;">0x20</span>, <span style="color: #d19a66;">16</span>, <span style="color: #d19a66;">2</span>);<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">setup</span>() {<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">init</span>();<br><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">clear</span>();<br><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">backlight</span>();<br><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">setCursor</span>(<span style="color: #d19a66;">0</span>,<span style="color: #d19a66;">0</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Ola, mundo!"</span>);<br><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">setCursor</span>(<span style="color: #d19a66;">0</span>,<span style="color: #d19a66;">1</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Arduino + LCD"</span>);<br><br>
+                    }<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">loop</span>() {<br><br>
+                    }
+            </div>
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+                    <div style="background-color: #E8F5E9; border: 1px solid var(--cor2); padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧪 Experimentando o código</h5>
+                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Altere o texto exibido na primeira linha para o seu nome.</li>
+                            <li>Modifique a mensagem da segunda linha para o nome do seu curso ou disciplina.</li>
+                            <li>Utilize diferentes valores na função setCursor() e observe como a posição do texto é alterada.</li>
+                            <li>Escreva uma mensagem com mais de 16 caracteres e observe o comportamento do display.</li>
+                            <li>Utilize o comando lcd.clear() antes de escrever uma nova mensagem e observe o resultado.</li>
+                        </ol>
+                    </div>
+
+                    <div style="background-color: #FFF8E1; border: 1px solid #FFE082; padding: 1.2rem; border-radius: 8px;">
+                                            <h5 style="color: #B78103; margin-bottom: 0.8rem; font-size: 1.05rem;">🏆 Desafio Prático</h5>
+                                            <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">Modifique o programa para que o display apresente três mensagens diferentes.Exiba a primeira mensagem durante dois segundos, limpe a tela e apresente uma segunda mensagem por mais dois segundos. Em seguida, exiba uma terceira mensagem.</p>
+                                        </div>
+                                    </div>
+
+                                    <h4 style="color: var(--cor3); margin-bottom: 1rem;">❓ Questões de Fixação</h4>
+                                    <div style="background: var(--bg-light); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                                            <li>O que significa a sigla LCD?</li>
+                                            <li>O que representa a nomenclatura 16×2?</li>
+                                            <li>Qual é a principal vantagem da utilização do módulo I²C?</li>
+                                            <li>Quais são as funções dos pinos SDA e SCL?</li>
+                                            <li>Qual comando é utilizado para posicionar o cursor no display?</li>
+                                        </ol>
+                    </div>
+            </div>
+
+            <!-- ==========================================
+                 CONTEÚDO DA PRÁTICA 8
+                 ========================================== -->
+            <div id="mod3-pratica8" class="pratica-content active">
+                <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
+                    <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 8: Servo Motor (Controle de posição)</h4>
+                    <p style="margin-bottom: 0;">Nesta prática será apresentado o servo motor SG90, um dos modelos mais utilizados em projetos educacionais com Arduino.Para esse tipo de aplicação utiliza-se o servo motor, um dispositivo capaz de girar para um ângulo específico e permanecer nessa posição enquanto estiver energizado.</p>
+            </div>
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🎯 Objetivos & Competências</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Compreender o funcionamento de um servo motor;</li>
+                            <li>Diferenciar um servo motor de um motor DC convencional;</li>
+                            <li>Utilizar a biblioteca Servo.h;</li>
+                            <li>Controlar o ângulo de rotação de um servo motor;</li>
+                            <li>Desenvolver programas que posicionem o servo em diferentes ângulos.</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧰 Materiais Necessários</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Placa Arduino Uno e Cabo USB;</li>
+                            <li>Servo motor SG90;</li>
+                            <li>3x Jumpers;</li>
+                        </ul>
+                    </div>
+            </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Conceitos Fundamentais</h4>
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">Divisor de Tensão e Estruturas Condicionais</h5>
+            <p>O display LCD 16x2 é um visor de cristal líquido capaz de exibir até 32 caracteres distribuídos em duas linhas de 16 colunas sem depender do Monitor Serial. Para evitar o uso excessivo de pinos do Arduino, utiliza-se um módulo I²C, que converte a comunicação paralela em serial e reduz as conexões para apenas quatro fios: alimentação (VCC/GND), dados (SDA) e sincronismo (SCL). Nesse protocolo de comunicação mestre-escravo, o Arduino gerencia a transmissão dos dados com auxílio das bibliotecas Wire.h e LiquidCrystal_I2C.h, utilizando comandos específicos como lcd.setCursor() e lcd.print() para posicionar e exibir mensagens na tela de forma simples e eficiente.</p>
+
+            <div class="img-placeholder">
+                    <img src="../figuras/esquema_motor.png" alt="Esquema de ligação do resistor Pull-Down" style="max-width: 50%;">
+                    <p>Figura 1: Funcionamento display.</p>
+            </div>
+
+            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Esquema e Montagem do Circuito</h4>
+                <ul class="info-list bullets" style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                    <li>Fio vermelho do servo → 5 V do Arduino;</li>
+                    <li>Fio marrom (ou preto) → GND;</li>
+                    <li>Fio laranja (ou amarelo) → pino digital 9.</li>
+            </ul>
+            
+            <div class="img-placeholder">
+                    <img src="../figuras/pratica_8.png" alt="Montagem do circuito no Protoboard" style="max-width: 50%;">
+            </div>
+
+            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Código da Prática</h4>
+                <div style="background: #282c34; color: #abb2bf; padding: 1.2rem; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; overflow-x: auto;">
+                    <span style="color: #c678dd;">#include</span> <span style="color: #98c379;">&lt;Servo.h&gt;</span><br><br>
+                    <span style="color: #e5c07b;">Servo</span> <span style="color: #e06c75;">servo</span>;<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">setup</span>() {<br><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">servo</span>.<span style="color: #61afef;">attach</span>(<span style="color: #d19a66;">8</span>);<br><br>
+                    }<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">loop</span>() {<br><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">servo</span>.<span style="color: #61afef;">write</span>(<span style="color: #d19a66;">0</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #61afef;">delay</span>(<span style="color: #d19a66;">100</span>);<br><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">servo</span>.<span style="color: #61afef;">write</span>(<span style="color: #d19a66;">180</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #61afef;">delay</span>(<span style="color: #d19a66;">100</span>);<br><br>
+                    }
+            </div>
+
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+                    <div style="background-color: #E8F5E9; border: 1px solid var(--cor2); padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧪 Experimentando o código</h5>
+                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Altere o tempo do delay() para 500 ms e observe como o movimento se torna mais rápido.</li>
+                            <li>Acrescente uma nova posição de 45° entre 0° e 90°.</li>
+                            <li>Acrescente também a posição de 135° entre 90° e 180°.</li>
+                            <li>Modifique a sequência de movimentos para que o servo retorne de 180° até 0° passando pelas mesmas posições.</li>
+                            <li>Experimente utilizar outros ângulos, como 30°, 60°, 120° e 150°.</li>
+                        </ol>
+                    </div>
+
+                    <div style="background-color: #FFF8E1; border: 1px solid #FFE082; padding: 1.2rem; border-radius: 8px;">
+                                            <h5 style="color: #B78103; margin-bottom: 0.8rem; font-size: 1.05rem;">🏆 Desafio Prático</h5>
+                                            <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">Desenvolva um programa que faça o servo motor funcionar como um limpador de para-brisa. Para isso, o eixo deverá: partir de 0° → movimentar-se continuamente até 180° → retornar novamente para 0° → repetir esse movimento indefinidamente. Como desafio adicional, tente tornar o movimento mais suave, movimentando o servo em pequenos incrementos ao invés de saltar diretamente entre as posições.</p>
+                                        </div>
+                                    </div>
+
+                                    <h4 style="color: var(--cor3); margin-bottom: 1rem;">❓ Questões de Fixação</h4>
+                                    <div style="background: var(--bg-light); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                                            <li>Qual a principal diferença entre um servo motor e um motor DC convencional?</li>
+                                            <li>Qual é a função da biblioteca Servo.h?</li>
+                                            <li>Para que serve a função attach()?</li>
+                                            <li>O que representa o valor informado na função write()?</li>
+                                            <li>Quais são os três fios presentes em um servo motor SG90 e qual a função de cada um?</li>
+                                        </ol>
+                    </div>
+            </div>        
+            
     </main>
 
     <!-- SCRIPT DE INTERATIVIDADE -->

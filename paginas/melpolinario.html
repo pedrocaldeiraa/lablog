@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meliponário Didático | IFES Viana</title>
+    <style>
+        /* ── Paleta e Variáveis Principais ── */
+        :root {
+            --cor1: #32A041;
+            --cor2: #64C878;
+            --cor3: #1E7832;
+            --cor4: #46B45A;
+            --cor5: #96DCA0;
+            --preto: #000000;
+            --branco: #FFFFFF;
+            --bg-light: #F8FAF0;
+            --text-dark: #1F2937;
+            --text-muted: #4B5563;
+            --border-color: #D2E8D5;
+            --sidebar-width: 280px;
+            --card-radius: 16px;
+            --transition: 0.4s ease-out;
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+        }
+
+        body { 
+            display: flex; 
+            background-color: var(--bg-light); 
+            color: var(--text-dark); 
+            min-height: 100vh; 
+        }
+
+        /* ══════════════════════════════
+           SIDEBAR
+        ══════════════════════════════ */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--branco);
+            border-right: 1px solid var(--border-color);
+            position: fixed; 
+            height: 100vh; 
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.02);
+            z-index: 100;
+        }
+        .logo-ifes {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            display: block;
+        }
+        .sidebar-header { 
+            margin-bottom: 2rem; 
+            padding-bottom: 1rem; 
+            border-bottom: 2px solid var(--cor1); 
+        }
+        .sidebar-header h2 { 
+            font-size: 1.25rem; 
+            color: var(--cor3); 
+        }
+        .nav-menu { list-style: none; }
+        .nav-category {
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            color: var(--text-muted); 
+            margin: 1.5rem 0 0.5rem 0; 
+            font-weight: 600;
+        }
+        .nav-menu li { margin-bottom: 0.5rem; }
+        .nav-menu a {
+            display: block; 
+            padding: 0.75rem 1rem; 
+            color: var(--text-dark);
+            text-decoration: none; 
+            border-radius: 6px; 
+            transition: all 0.2s ease;
+            background-color: var(--cor5); 
+            border: 1px solid transparent;
+        }
+        .nav-menu a:hover { 
+            color: var(--cor3); 
+            border-color: var(--cor2); 
+        }
+        .nav-menu a.ativo { 
+            background-color: var(--cor3); 
+            color: var(--branco); 
+            font-weight: 600; 
+        }
+
+        /* ══════════════════════════════
+           LAYOUT PRINCIPAL
+        ══════════════════════════════ */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 3rem 4rem;
+            flex: 1;
+            max-width: 1100px;
+        }
+
+        /* ── Hero Section ── */
+        .hero-section {
+            background: linear-gradient(135deg, #d88a00 0%, #e6a817 50%, #f5b82e 100%);
+            padding: 3.5rem 3rem;
+            border-radius: var(--card-radius);
+            box-shadow: 0 8px 24px rgba(216, 138, 0, 0.22);
+            margin-bottom: 2.5rem;
+            color: var(--branco);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::after {
+            content: "🐝";
+            position: absolute;
+            right: 2.5rem; 
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 8rem;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        .hero-section h1 { font-size: 2.5rem; margin-bottom: 0.8rem; color: var(--branco); font-weight: 800; }
+        .hero-section .subtitulo { font-size: 1.15rem; opacity: 0.95; line-height: 1.6; max-width: 720px; }
+        .hero-secao-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.22);
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 20px;
+            padding: 0.3rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.2rem;
+            color: var(--branco);
+        }
+
+        /* ── Estrutura dos Cards ── */
+        .content-card {
+            background: var(--branco);
+            border-radius: var(--card-radius);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+        }
+        .content-card h2 {
+            color: var(--cor3);
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid var(--cor5);
+        }
+        .content-card p {
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        /* ── Mídias Ampliadas e Intercaladas ── */
+        .media-full {
+            width: 100%;
+            max-height: 480px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        .media-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+            margin: 1.8rem 0;
+        }
+
+        .media-grid-item {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        video.media-grid-item, video.media-full {
+            background-color: #000;
+        }
+
+        .media-caption {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: -0.8rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        /* ── Lista de Destaques ── */
+        .info-list {
+            list-style: none;
+            margin-top: 1.2rem;
+        }
+        .info-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            font-size: 1.02rem;
+        }
+        .info-list li::before {
+            content: "🐝";
+            position: absolute;
+            left: 0;
+            font-size: 1.1rem;
+        }
+
+        /* ══════════════════════════════
+           ANIMAÇÕES DE SCROLL (REVEAL)
+        ══════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+        .reveal-up { transform: translateY(40px); }
+        .reveal-left { transform: translateX(-40px); }
+        .reveal-right { transform: translateX(40px); }
+        .reveal-zoom { transform: scale(0.92); }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translate(0) scale(1);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════ SIDEBAR ══════════════ -->
+<aside class="sidebar">
+    <img src="../figuras/ifes-horizontal-cor.png" alt="Logo Instituto Federal Espírito Santo" class="logo-ifes">
+
+    <div class="sidebar-header"><h2>Carta de Serviços</h2></div>
+    <ul class="nav-menu">
+        <li><a href="../index.html">🏠 Início / Visão Geral</a></li>
+        
+        <div class="nav-category">Equipamentos e Hardware</div>
+        <li><a href="../paginas/impressora_3d.html">🖨️ Impressora 3D</a></li>
+        <li><a href="../paginas/lousa_interativa.html">📺 Lousa Interativa</a></li>
+        <li><a href="../paginas/oculos_vr.html">🥽 Óculos VR</a></li>
+        <li><a href="../paginas/kit_lego.html">🧩 Kit LEGO</a></li>
+        <li><a href="../paginas/kit_arduino.html">⚡ Kit Arduino</a></li>
+        
+        <div class="nav-category">Outros Serviços</div>
+        <li><a href="empresa_junior.html">📦 Empresa Júnior</a></li>
+        <li><a href="../paginas/experimentos_fisica.html">🧪 Experimentos de Física</a></li>
+        <li><a href="../paginas/Incubadora.html">🌱 Incubadora</a></li>
+        <li><a href="meliponario.html" class="ativo">🐝 Meliponário Didático</a></li>
+    </ul>
+</aside>
+
+<!-- ══════════════ CONTEÚDO PRINCIPAL ══════════════ -->
+<main class="main-content">
+
+    <!-- Hero Header -->
+    <section class="hero-section reveal reveal-zoom">
+        <span class="hero-secao-badge">🐝 Extensão e Meio Ambiente</span>
+        <h1>Meliponário Didático</h1>
+        <p class="subtitulo">
+            Transformando a criação de abelhas nativas sem ferrão em instrumento pedagógico, inovação científica e preservação da biodiversidade no Ifes Campus Viana.
+        </p>
+    </section>
+
+    <!-- Seção 1: O Laboratório Vivo -->
+    <section class="content-card reveal reveal-up">
+        <h2>Um Laboratório Vivo no Campus</h2>
+        <p>
+            O Meliponário Didático do IFES Campus Viana nasce como um espaço de convergência entre o conhecimento científico e a prática ambiental. Diferente da apicultura tradicional, a meliponicultura dedica-se às Abelhas Sem Ferrão (ASF), espécies nativas do Brasil que desempenham um papel fundamental na polinização da flora nativa e de diversas culturas agrícolas.
+        </p>
+        <p>
+            O espaço abriga colmeias de espécies como Jataí, Uruçu-Amarela e Mandaçaia, permitindo a observação direta da organização social das colônias, da arquitetura dos potes de mel e própolis, e do comportamento das operárias. Mais do que a produção de mel, o objetivo principal do meliponário é servir de sala de aula ao ar livre para a comunidade acadêmica e externa.
+        </p>
+
+        <!-- Imagem Ampliada 1 -->
+        <img src="../figuras/grupo_mel.jpg" alt="Estudantes em atividade prática no Meliponário" class="media-full">
+    </section>
+
+    <!-- Seção 2: Protagonismo Estudantil e Educação Ambiental -->
+    <section class="content-card reveal reveal-left">
+        <h2>Protagonismo Discente e Educação Ambiental</h2>
+        <p>
+            Um dos pilares do projeto é a formação de estudantes multiplicadores. Os alunos voluntários e bolsistas do projeto assumem a liderança na mediação de visitas guiadas para turmas da educação básica de Viana e municípios vizinhos, transmitindo conceitos sobre ecologia, conservação e agroecologia.
+        </p>
+        <p>
+            Nas oficinas práticas, os visitantes aprendem a confeccionar iscas pet para captura ética de enxames, compreendem a importância de não utilizar agrotóxicos em jardins urbanos e acompanham o manejo seguro de caixas racionais.
+        </p>
+
+        <!-- Grid de Vídeo e Foto intercalados -->
+        <div class="media-grid-2">
+            <img src="../figuras/visit.jpg" alt="Apresentação dos alunos aos visitantes" class="media-grid-item">
+            <video controls class="media-grid-item">
+                <source src="../figuras/apresentacao_visita.mp4" type="video/mp4">
+                Seu navegador não suporta a reprodução de vídeos.
+            </video>
+        </div>
+        <p class="media-caption">Esquerda: Estudantes em momento formativo. Direita: Demonstração prática do comportamento das abelhas nativas.</p>
+    </section>
+
+    <!-- Seção 3: I Congresso de Meliponicultura -->
+    <section class="content-card reveal reveal-right">
+        <h2>I Congresso de Meliponicultura e Educação Ambiental</h2>
+        <p>
+            O Meliponário Didático consolidou sua relevância ao sediar o I Congresso de Meliponicultura e Educação Ambiental. O evento reuniu pesquisadores, produtores rurais, educadores e comunidade para debater avanços na meliponicultura, serviços de polinização e geração de renda sustentável.
+        </p>
+        <p>
+            Durante o congresso, além das apresentações de artigos e banners científicos, os participantes participaram de feiras de trocas de experiências, degustação guiada de méis de diferentes espécies nativas e minicursos práticos ao ar livre.
+        </p>
+
+        <!-- Foto de destaque e vídeo do evento -->
+        <div class="media-grid-2">
+            <img src="../figuras/congresso.jpg" alt="Exposição de méis das abelhas sem ferrão" class="media-grid-item">
+            <img src="../figuras/meis.jpg" alt="Público participando das atividades do evento" class="media-grid-item">
+        </div>
+        <p class="media-caption">Degustação dos diferentes tipos de mel de abelhas nativas e interação dos congressistas nas oficinas do evento.</p>
+    </section>
+
+    <!-- Seção 4: Próximos Passos e Futuro -->
+    <section class="content-card reveal reveal-zoom">
+        <h2>Inovações e Expansão Futura</h2>
+        <p>
+            O projeto continua expandindo suas fronteiras tecnológicas e pedagógicas. Atualmente, novos subprojetos estão em desenvolvimento para integrar o meliponário aos cursos técnicos e de graduação do campus:
+        </p>
+        <ul class="info-list">
+            <li><strong>Monitoramento Inteligente (IoT):</strong> Instalação de sensores de temperatura, umidade e peso dentro das caixas didáticas para estudo do microclima interno das colmeias.</li>
+            <li><strong>Trilha Interpretativa dos Polinizadores:</strong> Mapeamento e plantio de espécies vegetais melíferas ao redor do campus para criar um corredor ecológico alimentício.</li>
+            <li><strong>Análise Qualitativa de Méis e Própolis:</strong> Parceria com laboratórios para caracterização das propriedades físico-químicas e medicinais dos produtos derivados da meliponicultura.</li>
+        </ul>
+    </section>
+
+</main>
+
+<!-- ══════════════ SCRIPT DE SCROLL REVEAL ══════════════ -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const reveals = document.querySelectorAll('.reveal');
+
+        const revealOptions = {
+            threshold: 0.12,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, revealOptions);
+
+        reveals.forEach(reveal => {
+            revealOnScroll.observe(reveal);
+        });
+    });
+</script>
+
+</body>
+</html>
