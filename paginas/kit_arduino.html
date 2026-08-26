@@ -289,6 +289,10 @@
                     <span class="icone">📖</span>
                     <span class="titulo-modulo">Visão Geral & Segurança</span>
                 </div>
+                <div class="caixa-modulo" onclick="selecionarModulo('o-que-e-arduino', this)">
+                    <span class="icone">🤖</span>
+                    <span class="titulo-modulo">O que é o Arduino?</span>
+                </div>
                 <div class="caixa-modulo" onclick="selecionarModulo('modulo-1', this)">
                     <span class="icone">💡</span>
                     <span class="titulo-modulo">Módulo 1: Primeiros Passos</span>
@@ -301,11 +305,15 @@
                     <span class="icone">📟</span>
                     <span class="titulo-modulo">Módulo 3: Automações e Interfaces</span>
                 </div>
+                <div class="caixa-modulo" onclick="selecionarModulo('modulo-4', this)">
+                    <span class="icone">📦</span>
+                    <span class="titulo-modulo">Módulo 4: Aplicações prátocas </span>
+                </div>
                 
             </div>
-        </section>
+    </section>
 
-<!-- PAINEL 1: VISÃO GERAL -->
+    <!-- PAINEL 1: VISÃO GERAL -->
         <section id="visao-geral" class="content-card painel-modulo ativo">
             
             <h3>Apresentação</h3>
@@ -359,7 +367,38 @@
                 <li>Servo motor;</li>
                 <li>Cabos USB.</li>
             </ul>
-        </section>
+    </section>
+
+
+    <!-- PAINEL 0: O QUE É O ARDUINO -->
+    <section id="o-que-e-arduino" class="content-card painel-modulo">
+        
+        <h3>O que é o Arduino?</h3>
+        <p>O Arduino é uma plataforma de prototipagem eletrônica de código aberto (<em>open-source</em>), projetada para tornar a criação de projetos interativos mais acessível para estudantes, artistas, hobbistas e profissionais.</p>
+        <p>Muitas vezes, quando falamos "Arduino", estamos nos referindo a duas coisas que trabalham juntas: o <strong>Hardware</strong> (a placa física) e o <strong>Software</strong> (o programa usado no computador).</p>
+
+        <!-- Espaço reservado para a Imagem Didática -->
+        <div class="img-placeholder">
+            <!-- Substitua o src pelo caminho real da sua imagem demonstrativa -->
+            <img src="../figuras/arduino.jpg" alt="Placa Arduino Uno com setas apontando para seus principais componentes" style="max-width: 70%;">
+            <p>Figura: Principais componentes da placa Arduino Uno.</p>
+        </div>
+
+        <h4 style="margin: 2rem 0 1rem 0; color: var(--cor3);">1. O Hardware (A Placa)</h4>
+        <p>A placa Arduino funciona como o "cérebro" do seu projeto. Ela possui um pequeno chip chamado <strong>microcontrolador</strong>, que é capaz de ler informações do mundo real (através de sensores) e tomar decisões para controlar outros componentes (como ligar um motor ou acender um LED).</p>
+        <ul class="info-list bullets">
+            <li><strong>Pinos de Entrada (Sensores):</strong> Permitem que o Arduino "sinta" o ambiente, como medir a temperatura, detectar luz ou saber se um botão foi pressionado.</li>
+            <li><strong>Pinos de Saída (Atuadores):</strong> Permitem que o Arduino interaja com o ambiente, emitindo sons, gerando movimento ou acendendo luzes.</li>
+        </ul>
+
+        <h4 style="margin: 2rem 0 1rem 0; color: var(--cor3);">2. O Software (A IDE)</h4>
+        <p>O hardware sozinho não faz nada sem instruções. É aqui que entra o Software (conhecido como Arduino IDE). É um programa de computador gratuito onde você escreve o código (chamado de <em>sketch</em>). Após escrever as instruções, você conecta a placa ao computador via cabo USB e transfere o código para o Arduino. A partir desse momento, a placa guardará as instruções na memória e poderá funcionar até mesmo desconectada do computador, bastando ligá-la a uma bateria ou fonte de energia.</p>
+
+        <div style="background-color: #E8F5E9; border-left: 5px solid var(--cor1); padding: 15px 20px; margin: 2rem 0; border-radius: 4px;">
+            <p style="margin-bottom: 0; color: #1b5e20;"><strong>💡 Por que o Arduino é tão popular?</strong> A grande vantagem do Arduino é a sua comunidade. Por ser um projeto de código aberto, existem milhares de tutoriais, bibliotecas gratuitas e peças (módulos) prontas no mercado, facilitando a criação de qualquer ideia, desde um termômetro caseiro até um robô autônomo.</p>
+        </div>
+
+    </section>
 
 	<!-- PAINEL: MÓDULO 1 -->
         <section id="modulo-1" class="content-card painel-modulo">
@@ -1035,17 +1074,6 @@
             </div>
         </section>
 
-<!-- PAINEL 5: MÓDULO 4 -->
-        <section id="modulo-4" class="content-card painel-modulo">
-            <h3>Módulo 4: Projetos Avançados de Automação</h3>
-            <p>Integre múltiplos sensores e atuadores para criar soluções completas aplicadas à logística e automação industrial.</p>
-            <ul class="info-list bullets">
-                <li><strong>Prática 9:</strong> Medição de Distância com Sensor Ultrassônico HC-SR04.</li>
-                <li><strong>Prática 10:</strong> Sistema Inteligente de Sinalização de Vagas de Estacionamento.</li>
-                <li><strong>Prática 11 a 15:</strong> Controle de Cancela, Alarmes e Automação de Processos.</li>
-            </ul>
-        </section>
-
 <!-- ===== PAINEL: MÓDULO 3 ==== -->
         <section id="modulo-3" class="content-card painel-modulo">
             <h3 style="margin-bottom: 1.5rem;">Módulo 3: Automações e Interfaces</h3>
@@ -1263,7 +1291,7 @@
             </div>
 
                 <h4 style="color: var(--cor3); margin-bottom: 1rem;">Conceitos Fundamentais</h4>
-                <h5 style="color: var(--cor2); margin-top: 1.5rem;">Divisor de Tensão e Estruturas Condicionais</h5>
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">Visor de mensagens e informações</h5>
             <p>O display LCD 16x2 é um visor de cristal líquido capaz de exibir até 32 caracteres distribuídos em duas linhas de 16 colunas sem depender do Monitor Serial. Para evitar o uso excessivo de pinos do Arduino, utiliza-se um módulo I²C, que converte a comunicação paralela em serial e reduz as conexões para apenas quatro fios: alimentação (VCC/GND), dados (SDA) e sincronismo (SCL). Nesse protocolo de comunicação mestre-escravo, o Arduino gerencia a transmissão dos dados com auxílio das bibliotecas Wire.h e LiquidCrystal_I2C.h, utilizando comandos específicos como lcd.setCursor() e lcd.print() para posicionar e exibir mensagens na tela de forma simples e eficiente.</p>
 
             <div class="img-placeholder">
@@ -1362,8 +1390,8 @@
             </div>
 
                 <h4 style="color: var(--cor3); margin-bottom: 1rem;">Conceitos Fundamentais</h4>
-                <h5 style="color: var(--cor2); margin-top: 1.5rem;">Divisor de Tensão e Estruturas Condicionais</h5>
-            <p>O display LCD 16x2 é um visor de cristal líquido capaz de exibir até 32 caracteres distribuídos em duas linhas de 16 colunas sem depender do Monitor Serial. Para evitar o uso excessivo de pinos do Arduino, utiliza-se um módulo I²C, que converte a comunicação paralela em serial e reduz as conexões para apenas quatro fios: alimentação (VCC/GND), dados (SDA) e sincronismo (SCL). Nesse protocolo de comunicação mestre-escravo, o Arduino gerencia a transmissão dos dados com auxílio das bibliotecas Wire.h e LiquidCrystal_I2C.h, utilizando comandos específicos como lcd.setCursor() e lcd.print() para posicionar e exibir mensagens na tela de forma simples e eficiente.</p>
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">O motor giratório</h5>
+            <p>O servo motor é um atuador eletromecânico desenvolvido para realizar movimentos angulares com elevada precisão. Diferentemente de um motor DC convencional, que gira continuamente enquanto recebe alimentação elétrica, o servo motor pode ser posicionado em um ângulo específico, normalmente entre 0° e 180°. Internamente, o servo possui um pequeno motor elétrico, um conjunto de engrenagens, um potenciômetro para medir a posição do eixo e um circuito eletrônico responsável pelo controle do movimento.</p>
 
             <div class="img-placeholder">
                     <img src="../figuras/esquema_motor.png" alt="Esquema de ligação do resistor Pull-Down" style="max-width: 50%;">
@@ -1425,9 +1453,601 @@
                                             <li>Quais são os três fios presentes em um servo motor SG90 e qual a função de cada um?</li>
                                         </ol>
                     </div>
-            </div>        
+            </div> 
+        </section>
+
+        <!-- ===== PAINEL: MÓDULO 4 ==== -->
+        <section id="modulo-4" class="content-card painel-modulo">
+            <h3 style="margin-bottom: 1.5rem;">Módulo 4: Aplicação prática</h3>
+             <!-- Estilos para o Submenu -->
+            <style>
+                .praticas-menu {
+                    display: flex;
+                    gap: 1rem;
+                    margin-bottom: 2rem;
+                    flex-wrap: wrap;
+                }
+                .pratica-card {
+                    background-color: var(--bg-light, #f4f8fa);
+                    border: 1px solid var(--border-color, #ccc);
+                    border-radius: 8px;
+                    padding: 1rem;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    font-weight: bold;
+                    color: var(--cor3, #333);
+                    flex: 1;
+                    text-align: center;
+                    min-width: 200px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                }
+                .pratica-card:hover {
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    border-color: var(--cor1, #2e7d32);
+                    transform: translateY(-2px);
+                }
+                .pratica-card.active {
+                    background-color: var(--cor1, #2e7d32);
+                    color: white;
+                    border-color: var(--cor1, #2e7d32);
+                }
+                .pratica-content {
+                    display: none;
+                    animation: fadeIn 0.4s ease;
+                }
+                .pratica-content.active {
+                    display: block;
+                }
+                .img-placeholder {
+                    text-align: center;
+                    margin: 1.5rem 0;
+                    padding: 1rem;
+                    background-color: #f9f9f9;
+                    border: 1px dashed #ccc;
+                    border-radius: 8px;
+                }
+                .img-placeholder img {
+                    max-width: 100%;
+                    border-radius: 4px;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                    margin-bottom: 0.5rem;
+                }
+                .img-placeholder p {
+                    font-size: 0.85rem;
+                    color: #666;
+                    margin: 0;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            </style>
+
+            <!-- Menu de Seleção de Práticas -->
+            <div class="praticas-menu">
+                <div class="pratica-card active" onclick="mostrarPratica('mod4-pratica9', this)">
+                    📏 Prática 9: Sonar Ultrassônico (Medição de Distância)
+                </div>
+                <div class="pratica-card" onclick="mostrarPratica('mod4-pratica10', this)">
+                    🅿️ Prática 10: Estacionamento Inteligente (Sinalização de Vagas)
+                </div>
+                <div class="pratica-card" onclick="mostrarPratica('mod4-pratica11', this)">
+                    🚧 Prática 11: Cancela Automática (Controle de Acesso)
+                </div>
+                <div class="pratica-card" onclick="mostrarPratica('mod4-pratica12', this)">
+                    💡 Prática 12: Iluminação Eficiente (Automação por Presença e Luminosidade)
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 CONTEÚDO DA PRÁTICA 9
+                 ========================================== -->
+            <div id="mod4-pratica9" class="pratica-content active">
+                <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
+                    <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 9: Sonar Ultrassônico (Medição de Distância)</h4>
+                    <p style="margin-bottom: 0;">Robôs móveis precisam identificar obstáculos, cancelas automáticas detectam a aproximação de veículos e sistemas industriais monitoram a posição de objetos em esteiras transportadoras. Uma das formas mais simples e precisas de realizar essa medição é utilizando sensores ultrassônicos. Nesta prática será utilizado o sensor HC-SR04, um dispositivo capaz de medir a distância até um objeto utilizando ondas sonoras de alta frequência, imperceptíveis ao ouvido humano.</p>
+            </div>
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🎯 Objetivos & Competências</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Compreender o princípio de funcionamento do sensor ultrassônico HC-SR04;</li>
+                            <li>Entender como ocorre a medição de distância utilizando ondas sonoras;</li>
+                            <li>Identificar a função dos pinos Trigger (Trig) e Echo;</li>
+                            <li>Ler a distância medida utilizando o Arduino;</li>
+                            <li>Exibir os valores obtidos no Monitor Serial.</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧰 Materiais Necessários</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Placa Arduino Uno e Cabo USB;</li>
+                            <li>Sensor HC-SR04.</li>
+                        </ul>
+                    </div>
+            </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Conceitos Fundamentais</h4>
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">Emissor e receptor de ultrassom</h5>
+            <p>O HC-SR04 é um sensor eletrônico desenvolvido para medir distâncias sem necessidade de contato físico com o objeto. Sua operação baseia-se na emissão de ondas ultrassônicas e na medição do tempo necessário para que essas ondas retornem após serem refletidas por um obstáculo. Esse método permite realizar medições com boa precisão em distâncias que variam, aproximadamente, entre 2 cm e 400 cm.</p>
+            <div class="img-placeholder">
+                    <img src="../figuras/pinos_ultra.png" alt="Esquema de ligação do resistor Pull-Down" style="max-width: 50%;">
+                    <p>Figura 1: Funcionamento display.</p>
+            </div>
+
+            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Esquema e Montagem do Circuito</h4>
+                <ul class="info-list bullets" style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                    <li>VCC ou 5V → 5 V do Arduino;</li>
+                    <li>GND → GND;</li>
+                    <li>SIG → pino digital 7.</li>
+            </ul>
             
+            <div class="img-placeholder">
+                    <img src="../figuras/pratica_9.png" alt="Montagem do circuito no Protoboard" style="max-width: 50%;">
+            </div>
+
+            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Código da Prática</h4>
+                <div style="background: #282c34; color: #abb2bf; padding: 1.2rem; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; overflow-x: auto;">
+                    <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">sensor</span> = <span style="color: #d19a66;">7</span>;<br><br>
+                    <span style="color: #c678dd;">long</span> <span style="color: #e06c75;">duracao</span>;<br>
+                    <span style="color: #c678dd;">float</span> <span style="color: #e06c75;">distancia</span>;<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">setup</span>() {<br><br>
+                    &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">begin</span>(<span style="color: #d19a66;">9600</span>);<br><br>
+                    }<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">loop</span>() {<br><br>
+                    &nbsp;&nbsp;<span style="color: #5c6370; font-style: italic;">// Configura o pino como saida</span><br>
+                    &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">OUTPUT</span>);<br><br>
+                    &nbsp;&nbsp;<span style="color: #5c6370; font-style: italic;">// Garante nivel baixo antes do pulso</span><br>
+                    &nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">LOW</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #61afef;">delayMicroseconds</span>(<span style="color: #d19a66;">2</span>);<br><br>
+                    &nbsp;&nbsp;<span style="color: #5c6370; font-style: italic;">// Envia o pulso de 5 µs</span><br>
+                    &nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">HIGH</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #61afef;">delayMicroseconds</span>(<span style="color: #d19a66;">5</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">LOW</span>);<br><br>
+                    &nbsp;&nbsp;<span style="color: #5c6370; font-style: italic;">// Agora o mesmo pino passa a ser entrada</span><br>
+                    &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">INPUT</span>);<br><br>
+                    &nbsp;&nbsp;<span style="color: #5c6370; font-style: italic;">// Mede a duracao do eco</span><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">duracao</span> = <span style="color: #61afef;">pulseIn</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">HIGH</span>);<br><br>
+                    &nbsp;&nbsp;<span style="color: #5c6370; font-style: italic;">// Calcula a distancia em centimetros</span><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">distancia</span> = <span style="color: #e06c75;">duracao</span> * <span style="color: #d19a66;">0.0343</span> / <span style="color: #d19a66;">2</span>;<br><br>
+                    &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Distancia: "</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">print</span>(<span style="color: #e06c75;">distancia</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">println</span>(<span style="color: #98c379;">" cm"</span>);<br><br>
+                    &nbsp;&nbsp;<span style="color: #61afef;">delay</span>(<span style="color: #d19a66;">500</span>);<br><br>
+                    }
+            </div>
+
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+                    <div style="background-color: #E8F5E9; border: 1px solid var(--cor2); padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧪 Experimentando o código</h5>
+                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Aproxime lentamente um objeto do sensor e observe como a distância varia.</li>
+                            <li>Afaste o objeto gradualmente e acompanhe as novas leituras.</li>
+                            <li>Experimente utilizar diferentes objetos, como um livro, uma caixa ou a própria mão.</li>
+                            <li>Modifique o tempo do comando delay() para 100 ms e observe como a atualização das medidas se torna mais rápida.</li>
+                            <li>Tente medir a distância até diferentes superfícies e compare os resultados obtidos.</li>
+                        </ol>
+                    </div>
+
+                    <div style="background-color: #FFF8E1; border: 1px solid #FFE082; padding: 1.2rem; border-radius: 8px;">
+                                            <h5 style="color: #B78103; margin-bottom: 0.8rem; font-size: 1.05rem;">🏆 Desafio Prático</h5>
+                                            <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">Modifique o programa para que o Arduino informe, por meio do Monitor Serial, em qual das seguintes situações o objeto se encontra: muito próximo (até 10 cm); próximo (entre 10 cm e 30 cm); distante (acima de 30 cm). Utilize estruturas condicionais (if e else) para exibir uma mensagem diferente para cada situação.</p>
+                                        </div>
+                                    </div>
+
+                                    <h4 style="color: var(--cor3); margin-bottom: 1rem;">❓ Questões de Fixação</h4>
+                                    <div style="background: var(--bg-light); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                                            <li>Qual é o princípio de funcionamento do sensor ultrassônico?</li>
+                                            <li>O que representa o pulso enviado pelo pino de sinal do sensor?</li>
+                                            <li>Qual é a função da instrução pulseIn()?</li>
+                                            <li>Por que a distância calculada é dividida por dois?</li>
+                                            <li>Qual é a função do Monitor Serial nesta prática?</li>
+                                        </ol>
+                    </div>
+            </div> 
+
+
+            <!-- ==========================================
+                 CONTEÚDO DA PRÁTICA 10
+                 ========================================== -->
+            <div id="mod4-pratica10" class="pratica-content active">
+                <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
+                    <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 10: Estacionamento Inteligente (sinalização de vagas)</h4>
+                    <p style="margin-bottom: 0;">Em estacionamentos de shoppings, aeroportos, universidades e centros logísticos, é comum encontrar sistemas luminosos que indicam quais vagas estão livres e quais estão ocupadas. Esses sistemas auxiliam os motoristas na localização de vagas disponíveis, reduzem o tempo de procura e contribuem para um melhor fluxo de veículos. Nesta prática será desenvolvido um sistema simplificado de sinalização de vagas utilizando um sensor ultrassônico e dois LEDs.</p>
+            </div>
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🎯 Objetivos & Competências</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Integrar sensores e atuadores em um único projeto;</li>
+                            <li>Utilizar o sensor ultrassônico para detectar a presença de um veículo;</li>
+                            <li>Controlar LEDs por meio de estruturas condicionais;</li>
+                            <li>Simular o funcionamento de um sistema inteligente de sinalização de vagas;</li>
+                            <li>Compreender uma aplicação prática da automação em estacionamentos.</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧰 Materiais Necessários</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Arduino Uno;</li>
+                            <li>Sensor HC-SR04;</li>
+                            <li>LED verde;</li>
+                            <li>LED vermelho;</li>
+                            <li>2x resistores de 220 Ω;</li>
+                            <li>Cabos jumper;</li>
+                            <li>Protoboard;</li>
+                            <li>Cabo USB.</li>
+                        </ul>
+                    </div>
+            </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Conceitos Fundamentais</h4>
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">Sinalizador de vagas</h5>
+            <p>O Arduino realiza leituras contínuas da distância medida pelo sensor ultrassônico. Quando um objeto é detectado a uma distância inferior ao limite estabelecido no programa, o sistema interpreta que existe um veículo ocupando a vaga. Nesse caso, o LED vermelho é aceso e o LED verde é apagado. Quando nenhum objeto é detectado dentro da distância configurada, o LED verde permanece aceso, indicando que a vaga está disponível para estacionamento.</p>
+            <div class="img-placeholder">
+                    <img src="../figuras/esquema_func.png" alt="Esquema de ligação do resistor Pull-Down" style="max-width: 50%;">
+                    <p>Figura 1: Funcionamento display.</p>
+            </div>
+
+            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Esquema e Montagem do Circuito</h4>
+                <ul class="info-list bullets" style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                    <li>VCC ou 5V → 5 V do Arduino;</li>
+                    <li>GND → GND;</li>
+                    <li>SIG → pino digital 7;</li>
+                    <li>LED Verde → pino digital 8;</li>
+                    <li>LED Vermelho → pino digital 9;</li>
+                    <li>Cátodos → resistor 220 Ω.</li>
+            </ul>
+            
+            <div class="img-placeholder">
+                    <img src="../figuras/pratica_10.png" alt="Montagem do circuito no Protoboard" style="max-width: 50%;">
+            </div>
+
+        <h4 style="color: var(--cor3); margin-bottom: 1rem;">Código da Prática</h4>
+            <div style="background: #282c34; color: #abb2bf; padding: 1.2rem; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; overflow-x: auto;">
+                <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">sensor</span> = <span style="color: #d19a66;">7</span>;<br><br>
+                <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">ledVerde</span> = <span style="color: #d19a66;">8</span>;<br>
+                <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">ledVermelho</span> = <span style="color: #d19a66;">9</span>;<br><br>
+                <span style="color: #c678dd;">long</span> <span style="color: #e06c75;">duracao</span>;<br>
+                <span style="color: #c678dd;">float</span> <span style="color: #e06c75;">distancia</span>;<br><br>
+                <span style="color: #c678dd;">void</span> <span style="color: #61afef;">setup</span>() {<br><br>
+                &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">OUTPUT</span>);<br>
+                &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">OUTPUT</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">begin</span>(<span style="color: #d19a66;">9600</span>);<br><br>
+                }<br><br>
+                <span style="color: #c678dd;">void</span> <span style="color: #61afef;">loop</span>() {<br><br>
+                &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">OUTPUT</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">LOW</span>);<br>
+                &nbsp;&nbsp;<span style="color: #61afef;">delayMicroseconds</span>(<span style="color: #d19a66;">2</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">HIGH</span>);<br>
+                &nbsp;&nbsp;<span style="color: #61afef;">delayMicroseconds</span>(<span style="color: #d19a66;">5</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">LOW</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">INPUT</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">duracao</span> = <span style="color: #61afef;">pulseIn</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">HIGH</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">distancia</span> = <span style="color: #e06c75;">duracao</span> * <span style="color: #d19a66;">0.0343</span> / <span style="color: #d19a66;">2</span>;<br><br>
+                &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Distancia: "</span>);<br>
+                &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">print</span>(<span style="color: #e06c75;">distancia</span>);<br>
+                &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">println</span>(<span style="color: #98c379;">" cm"</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #c678dd;">if</span> (<span style="color: #e06c75;">distancia</span> &lt;= <span style="color: #d19a66;">20</span>) {<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">LOW</span>);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">HIGH</span>);<br><br>
+                &nbsp;&nbsp;}<br><br>
+                &nbsp;&nbsp;<span style="color: #c678dd;">else</span> {<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">HIGH</span>);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">LOW</span>);<br><br>
+                &nbsp;&nbsp;}<br><br>
+                &nbsp;&nbsp;<span style="color: #61afef;">delay</span>(<span style="color: #d19a66;">500</span>);<br><br>
+                }
+        </div>
+
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+                    <div style="background-color: #E8F5E9; border: 1px solid var(--cor2); padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧪 Experimentando o código</h5>
+                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Altere a distância limite de 20 cm para 15 cm.</li>
+                            <li>Altere a distância limite para 30 cm.</li>
+                            <li>Observe como essas modificações influenciam o momento em que os LEDs mudam de estado.</li>
+                            <li>Troque as funções dos LEDs para que o verde indique vaga ocupada e o vermelho indique vaga livre.</li>
+                            <li>Utilize o Monitor Serial para acompanhar os valores medidos durante os testes.</li>
+                        </ol>
+                    </div>
+
+                    <div style="background-color: #FFF8E1; border: 1px solid #FFE082; padding: 1.2rem; border-radius: 8px;">
+                                            <h5 style="color: #B78103; margin-bottom: 0.8rem; font-size: 1.05rem;">🏆 Desafio Prático</h5>
+                                            <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">Modifique o programa para criar um sistema com três estados de ocupação. Utilize três LEDs para representar as seguintes situações: LED verde: vaga livre (distância maior que 40 cm); LED amarelo: veículo se aproximando (distância entre 20 cm e 40 cm); LED vermelho: vaga ocupada (distância menor ou igual a 20 cm). Para resolver esse desafio, utilize a estrutura if, else if e else.</p>
+                                        </div>
+                                    </div>
+
+                                    <h4 style="color: var(--cor3); margin-bottom: 1rem;">❓ Questões de Fixação</h4>
+                                    <div style="background: var(--bg-light); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                                            <li>Qual é a função do sensor ultrassônico neste sistema?</li>
+                                            <li>Qual é a função dos LEDs?</li>
+                                            <li>Como o Arduino decide qual LED deverá permanecer aceso?</li>
+                                            <li>Qual estrutura de programação foi utilizada para tomar essa decisão?</li>
+                                            <li>O que aconteceria se a distância limite fosse reduzida para 10 cm?</li>
+                                        </ol>
+                    </div>
+            </div>
+
+            <!-- ==========================================
+                 CONTEÚDO DA PRÁTICA 11
+                 ========================================== -->
+            <div id="mod4-pratica11" class="pratica-content active">
+                <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
+                    <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 11: Cancela Automática (Controle de Acesso)</h4>
+                    <p style="margin-bottom: 0;">O controle de acesso de veículos é uma atividade presente em diversos ambientes, como estacionamentos, condomínios, universidades, centros de distribuição e indústrias. Esses sistemas normalmente utilizam sensores para detectar a aproximação de um veículo e atuadores responsáveis por movimentar a cancela. Nesta prática será desenvolvido um sistema simplificado de controle de acesso utilizando um sensor ultrassônico para detectar a presença de um veículo e um servo motor para simular a abertura e o fechamento da cancela.</p>
+            </div>
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🎯 Objetivos & Competências</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Integrar sensores e atuadores em um único sistema automatizado;</li>
+                            <li>Utilizar um sensor ultrassônico para detectar a aproximação de veículos;</li>
+                            <li>Controlar um servo motor para simular a abertura e o fechamento de uma cancela;</li>
+                            <li>Aplicar estruturas condicionais na tomada de decisões;</li>
+                            <li>Compreender o funcionamento básico de sistemas de controle de acesso utilizados em centros logísticos e estacionamentos.</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧰 Materiais Necessários</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Arduino Uno;</li>
+                            <li>Sensor HC-SR04;</li>
+                            <li>LED verde;</li>
+                            <li>Servo motor SG90;</li>
+                            <li>LED vermelho;</li>
+                            <li>2x resistores de 220 Ω;</li>
+                            <li>Cabos jumper;</li>
+                            <li>Protoboard;</li>
+                            <li>Cabo USB.</li>
+                        </ul>
+                    </div>
+            </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Conceitos Fundamentais</h4>
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">Sensor de liberação de passagem</h5>
+            <p>Inicialmente, um sensor detecta a aproximação de um veículo. Em seguida, um controlador eletrônico analisa essa informação e decide se a passagem deve ou não ser liberada. Caso o acesso seja permitido, um atuador movimenta a cancela, liberando a passagem do veículo. Após a travessia, a cancela retorna automaticamente à posição inicial, preparando o sistema para uma nova operação.</p>
+            <div class="img-placeholder">
+                    <img src="../figuras/funcionamento_cancela.png" alt="Esquema de ligação do resistor Pull-Down" style="max-width: 50%;">
+                    <p>Figura 1: Funcionamento display.</p>
+            </div>
+
+            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Esquema e Montagem do Circuito</h4>
+                <ul class="info-list bullets" style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                    <li>VCC ou 5V → 5 V do Arduino;</li>
+                    <li>GND → GND;</li>
+                    <li>SIG → pino digital 7;</li>
+                    <li>LED Verde → pino digital 8;</li>
+                    <li>Servo Motor → pino digital 9</li>
+                    <li>LED Vermelho → pino digital 10;</li>
+                    <li>Cátodos → resistor 220 Ω.</li>
+            </ul>
+            
+            <div class="img-placeholder">
+                    <img src="../figuras/pratica_11.png" alt="Montagem do circuito no Protoboard" style="max-width: 50%;">
+            </div>
+
+        <h4 style="color: var(--cor3); margin-bottom: 1rem;">Código da Prática</h4>
+        <div style="background: #282c34; color: #abb2bf; padding: 1.2rem; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; overflow-x: auto;">
+            <span style="color: #c678dd;">#include</span> <span style="color: #98c379;">&lt;Servo.h&gt;</span><br><br>
+            <span style="color: #e5c07b;">Servo</span> <span style="color: #e06c75;">cancela</span>;<br><br>
+            <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">sensor</span> = <span style="color: #d19a66;">7</span>;<br><br>
+            <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">ledVerde</span> = <span style="color: #d19a66;">8</span>;<br>
+            <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">ledVermelho</span> = <span style="color: #d19a66;">10</span>;<br><br>
+            <span style="color: #c678dd;">long</span> <span style="color: #e06c75;">duracao</span>;<br>
+            <span style="color: #c678dd;">float</span> <span style="color: #e06c75;">distancia</span>;<br><br>
+            <span style="color: #c678dd;">void</span> <span style="color: #61afef;">setup</span>() {<br><br>
+            &nbsp;&nbsp;<span style="color: #e06c75;">cancela</span>.<span style="color: #61afef;">attach</span>(<span style="color: #d19a66;">9</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">OUTPUT</span>);<br>
+            &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">OUTPUT</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">HIGH</span>);<br>
+            &nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">LOW</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #e06c75;">cancela</span>.<span style="color: #61afef;">write</span>(<span style="color: #d19a66;">0</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">begin</span>(<span style="color: #d19a66;">9600</span>);<br><br>
+            }<br><br>
+            <span style="color: #c678dd;">void</span> <span style="color: #61afef;">loop</span>() {<br><br>
+            &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">OUTPUT</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">LOW</span>);<br>
+            &nbsp;&nbsp;<span style="color: #61afef;">delayMicroseconds</span>(<span style="color: #d19a66;">2</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">HIGH</span>);<br>
+            &nbsp;&nbsp;<span style="color: #61afef;">delayMicroseconds</span>(<span style="color: #d19a66;">5</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">LOW</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">INPUT</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #e06c75;">duracao</span> = <span style="color: #61afef;">pulseIn</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">HIGH</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #e06c75;">distancia</span> = <span style="color: #e06c75;">duracao</span> * <span style="color: #d19a66;">0.0343</span> / <span style="color: #d19a66;">2</span>;<br><br>
+            &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Distancia: "</span>);<br>
+            &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">print</span>(<span style="color: #e06c75;">distancia</span>);<br>
+            &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">println</span>(<span style="color: #98c379;">" cm"</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #c678dd;">if</span> (<span style="color: #e06c75;">distancia</span> &lt;= <span style="color: #d19a66;">20</span>) {<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">LOW</span>);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">HIGH</span>);<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">cancela</span>.<span style="color: #61afef;">write</span>(<span style="color: #d19a66;">180</span>);<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">delay</span>(<span style="color: #d19a66;">3000</span>);<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">cancela</span>.<span style="color: #61afef;">write</span>(<span style="color: #d19a66;">0</span>);<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">HIGH</span>);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">LOW</span>);<br><br>
+            &nbsp;&nbsp;}<br><br>
+            &nbsp;&nbsp;<span style="color: #61afef;">delay</span>(<span style="color: #d19a66;">300</span>);<br><br>
+            }
+        </div>
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+                    <div style="background-color: #E8F5E9; border: 1px solid var(--cor2); padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧪 Experimentando o código</h5>
+                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Altere a distância de detecção de 20 cm para 10 cm e observe quando a cancela passa a abrir.</li>
+                            <li>Modifique a distância para 30 cm e compare o comportamento do sistema.</li>
+                            <li>Altere o tempo de abertura da cancela, modificando o valor do comando delay(3000).</li>
+                            <li>Observe como o servo motor responde quando um objeto é aproximado rapidamente do sensor.</li>
+                            <li>Utilize o Monitor Serial para acompanhar os valores de distância durante os testes.</li>
+                        </ol>
+                    </div>
+
+                    <div style="background-color: #FFF8E1; border: 1px solid #FFE082; padding: 1.2rem; border-radius: 8px;">
+                                            <h5 style="color: #B78103; margin-bottom: 0.8rem; font-size: 1.05rem;">🏆 Desafio Prático</h5>
+                                            <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">Modifique o programa para que a cancela permaneça aberta enquanto o veículo estiver sendo detectado pelo sensor ultrassônico. A cancela deverá fechar apenas quando o veículo se afastar e a distância medida voltar a ser superior ao limite estabelecido. Esse comportamento é semelhante ao utilizado em cancelas automáticas reais, aumentando a segurança do sistema e evitando o fechamento durante a passagem do veículo.</p>
+                                        </div>
+                                    </div>
+
+                                    <h4 style="color: var(--cor3); margin-bottom: 1rem;">❓ Questões de Fixação</h4>
+                                    <div style="background: var(--bg-light); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                                            <li>Qual componente é responsável por detectar a aproximação do veículo?</li>
+                                            <li>Qual componente simula o movimento da cancela?</li>
+                                            <li>Qual é a função dos LEDs verde e vermelho neste projeto?</li>
+                                            <li>O que acontece quando a distância medida pelo sensor é menor que 20 cm?</li>
+                                            <li>Qual estrutura condicional foi utilizada para controlar o funcionamento da cancela?</li>
+                                        </ol>
+                    </div>
+            </div>
+
+            <!-- ==========================================
+                 CONTEÚDO DA PRÁTICA 12
+                 ========================================== -->
+            <div id="mod4-pratica12" class="pratica-content active">
+                <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
+                    <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 12: Iluminação eficiente (automação por presença e luminosidade)</h4>
+                    <p style="margin-bottom: 0;">A iluminação representa uma parcela significativa do consumo de energia elétrica em galpões, armazéns e centros de distribuição. Para reduzir esse consumo, muitos sistemas modernos utilizam sensores capazes de monitorar continuamente a luminosidade do ambiente, ajustando automaticamente a intensidade das luminárias de acordo com a necessidade.Nesta prática será desenvolvido um sistema simplificado de iluminação inteligente utilizando um sensor LDR e um LED controlado por PWM. Conforme a luminosidade do ambiente varia, o brilho do LED será ajustado automaticamente pelo Arduino.</p>
+            </div>
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🎯 Objetivos & Competências</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Desenvolver um sistema simplificado de iluminação inteligente integrado ao Arduino Uno;</li>
+                            <li>Monitorar a luminosidade de um ambiente realizando a leitura analógica de um sensor LDR;</li>
+                            <li>Detectar a presença e a movimentação de pessoas utilizando a leitura digital de um sensor infravermelho passivo (PIR);</li>
+                            <li>Ajustar e controlar a intensidade luminosa de um LED utilizando o conceito de Modulação por Largura de Pulso (PWM);</li>
+                            <li>Aplicar o operador lógico "E" (&&) em estruturas condicionais para que a iluminação seja acionada apenas quando o ambiente estiver escuro e houver movimento simultaneamente.</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧰 Materiais Necessários</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Arduino Uno;</li>
+                            <li>Sensor HC-SR04;</li>
+                            <li>Sensor LDR;</li>
+                            <li>Servo motor SG90;</li>
+                            <li>LED;</li>
+                            <li>Resistor de 220 Ω;</li>
+                            <li>Resistor de 10 kΩ;</li>
+                            <li>Cabos jumper;</li>
+                            <li>Protoboard;</li>
+                            <li>Cabo USB.</li>
+                        </ul>
+                    </div>
+            </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Conceitos Fundamentais</h4>
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">Sensor de detecção de movimento</h5>
+            <p>Quando uma pessoa atravessa sua área de detecção, ocorre uma mudança na radiação infravermelha recebida pelo sensor, que envia um sinal digital ao Arduino indicando a presença de movimento. Diferentemente do sensor ultrassônico, o PIR não mede distância. Sua função é apenas informar se houve ou não movimentação dentro de sua área de alcance.</p>
+            <div class="img-placeholder">
+                    <img src="../figuras/sensor_presenca.png" alt="Esquema de ligação do resistor Pull-Down" style="max-width: 50%;">
+                    <p>Figura 1: Funcionamento display.</p>
+            </div>
+
+            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Esquema e Montagem do Circuito</h4>
+                <ul class="info-list bullets" style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                    <li>(PIR) VCC ou 5V → 5 V do Arduino;</li>
+                    <li>(PIR) GND → GND;</li>
+                    <li>LDR → A0</li>
+                    <li>(PIR) OUT → pino digital 7</li>
+                    <li>Anôdo → pino PWM 9</li>
+                    <li>Cátodo → GND via resistor 220Ω</li>
+                    <li></li>
+            </ul>
+            
+            <div class="img-placeholder">
+                    <img src="../figuras/pratica_12.png" alt="Montagem do circuito no Protoboard" style="max-width: 50%;">
+            </div>
+
+        <h4 style="color: var(--cor3); margin-bottom: 1rem;">Código da Prática</h4>
+            <div style="background: #282c34; color: #abb2bf; padding: 1.2rem; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; overflow-x: auto;">
+            <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">LDR</span> = <span style="color: #d19a66;">A0</span>;<br>
+            <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">PIR</span> = <span style="color: #d19a66;">7</span>;<br>
+            <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">LED</span> = <span style="color: #d19a66;">9</span>;<br><br>
+            <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">luminosidade</span>;<br>
+            <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">brilho</span>;<br>
+            <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">movimento</span>;<br><br>
+            <span style="color: #c678dd;">void</span> <span style="color: #61afef;">setup</span>() {<br><br>
+            &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">begin</span>(<span style="color: #d19a66;">9600</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">PIR</span>, <span style="color: #d19a66;">INPUT</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">LED</span>, <span style="color: #d19a66;">OUTPUT</span>);<br><br>
+            }<br><br>
+            <span style="color: #c678dd;">void</span> <span style="color: #61afef;">loop</span>() {<br><br>
+            &nbsp;&nbsp;<span style="color: #e06c75;">luminosidade</span> = <span style="color: #61afef;">analogRead</span>(<span style="color: #e06c75;">LDR</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #e06c75;">movimento</span> = <span style="color: #61afef;">digitalRead</span>(<span style="color: #e06c75;">PIR</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #e06c75;">brilho</span> = <span style="color: #61afef;">map</span>(<span style="color: #e06c75;">luminosidade</span>, <span style="color: #d19a66;">0</span>, <span style="color: #d19a66;">1023</span>, <span style="color: #d19a66;">255</span>, <span style="color: #d19a66;">0</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #c678dd;">if</span> (<span style="color: #e06c75;">luminosidade</span> &lt; <span style="color: #d19a66;">500</span> &amp;&amp; <span style="color: #e06c75;">movimento</span> == <span style="color: #d19a66;">HIGH</span>) {<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">analogWrite</span>(<span style="color: #e06c75;">LED</span>, <span style="color: #e06c75;">brilho</span>);<br><br>
+            &nbsp;&nbsp;}<br><br>
+            &nbsp;&nbsp;<span style="color: #c678dd;">else</span> {<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">analogWrite</span>(<span style="color: #e06c75;">LED</span>, <span style="color: #d19a66;">0</span>);<br><br>
+            &nbsp;&nbsp;}<br><br>
+            &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Luminosidade: "</span>);<br>
+            &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">print</span>(<span style="color: #e06c75;">luminosidade</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">" | Movimento: "</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #c678dd;">if</span> (<span style="color: #e06c75;">movimento</span> == <span style="color: #d19a66;">HIGH</span>)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"SIM"</span>);<br>
+            &nbsp;&nbsp;<span style="color: #c678dd;">else</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"NAO"</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">" | Brilho: "</span>);<br>
+            &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">println</span>(<span style="color: #e06c75;">brilho</span>);<br><br>
+            &nbsp;&nbsp;<span style="color: #61afef;">delay</span>(<span style="color: #d19a66;">200</span>);<br><br>
+            }
+        </div>
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+                    <div style="background-color: #E8F5E9; border: 1px solid var(--cor2); padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧪 Experimentando o código</h5>
+                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Ilumine o sensor LDR e observe que o LED permanece apagado, mesmo movimentando a mão em frente ao sensor PIR.</li>
+                            <li>Cubra o sensor LDR para simular um ambiente escuro e, em seguida, movimente a mão em frente ao sensor PIR.</li>
+                            <li>Altere o valor limite da luminosidade (500) e observe como isso modifica o momento em que a iluminação é acionada.</li>
+                            <li>Modifique a intensidade máxima do LED alterando os valores utilizados na função map().</li>
+                            <li>Utilize o Monitor Serial para acompanhar simultaneamente os valores fornecidos pelos dois sensores.</li>
+                        </ol>
+                    </div>
+
+                    <div style="background-color: #FFF8E1; border: 1px solid #FFE082; padding: 1.2rem; border-radius: 8px;">
+                                            <h5 style="color: #B78103; margin-bottom: 0.8rem; font-size: 1.05rem;">🏆 Desafio Prático</h5>
+                                            <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">Modifique o programa para que o LED permaneça aceso durante 10 segundos após a última movimentação detectada pelo sensor PIR. Caso um novo movimento seja identificado durante esse intervalo, a contagem deverá ser reiniciada. Esse comportamento é amplamente utilizado em corredores, estacionamentos, banheiros, almoxarifados e centros de distribuição, proporcionando maior conforto aos usuários e reduzindo o consumo de energia.</p>
+                                        </div>
+                                    </div>
+
+                                    <h4 style="color: var(--cor3); margin-bottom: 1rem;">❓ Questões de Fixação</h4>
+                                    <div style="background: var(--bg-light); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                                            <li>Qual é a função do sensor LDR neste projeto?</li>
+                                            <li>Qual é a função do sensor PIR?</li>
+                                            <li>Em quais situações o LED permanecerá apagado?</li>
+                                            <li>Qual operador lógico foi utilizado para combinar as duas condições do programa?</li>
+                                        </ol>
+                    </div>
+            </div>
+
+        
+        </section>
+        
     </main>
+
+
+
+
+
+
+
 
     <!-- SCRIPT DE INTERATIVIDADE -->
     <script>
