@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Óculos VR - Lab. Logística IFES</title>
+    <title>Impressora - Lab. Logística IFES</title>
     <style>
         :root {
             /* Cores importadas do Index Original */
@@ -109,11 +109,11 @@
             max-width: 1200px;
         }
 
-        .header-section {
+	.header-section {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.5rem;
+            flex-direction: column; /* Força os elementos a ficarem um embaixo do outro */
+            align-items: flex-start; /* Alinha todos os elementos à esquerda */
+            gap: 0.5rem; /* Adiciona um respiro de espaço entre o título e o texto */
             margin-bottom: 2rem;
             padding-bottom: 1rem;
             border-bottom: 3px solid var(--cor1);
@@ -247,7 +247,7 @@
             height: auto;    /* Mantém a proporção da imagem */
             margin-bottom: 15px; /* Adiciona um respiro entre a logo e o título */
             display: block;
-        } 
+        }
 
     </style>
 </head>
@@ -266,10 +266,10 @@
             <li><a href="../index.html">🏠 Início / Visão Geral</a></li>
 
             <div class="nav-category">Equipamentos e Hardware</div>
-            <li><a href="impressora.html">🖨️ Impressora</a></li>
+            <li><a href="impressora.html" class="active">🖨️ Impressora</a></li>
             <li><a href="impressora_3d.html">🖨️ Impressora 3D</a></li>
             <li><a href="lousa_interativa.html">📺 Lousa Interativa</a></li>
-            <li><a href="oculos_vr.html" class="active">🥽 Óculos VR</a></li>
+            <li><a href="oculos_vr.html">🥽 Óculos VR</a></li>
             <li><a href="kit_lego.html">🧩 Kit LEGO</a></li>
             <li><a href="kit_arduino.html">⚡ Kit Arduino</a></li>
             
@@ -285,42 +285,47 @@
     <main class="main-content">
         
         <div class="header-section">
-            <h1>Óculos de Realidade Aumentada <span class="badge operacional">OPERACIONAL</span></h1>
-            <span style="color: var(--text-muted);">Categoria: Equipamento de Realidade Virtual</span>
+            <h1>Impressora Multifuncional Brother MFC-8952DW <span class="badge operacional">OPERACIONAL</span></h1>
+            <span style="color: var(--text-muted);">Categoria: Impressora multifuncional monocromática a laser para impressão, cópia, digitalização e fax</span>
         </div>
 
         <section class="content-card">
             <h3>Identificação Patrimonial</h3>
             <table>
                 <tbody>
-                    <tr><th>Código Interno</th><td>OVR001</td></tr>
-                    <tr><th>Endereço Físico</th><td>ARMB2</td></tr>
-                    <tr><th>Fornecedor</th><td>Meta</td></tr>
+                    <tr><th>Código Interno</th><td>IMP001</td></tr>
+                    <tr><th>Endereço Físico</th><td>MPC004</td></tr>
+                    <tr><th>Fornecedor</th><td>Brother</td></tr>
                 </tbody>
             </table>
         </section>
 
         <section class="content-card">
             <h3>1. Descrição e Finalidade</h3>
-            <p>O Meta Quest 3S é um equipamento de Realidade Virtual (VR) utilizado para proporcionar experiências imersivas em ambientes tridimensionais. No Laboratório de Logística, o equipamento é empregado em atividades de ensino, pesquisa e extensão, permitindo a simulação de operações logísticas, ambientes industriais, armazéns, processos produtivos e treinamentos operacionais, proporcionando maior interação entre teoria e prática.</p>
+            <p>A Brother MFC-8952DW é uma impressora multifuncional monocromática a laser destinada à impressão, cópia, digitalização e transmissão de documentos. O equipamento permite o processamento e a reprodução de documentos em diferentes formatos, contando com recursos de impressão frente e verso automática, alimentação automática de documentos e conectividade em rede. No Laboratório de Logística, pode ser empregado na impressão de relatórios, formulários, etiquetas, materiais didáticos e demais documentos relacionados às atividades de ensino, pesquisa, extensão e gestão do laboratório.</p>
             
-            <img src="../figuras/meta_quest.jpeg" alt="Foto do Meta Quest 3S" class="equipamento-img">
+            <img src="../figuras/impressora_b.jpeg" alt="Foto da Impressora Multifuncional Brother MFC-8952DW" class="equipamento-img">
         </section>
 
         <section class="content-card">
             <h3>2. Especificações Técnicas</h3>
             <table>
                 <tbody>
-                    <tr><th>Marca / Modelo</th><td>Meta/Quest 3S</td></tr>
-                    <tr><th>Dimensões (A×L×P)</th><td>24,79 x 21,89 x 11,71 cm</td></tr>
-                    <tr><th>Peso</th><td>514 g</td></tr>
-                    <tr><th>Alimentação Elétrica</th><td>Bateria interna recarregável via USB-C</td></tr>
-                    <tr><th>Conectividade</th><td>Wi-Fi 6E, Bluetooth 5.2, USB-C</td></tr>
-                    <tr><th>Armazenamento</th><td>128 ou 256 Gb</td></tr>
-                    <tr><th>Acessórios Inclusos</th><td>2 controladores (Touch plus controllers)</td></tr>
-                    <tr><th>Sensores</th><td>Rastreamento inside-out por múltiplas câmeras</td></tr>
-                    <tr><th>Áudio</th><td>Alto-falante estéreo integrado</td></tr>
-                    <tr><th>Microfone</th><td>Integrado</td></tr>
+                    <tr><th>Marca / Modelo</th><td>Brother / MFC-8952DW</td></tr>
+                    <tr><th>Tipo</th><td>Impressora multifuncional monocromática a laser</td></tr>
+                    <tr><th>Tecnologia de impressão</th><td>Eletrofotográfica a laser</td></tr>
+                    <tr><th>Funções</th><td>Impressão, cópia, digitalização e fax</td></tr>
+                    <tr><th>Display</th><td>Tela LCD colorida, widescreen, sensível ao toque de 5"</td></tr>
+                    <tr><th>Memória</th><td>128 MB (padrão), expansível até 256 MB via DDR2 SO-DIMM</td></tr>
+                    <tr><th>Formatos de papel</th><td>A4, Carta, B5, A5, A5 (borda longa), B6, A6, Executivo, Ofício e Fólio</td></tr>
+                    <tr><th>Gramatura da bandeja principal</th><td>60 a 105 g/m²</td></tr>
+                    <tr><th>Gramatura da bandeja multiuso</th><td>60 a 163 g/m²</td></tr>
+                    <tr><th>Cópia</th><td>Até 99 cópias; ampliação/redução de 25% a 400%</td></tr>
+                    <tr><th>Impressão direta</th><td>PDF, JPEG, TIFF, XPS e PRN</td></tr>
+                    <tr><th>Dimensões (L × A × P)</th><td>491 × 477 × 415 mm</td></tr>
+                    <tr><th>Peso</th><td>Aproximadamente 17,0 kg (com consumíveis)</td></tr>
+                    <tr><th>Alimentação elétrica</th><td>110–120 V CA, 50/60 Hz</td></tr>
+                    <tr><th>Consumo máximo</th><td>Aproximadamente 1200 W</td></tr>
                 </tbody>
             </table>
         </section>
@@ -330,85 +335,68 @@
             
             <p class="bold-field">Checklist pré-uso:</p>
             <ul class="info-list bullets">
-                <li>Conferir nível de bateria do headset;</li>
-                <li>Conferir se os controles possuem pilhas instaladas;</li>
-                <li>Verificar limpeza das lentes;</li>
-                <li>Garantir espaço livre para movimentação do usuário;</li>
-                <li>Ligar o display interativo caso seja necessária a projeção da imagem;</li>
-                <li>Ajustar corretamente a cinta de cabeça;</li>
-                <li>Ligar controles.</li>
+                <li>Verificar se o cabo de alimentação está conectado e se o equipamento está ligado à rede elétrica;</li>
+                <li>Verificar a disponibilidade de papel e se a bandeja está corretamente posicionada;</li>
+                <li>Confirmar a disponibilidade de toner e verificar se não há mensagens de erro no painel do equipamento;</li>
+                <li>Verificar se o documento ou arquivo a ser impresso está corretamente configurado.</li>
             </ul>
 
             <p class="bold-field">Cuidados:</p>
             <ul class="info-list bullets">
-                <li>Nunca expor as lentes diretamente à luz solar;</li>
-                <li>Não utilizar com lentes sujas;</li>
-                <li>Evitar impactos e quedas;</li>
-                <li>Guardar sempre no suporte próprio;</li>
-                <li>Limpar apenas com material adequado;</li>
-                <li>Não utilizar produtos químicos nas lentes;</li>
-                <li>Carregar utilizando apenas o carregador compatível;</li>
-                <li>Ao usuário: garanta uma boa noite de sono e descanso antes de utilizar, risco de enjoo, tontura e vertigem;</li>
-                <li>Garantir espaço para livre movimentação enquanto estiver em uso do óculos.</li>
+                <li>Não puxar folhas presas com força, seguindo o procedimento indicado pelo fabricante para remoção de atolamentos;</li>
+                <li>Não abrir compartimentos internos durante a operação, exceto quando necessário para manutenção ou substituição de suprimentos;</li>
+                <li>Manter o equipamento em superfície estável, seca e livre de objetos que possam obstruir suas áreas de ventilação;</li>
+                <li>Utilizar papel e suprimentos compatíveis com as especificações do equipamento;</li>
+                <li>Não tocar no interior do equipamento imediatamente após períodos prolongados de impressão, devido ao aquecimento de componentes internos;</li>
+                <li>Desligar o equipamento e comunicar o responsável técnico em caso de fumaça, odor de queimado, ruídos anormais ou falhas recorrentes.</li>
             </ul>
 
             <p class="bold-field">Passo a passo:</p>
             <ol class="info-list numbers">
-                <li>Instalar pilhas nos dois controles;</li>
-                <li>Pressionar o botão lateral do headset para ligá-lo;</li>
-                <li>Vestir o equipamento e ajustar tiras de fixação;</li>
-                <li>Aguardar inicialização do sistema;</li>
-                <li>Segurando um controle em cada mão, pressione e segure os botões "menu" e "meta" até que as luzes brancas dos controles se apaguem e ele se conecte ao headset.</li>
-                <li>Selecionar aplicativo ou ambiente de simulação desejado;</li>
-                <li>Caso seja necessário exibir a imagem para a turma, acessar o sistema de transmissão (casting) da Meta e projetar a tela na TV Touch;</li>
-                <li>Ao término da atividade, desligar o headset;</li>
-                <li>Retirar as pilhas dos controles;</li>
-                <li>Guardar headset e controles no local destinado.</li>
+                <li><strong>Ligar:</strong> acionar o botão de alimentação e aguardar a inicialização do equipamento até que o painel indique que a impressora está pronta.</li>
+                <li><strong>Imprimir:</strong> no computador, selecionar o documento desejado, escolher a impressora Brother MFC-8952DW e configurar as opções de impressão, como quantidade de cópias, tamanho do papel e impressão frente e verso, quando disponível.</li>
+                <li><strong>Copiar:</strong> posicionar o documento no vidro do scanner ou no alimentador automático de documentos, selecionar a função de cópia no painel e configurar a quantidade e demais parâmetros desejados.</li>
+                <li><strong>Digitalizar:</strong> posicionar o documento no vidro ou alimentador, selecionar a função de digitalização e indicar o destino do arquivo conforme a configuração do equipamento.</li>
+                <li><strong>Desligar:</strong> após concluir as atividades, verificar se não há trabalhos de impressão ou digitalização em andamento e desligar o equipamento pelo botão de alimentação.</li>
             </ol>
         </section>
 
         <section class="content-card">
-            <h3>4. Normas de Segurança e Cuidados</h3>
-            <p><span class="bold-field">EPIs necessários:</span> não se aplica.</p>
-            <p><span class="bold-field">Riscos específicos:</span> enjoo, dor de cabeça e danos físicos.</p>
-            <p><span class="bold-field">Quem pode operar:</span> professor, técnico de laboratório e estudante sob supervisão.</p>
-            <p><span class="bold-field">Restrições:</span> utilização apenas mediante projeto específico nas dependências do laboratório, não utilizar durante o carregamento e não utilizar com bateria muito baixa durante longos períodos.</p>
+            <h3>5. Manutenção e Conservação</h3>
             
-            <p class="bold-field" style="margin-top: 1rem;">Treinamento necessário:</p>
-            <ul style="list-style-type: none; padding-left: 0.5rem;">
-                <li>🔲 Nenhum</li>
-                <li>☑️ Básico</li>
-                <li>🔲 Intermediário</li>
-                <li>🔲 Operação exclusiva do técnico</li>
+            <p class="bold-field">Componentes Mecânicos e Estruturais</p>
+            <ul class="info-list bullets">
+                <li>Manter o equipamento livre de poeira e resíduos de papel;</li>
+                <li><strong>Superfícies e Painel:</strong> utilize um pano de microfibra seco para limpar a carcaça e o painel touchscreen. Evite produtos químicos abrasivos que possam danificar a interface de toque;</li>
+                <li><strong>Vidro de Exposição e ADF:</strong> limpe o vidro do scanner e a fina tira de vidro do Alimentador Automático de Documentos (ADF) com um pano levemente umedecido em álcool isopropílico. Isso previne o aparecimento de riscos verticais nas cópias e digitalizações;</li>
+                <li><strong>Fio de Corona:</strong> sempre que trocar o toner, limpe o fio de corona do cilindro deslizando a aba verde (no conjunto do cartucho) de ponta a ponta cerca de cinco vezes. Certifique-se de retornar a aba à sua posição inicial para evitar faixas pretas na impressão;</li>
+                <li><strong>Condições do Papel:</strong> utilize apenas papel adequado para impressão a laser. Mantenha as resmas armazenadas em local seco; papel úmido ondula ao passar pelo fusor quente, causando atolamentos e desgaste nos tracionadores;</li>
+                <li><strong>Proteção Elétrica:</strong> impressoras a laser possuem picos altos de consumo de energia durante o aquecimento inicial. Conecte o equipamento a tomadas aterradas ou a nobreaks de alta capacidade projetados para impressoras, evitando estabilizadores comuns que podem danificar a placa lógica.</li>
             </ul>
         </section>
 
         <section class="content-card">
-            <h3>5. Manutenção e Conservação</h3>
-            <p><span class="bold-field">Cuidados com as Lentes (Crítico):</span> Utilize apenas um pano de microfibra seco e próprio para lentes ópticas. Limpe em movimentos circulares, do centro para as bordas. Nunca utilize líquidos, álcool, limpa-vidros ou lenços umedecidos nas lentes, pois isso danificará o revestimento. Aviso importante: Nunca deixe as lentes expostas à luz solar direta, pois elas agem como lupas e queimarão a tela interna do headset permanentemente. </p> 
-            <p><span class="bold-field">Interface Facial (Almofada/Silicone):</span> Limpe a parte que entra em contato com o rosto usando lenços umedecidos antibacterianos sem álcool e sem abrasivos. Se for a capa de silicone, ela pode ser lavada com água e sabão neutro, mas deve estar completamente seca antes de ser recolocada. </p> 
-            <p><span class="bold-field">Estrutura externa, Câmeras e Controles:</span> Use um pano de microfibra seco ou um lenço antibacteriano sem álcool para limpar a parte externa do headset e os controles. Mantenha as câmeras de rastreamento (na parte frontal) sempre limpas de marcas de dedo para garantir o bom funcionamento do tracking. </p>
-            <p><span class="bold-field">Armazenamento:</span> Guarde o equipamento em um estojo de proteção (case) quando não estiver em uso, longe de poeira, animais de estimação e fontes de calor. </p>
-        </section>
-
-        <section class="content-card">
             <h3>6. Checklist Pós-Uso</h3>
-            <p>Para desligar e guardar o equipamento:</p>
+            <p>Para o encerramento das atividades e guarda do equipamento:</p>
             <ul class="info-list bullets">
-                <li>Desligar corretamente o equipamento: segure o botão power na lateral do headset e, ao exibir o menu na visão, selecione "dormir";</li>
-                <li>Guardar todos os acessórios na caixa;</li>
-                <li>Organizar cabos e periféricos;</li>
-                <li>Remover pilhas dos controles;</li>
-                <li>Limpar o equipamento, quando aplicável;</li>
-                <li>Registrar qualquer anormalidade observada durante a utilização.</li>
+                <li>Verificar se não há documentos ou folhas esquecidas no equipamento;</li>
+                <li>Retirar documentos do vidro do scanner ou do alimentador automático;</li>
+                <li>Conferir se não há papel obstruído ou resíduos no equipamento;</li>
+                <li>Verificar se a bandeja de papel permanece organizada e abastecida, quando necessário;</li>
+                <li>Retirar documentos impressos da bandeja de saída;</li>
+                <li>Limpar externamente o equipamento com material adequado, evitando o uso de líquidos diretamente sobre a superfície;</li>
+                <li>Desligar o equipamento caso não haja previsão de utilização;</li>
+                <li>Registrar eventuais falhas, atolamentos ou necessidade de reposição de toner no controle do laboratório.</li>
             </ul>
         </section>
 
         <section class="content-card">
             <h3>7. Referências e Documentação</h3>
             <ul class="info-list bullets">
-                <li>Manual do fabricante: <a href="https://www.meta.com/pt-br/help/quest/881301877183346/" class="link-ref" target="_blank">www.meta.com/pt-br/help/quest/881301877183346/</a></li>
-                <li>Página oficial do fabricante: <a href="https://www.meta.com/br/quest/" class="link-ref" target="_blank">www.meta.com/br/quest/</a></li>
+                <li>Manuais oficiais do produto: <a href="https://support.brother.com/g/b/manualtop.aspx?c=br&lang=pt&prod=mfc8952dw_us" class="link-ref" target="_blank">https://support.brother.com/g/b/manualtop.aspx?c=br&lang=pt&prod=mfc8952dw_us</a></li>
+                <li>Downloads de drivers e software: <a href="https://support.brother.com/g/b/downloadtop.aspx?c=br&lang=pt&prod=mfc8952dw_us" class="link-ref" target="_blank">https://support.brother.com/g/b/downloadtop.aspx?c=br&lang=pt&prod=mfc8952dw_us</a></li>
+                <li>Especificações técnicas completas: <a href="https://support.brother.com/g/b/spec.aspx?c=br&lang=pt&prod=mfc8952dw_us" class="link-ref" target="_blank">https://support.brother.com/g/b/spec.aspx?c=br&lang=pt&prod=mfc8952dw_us</a></li>
+                <li>Perguntas frequentes e solução de problemas: <a href="https://support.brother.com/g/b/faqtop.aspx?c=br&lang=pt&prod=mfc8952dw_us" class="link-ref" target="_blank">https://support.brother.com/g/b/faqtop.aspx?c=br&lang=pt&prod=mfc8952dw_us</a></li>
             </ul>
         </section>
 

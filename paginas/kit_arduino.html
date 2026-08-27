@@ -257,6 +257,7 @@
             <li><a href="../index.html">🏠 Início / Visão Geral</a></li>
 
             <div class="nav-category">Equipamentos e Hardware</div>
+            <li><a href="impressora.html">🖨️ Impressora</a></li>
             <li><a href="impressora_3d.html">🖨️ Impressora 3D</a></li>
             <li><a href="lousa_interativa.html">📺 Lousa Interativa</a></li>
             <li><a href="oculos_vr.html">🥽 Óculos VR</a></li>
@@ -307,7 +308,11 @@
                 </div>
                 <div class="caixa-modulo" onclick="selecionarModulo('modulo-4', this)">
                     <span class="icone">📦</span>
-                    <span class="titulo-modulo">Módulo 4: Aplicações prátocas </span>
+                    <span class="titulo-modulo">Módulo 4: Aplicações práticas </span>
+                </div>
+                <div class="caixa-modulo" onclick="selecionarModulo('modulo-5', this)">
+                    <span class="icone">👷🏻‍♂️</span>
+                    <span class="titulo-modulo">Módulo 5: Automação logística e segurança </span>
                 </div>
                 
             </div>
@@ -1261,7 +1266,7 @@
             <!-- ==========================================
                  CONTEÚDO DA PRÁTICA 7
                  ========================================== -->
-            <div id="mod3-pratica7" class="pratica-content active">
+            <div id="mod3-pratica7" class="pratica-content">
                 <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
                     <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 7: Display LCD (Comunicação I2C)</h4>
                     <p style="margin-bottom: 0;">Nesta prática será utilizado um display LCD 16×2 com interface I²C, permitindo exibir textos, números e mensagens em tempo real sem a necessidade do Monitor Serial. Além disso, será apresentado um novo protocolo de comunicação bastante utilizado em sistemas embarcados: o barramento I²C</p>
@@ -1361,7 +1366,7 @@
             <!-- ==========================================
                  CONTEÚDO DA PRÁTICA 8
                  ========================================== -->
-            <div id="mod3-pratica8" class="pratica-content active">
+            <div id="mod3-pratica8" class="pratica-content">
                 <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
                     <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 8: Servo Motor (Controle de posição)</h4>
                     <p style="margin-bottom: 0;">Nesta prática será apresentado o servo motor SG90, um dos modelos mais utilizados em projetos educacionais com Arduino.Para esse tipo de aplicação utiliza-se o servo motor, um dispositivo capaz de girar para um ângulo específico e permanecer nessa posição enquanto estiver energizado.</p>
@@ -1654,7 +1659,7 @@
             <!-- ==========================================
                  CONTEÚDO DA PRÁTICA 10
                  ========================================== -->
-            <div id="mod4-pratica10" class="pratica-content active">
+            <div id="mod4-pratica10" class="pratica-content">
                 <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
                     <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 10: Estacionamento Inteligente (sinalização de vagas)</h4>
                     <p style="margin-bottom: 0;">Em estacionamentos de shoppings, aeroportos, universidades e centros logísticos, é comum encontrar sistemas luminosos que indicam quais vagas estão livres e quais estão ocupadas. Esses sistemas auxiliam os motoristas na localização de vagas disponíveis, reduzem o tempo de procura e contribuem para um melhor fluxo de veículos. Nesta prática será desenvolvido um sistema simplificado de sinalização de vagas utilizando um sensor ultrassônico e dois LEDs.</p>
@@ -1780,7 +1785,7 @@
             <!-- ==========================================
                  CONTEÚDO DA PRÁTICA 11
                  ========================================== -->
-            <div id="mod4-pratica11" class="pratica-content active">
+            <div id="mod4-pratica11" class="pratica-content">
                 <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
                     <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 11: Cancela Automática (Controle de Acesso)</h4>
                     <p style="margin-bottom: 0;">O controle de acesso de veículos é uma atividade presente em diversos ambientes, como estacionamentos, condomínios, universidades, centros de distribuição e indústrias. Esses sistemas normalmente utilizam sensores para detectar a aproximação de um veículo e atuadores responsáveis por movimentar a cancela. Nesta prática será desenvolvido um sistema simplificado de controle de acesso utilizando um sensor ultrassônico para detectar a presença de um veículo e um servo motor para simular a abertura e o fechamento da cancela.</p>
@@ -1914,7 +1919,7 @@
             <!-- ==========================================
                  CONTEÚDO DA PRÁTICA 12
                  ========================================== -->
-            <div id="mod4-pratica12" class="pratica-content active">
+            <div id="mod4-pratica12" class="pratica-content">
                 <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
                     <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 12: Iluminação eficiente (automação por presença e luminosidade)</h4>
                     <p style="margin-bottom: 0;">A iluminação representa uma parcela significativa do consumo de energia elétrica em galpões, armazéns e centros de distribuição. Para reduzir esse consumo, muitos sistemas modernos utilizam sensores capazes de monitorar continuamente a luminosidade do ambiente, ajustando automaticamente a intensidade das luminárias de acordo com a necessidade.Nesta prática será desenvolvido um sistema simplificado de iluminação inteligente utilizando um sensor LDR e um LED controlado por PWM. Conforme a luminosidade do ambiente varia, o brilho do LED será ajustado automaticamente pelo Arduino.</p>
@@ -2036,18 +2041,779 @@
                                         </ol>
                     </div>
             </div>
-
-        
         </section>
-        
+
+    <!-- ===== PAINEL: MÓDULO 5 ==== -->
+        <section id="modulo-5" class="content-card painel-modulo">
+            <h3 style="margin-bottom: 1.5rem;">Módulo 5: Automação logística e segurança</h3>
+             <!-- Estilos para o Submenu -->
+            <style>
+                .praticas-menu {
+                    display: flex;
+                    gap: 1rem;
+                    margin-bottom: 2rem;
+                    flex-wrap: wrap;
+                }
+                .pratica-card {
+                    background-color: var(--bg-light, #f4f8fa);
+                    border: 1px solid var(--border-color, #ccc);
+                    border-radius: 8px;
+                    padding: 1rem;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    font-weight: bold;
+                    color: var(--cor3, #333);
+                    flex: 1;
+                    text-align: center;
+                    min-width: 200px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                }
+                .pratica-card:hover {
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    border-color: var(--cor1, #2e7d32);
+                    transform: translateY(-2px);
+                }
+                .pratica-card.active {
+                    background-color: var(--cor1, #2e7d32);
+                    color: white;
+                    border-color: var(--cor1, #2e7d32);
+                }
+                .pratica-content {
+                    display: none;
+                    animation: fadeIn 0.4s ease;
+                }
+                .pratica-content.active {
+                    display: block;
+                }
+                .img-placeholder {
+                    text-align: center;
+                    margin: 1.5rem 0;
+                    padding: 1rem;
+                    background-color: #f9f9f9;
+                    border: 1px dashed #ccc;
+                    border-radius: 8px;
+                }
+                .img-placeholder img {
+                    max-width: 100%;
+                    border-radius: 4px;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                    margin-bottom: 0.5rem;
+                }
+                .img-placeholder p {
+                    font-size: 0.85rem;
+                    color: #666;
+                    margin: 0;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            </style>
+
+            <!-- Menu de Seleção de Práticas -->
+            <div class="praticas-menu">
+                <div class="pratica-card active" onclick="mostrarPratica('mod5-pratica13', this)">
+                    🌡️ Prática 13: Monitoramento Térmico (Controle em Armazéns)
+                </div>
+                <div class="pratica-card" onclick="mostrarPratica('mod5-pratica14', this)">
+                    🔐 Prática 14: Acesso Seguro (Controle por Senha)
+                </div>
+                <div class="pratica-card" onclick="mostrarPratica('mod5-pratica15', this)">
+                    📦 Prática 15: Almoxarifado Inteligente (Monitoramento Integrado)
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 CONTEÚDO DA PRÁTICA 13
+                 ========================================== -->
+            <div id="mod5-pratica13" class="pratica-content active">
+                <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
+                    <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 13: Monitoramento Térmico (Controle em Armazéns)</h4>
+                    <p style="margin-bottom: 0;">Diversos produtos armazenados em centros de distribuição exigem condições ambientais controladas para preservar sua qualidade. Alimentos, medicamentos, produtos químicos e equipamentos eletrônicos podem sofrer danos quando expostos a temperaturas elevadas ou níveis inadequados de umidade. Por esse motivo, muitos armazéns utilizam sistemas automáticos capazes de monitorar continuamente essas variáveis, permitindo que os responsáveis identifiquem rapidamente qualquer alteração nas condições do ambiente. Nesta prática será desenvolvido um sistema de monitoramento de temperatura utilizando um sensor TMP36 e um display LCD com interface I²C. O Arduino realizará a leitura da temperatura e da umidade do ambiente, exibindo essas informações em tempo real no display.</p>
+            </div>
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🎯 Objetivos & Competências</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Compreender o funcionamento do sensor TMP36;</li>
+                            <li>Medir temperatura do ambiente;</li>
+                            <li>Exibir informações em um display LCD com interface I²C;</li>
+                            <li>Desenvolver um sistema de monitoramento ambiental;</li>
+                            <li>Relacionar o monitoramento de temperatura com aplicações em logística e armazenagem.</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧰 Materiais Necessários</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Placa Arduino Uno e Cabo USB;</li>
+                            <li>Sensor TMP36;</li>
+                            <li>Display LCD 16×2 com interface I²C;</li>
+                            <li>LED verde;</li>
+                            <li>LED vermelho;</li>
+                            <li>2x resistores de 220 Ω;</li>
+                            <li>Protoboard;</li>
+                            <li>Cabos Jumpers.</li>
+                        </ul>
+                    </div>
+            </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Conceitos Fundamentais</h4>
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">Medidor de temperaturas</h5>
+            <p>O TMP36 é um sensor analógico utilizado para medir a temperatura do ambiente. Seu funcionamento baseia-se na geração de uma tensão elétrica proporcional à temperatura medida. À medida que a temperatura aumenta ou diminui, a tensão de saída do sensor também varia.Essa tensão é enviada ao Arduino por meio do terminal de saída (VOUT), onde é convertida em um valor digital pela função analogRead(). Em seguida, o programa utiliza uma equação matemática para calcular a temperatura correspondente e apresentar o resultado ao usuário.</p>
+            <div class="img-placeholder">
+                    <img src="../figuras/TMP36.png" alt="Esquema de ligação do resistor Pull-Down" style="max-width: 50%;">
+                    <p>Figura 1: Funcionamento.</p>
+            </div>
+
+            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Esquema e Montagem do Circuito</h4>
+            <div style="overflow-x: auto; margin-bottom: 1.5rem;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--cor3, #ccc);">
+                            <th style="padding: 0.6rem 0.8rem; font-weight: bold;">Componente</th>
+                            <th style="padding: 0.6rem 0.8rem; font-weight: bold;">Conexão</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">TMP36 (VCC)</td>
+                            <td style="padding: 0.5rem 0.8rem;">5 V</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">TMP36 (VOUT)</td>
+                            <td style="padding: 0.5rem 0.8rem;">A0</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">TMP36 (GND)</td>
+                            <td style="padding: 0.5rem 0.8rem;">GND</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">LCD I²C (VCC)</td>
+                            <td style="padding: 0.5rem 0.8rem;">5 V</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">LCD I²C (GND)</td>
+                            <td style="padding: 0.5rem 0.8rem;">GND</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">LCD I²C (SDA)</td>
+                            <td style="padding: 0.5rem 0.8rem;">SDA (A4)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">LCD I²C (SCL)</td>
+                            <td style="padding: 0.5rem 0.8rem;">SCL (A5)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">LED Verde (ânodo)</td>
+                            <td style="padding: 0.5rem 0.8rem;">Pino 8</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">LED Verde (cátodo)</td>
+                            <td style="padding: 0.5rem 0.8rem;">GND (via resistor de 220 Ω)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">LED Vermelho (ânodo)</td>
+                            <td style="padding: 0.5rem 0.8rem;">Pino 9</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.5rem 0.8rem;">LED Vermelho (cátodo)</td>
+                            <td style="padding: 0.5rem 0.8rem;">GND (via resistor de 220 Ω)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="img-placeholder">
+                    <img src="../figuras/pratica_13.png" alt="Montagem do circuito no Protoboard" style="max-width: 50%;">
+            </div>
+
+            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Código da Prática</h4>
+                <div style="background: #282c34; color: #abb2bf; padding: 1.2rem; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; overflow-x: auto;">
+                    <span style="color: #c678dd;">#include</span> <span style="color: #98c379;">&lt;Wire.h&gt;</span><br>
+                    <span style="color: #c678dd;">#include</span> <span style="color: #98c379;">&lt;LiquidCrystal_I2C.h&gt;</span><br><br>
+                    <span style="color: #e5c07b;">LiquidCrystal_I2C</span> <span style="color: #e06c75;">lcd</span>(<span style="color: #d19a66;">0x27</span>, <span style="color: #d19a66;">16</span>, <span style="color: #d19a66;">2</span>);<br><br>
+                    <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">TMP</span> = <span style="color: #d19a66;">A0</span>;<br>
+                    <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">ledVerde</span> = <span style="color: #d19a66;">8</span>;<br>
+                    <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">ledVermelho</span> = <span style="color: #d19a66;">9</span>;<br><br>
+                    <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">leitura</span>;<br>
+                    <span style="color: #c678dd;">float</span> <span style="color: #e06c75;">tensao</span>;<br>
+                    <span style="color: #c678dd;">float</span> <span style="color: #e06c75;">temperatura</span>;<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">setup</span>() {<br><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">init</span>();<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">backlight</span>();<br><br>
+                    &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">OUTPUT</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">OUTPUT</span>);<br><br>
+                    &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">begin</span>(<span style="color: #d19a66;">9600</span>);<br><br>
+                    }<br><br>
+                    <span style="color: #c678dd;">void</span> <span style="color: #61afef;">loop</span>() {<br><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">leitura</span> = <span style="color: #61afef;">analogRead</span>(<span style="color: #e06c75;">TMP</span>);<br><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">tensao</span> = <span style="color: #e06c75;">leitura</span> * (<span style="color: #d19a66;">5.0</span> / <span style="color: #d19a66;">1023.0</span>);<br><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">temperatura</span> = (<span style="color: #e06c75;">tensao</span> - <span style="color: #d19a66;">0.5</span>) * <span style="color: #d19a66;">100.0</span>;<br><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">clear</span>();<br><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">setCursor</span>(<span style="color: #d19a66;">0</span>, <span style="color: #d19a66;">0</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Temp:"</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #e06c75;">temperatura</span>, <span style="color: #d19a66;">1</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>((<span style="color: #c678dd;">char</span>)<span style="color: #d19a66;">223</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"C"</span>);<br><br>
+                    &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">setCursor</span>(<span style="color: #d19a66;">0</span>, <span style="color: #d19a66;">1</span>);<br><br>
+                    &nbsp;&nbsp;<span style="color: #c678dd;">if</span> (<span style="color: #e06c75;">temperatura</span> &lt; <span style="color: #d19a66;">30</span>) {<br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Status: OK"</span>);<br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">HIGH</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">LOW</span>);<br><br>
+                    &nbsp;&nbsp;}<br><br>
+                    &nbsp;&nbsp;<span style="color: #c678dd;">else</span> {<br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Status: ALERTA"</span>);<br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">LOW</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">HIGH</span>);<br><br>
+                    &nbsp;&nbsp;}<br><br>
+                    &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Temperatura: "</span>);<br>
+                    &nbsp;&nbsp;<span style="color: #e5c07b;">Serial</span>.<span style="color: #61afef;">println</span>(<span style="color: #e06c75;">temperatura</span>);<br><br>
+                    &nbsp;&nbsp;<span style="color: #61afef;">delay</span>(<span style="color: #d19a66;">1000</span>);<br><br>
+                    }
+            </div>
+
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+                    <div style="background-color: #E8F5E9; border: 1px solid var(--cor2); padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧪 Experimentando o código</h5>
+                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Altere a temperatura do sensor TMP36 no simulador Tinkercad e observe a atualização dos valores no display LCD.</li>
+                            <li>Ajuste a temperatura para valores inferiores a 30 °C e verifique se o LED verde permanece aceso.</li>
+                            <li>Aumente gradativamente a temperatura até ultrapassar 30 °C e observe o acionamento do LED vermelho.</li>
+                            <li>Modifique o valor limite utilizado na estrutura condicional e analise como isso altera o funcionamento do sistema.</li>
+                            <li>Acompanhe simultaneamente as informações exibidas no Monitor Serial e no display LCD.</li>
+                        </ol>
+                    </div>
+
+                    <div style="background-color: #FFF8E1; border: 1px solid #FFE082; padding: 1.2rem; border-radius: 8px;">
+                                            <h5 style="color: #B78103; margin-bottom: 0.8rem; font-size: 1.05rem;">🏆 Desafio Prático</h5>
+                                            <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">Neste projeto, o sistema apenas informa se a temperatura está dentro ou fora da faixa estabelecida. Modifique o programa para criar três níveis de monitoramento: temperatura inferior a 20 °C: ambiente frio; temperatura entre 20 °C e 30 °C: ambiente adequado; temperatura superior a 30 °C: ambiente quente. Atualize a mensagem exibida no display LCD para indicar a condição correspondente e faça os LEDs representarem visualmente cada situação.</p>
+                                        </div>
+                                    </div>
+
+                                    <h4 style="color: var(--cor3); margin-bottom: 1rem;">❓ Questões de Fixação</h4>
+                                    <div style="background: var(--bg-light); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                                            <li>Qual é a função do sensor TMP36?</li>
+                                            <li>Qual é a principal diferença entre um sensor analógico, como o TMP36, e um sensor digital?</li>
+                                            <li>Por que foi necessário utilizar variáveis do tipo float neste programa?</li>
+                                            <li>Qual é a finalidade da função analogRead()?</li>
+                                            <li>Explique por que foi necessário converter a leitura analógica em temperatura.</li>
+                                        </ol>
+                    </div>
+            </div> 
+
+            <!-- ==========================================
+                 CONTEÚDO DA PRÁTICA 14
+                 ========================================== -->
+            <div id="mod5-pratica14" class="pratica-content">
+                <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
+                    <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 14: Acesso seguro (controle por senha)</h4>
+                    <p style="margin-bottom: 0;">Em centros de distribuição, almoxarifados e áreas industriais, nem todos os ambientes podem ser acessados livremente. Locais que armazenam produtos de alto valor, equipamentos ou materiais perigosos normalmente possuem sistemas de controle de acesso para permitir a entrada apenas de pessoas autorizadas. Nesta prática será desenvolvido um sistema simplificado de controle de acesso utilizando um teclado matricial, um display LCD e um servo motor.</p>
+            </div>
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🎯 Objetivos & Competências</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Compreender o funcionamento de um teclado matricial 4×4;</li>
+                            <li>Capturar informações digitadas pelo usuário;</li>
+                            <li>Comparar uma senha digitada com uma senha previamente cadastrada;</li>
+                            <li>Controlar um servo motor para simular a abertura de uma porta;</li>
+                            <li>Exibir mensagens de acesso no display LCD.</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧰 Materiais Necessários</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Arduino Uno;</li>
+                            <li>Teclado matricial 4×4;</li>
+                            <li>Display LCD 16×2 com interface I²C;</li>
+                            <li>Servo motor SG90;</li>
+                            <li>LED verde;</li>
+                            <li>LED vermelho;</li>
+                            <li>Dois resistores de 220 Ω;</li>
+                            <li>Protoboard;</li>
+                            <li>Cabos Jumper.</li>
+                        </ul>
+                    </div>
+            </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Conceitos Fundamentais</h4>
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">Teclado matricial</h5>
+            <p>O teclado matricial é um dispositivo de entrada utilizado para enviar informações ao Arduino por meio do pressionamento de teclas.Internamente, suas teclas são organizadas em linhas e colunas. Quando uma tecla é pressionada, ocorre a conexão entre uma linha e uma coluna específicas. O Arduino identifica essa combinação e determina qual tecla foi acionada. Essa organização permite utilizar um grande número de teclas com uma quantidade reduzida de pinos digitais.</p>
+            <div class="img-placeholder">
+                    <img src="../figuras/teclado.png" alt="Esquema de ligação do resistor Pull-Down" style="max-width: 50%;">
+                    <p>Figura 1: Funcionamento teclado.</p>
+            </div>
+
+            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Esquema e Montagem do Circuito</h4>
+                <div style="overflow-x: auto; margin-bottom: 1.5rem;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--cor3, #ccc);">
+                                <th style="padding: 0.6rem 0.8rem; font-weight: bold;">Componente</th>
+                                <th style="padding: 0.6rem 0.8rem; font-weight: bold;">Conexão</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 0.5rem 0.8rem;">LCD SDA</td>
+                                <td style="padding: 0.5rem 0.8rem;">A4</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 0.5rem 0.8rem;">LCD SCL</td>
+                                <td style="padding: 0.5rem 0.8rem;">A5</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 0.5rem 0.8rem;">LCD VCC</td>
+                                <td style="padding: 0.5rem 0.8rem;">5V</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 0.5rem 0.8rem;">LCD GND</td>
+                                <td style="padding: 0.5rem 0.8rem;">GND</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 0.5rem 0.8rem;">Servo (Sinal)</td>
+                                <td style="padding: 0.5rem 0.8rem;">Pino 10</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 0.5rem 0.8rem;">Servo (5V)</td>
+                                <td style="padding: 0.5rem 0.8rem;">5V</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 0.5rem 0.8rem;">Servo (GND)</td>
+                                <td style="padding: 0.5rem 0.8rem;">GND</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 0.5rem 0.8rem;">LED Verde</td>
+                                <td style="padding: 0.5rem 0.8rem;">Pino 11</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 0.5rem 0.8rem;">LED Vermelho</td>
+                                <td style="padding: 0.5rem 0.8rem;">Pino 12</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 0.5rem 0.8rem;">Teclado Pino 1</td>
+                                <td style="padding: 0.5rem 0.8rem;">D2</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 0.5rem 0.8rem;">Teclado Pino 2</td>
+                                <td style="padding: 0.5rem 0.8rem;">D3</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 0.5rem 0.8rem;">Teclado Pino 3</td>
+                                <td style="padding: 0.5rem 0.8rem;">D4</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 0.5rem 0.8rem;">Teclado Pino 4</td>
+                                <td style="padding: 0.5rem 0.8rem;">D5</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 0.5rem 0.8rem;">Teclado Pino 5</td>
+                                <td style="padding: 0.5rem 0.8rem;">D6</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 0.5rem 0.8rem;">Teclado Pino 6</td>
+                                <td style="padding: 0.5rem 0.8rem;">D7</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 0.5rem 0.8rem;">Teclado Pino 7</td>
+                                <td style="padding: 0.5rem 0.8rem;">D8</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.5rem 0.8rem;">Teclado Pino 8</td>
+                                <td style="padding: 0.5rem 0.8rem;">D9</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+            
+            <div class="img-placeholder">
+                    <img src="../figuras/pratica_14.png" alt="Montagem do circuito no Protoboard" style="max-width: 50%;">
+            </div>
+
+            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Código da Prática</h4>
+            <div style="background: #282c34; color: #abb2bf; padding: 1.2rem; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; overflow-x: auto;">
+                <span style="color: #c678dd;">#include</span> <span style="color: #98c379;">&lt;Wire.h&gt;</span><br>
+                <span style="color: #c678dd;">#include</span> <span style="color: #98c379;">&lt;LiquidCrystal_I2C.h&gt;</span><br>
+                <span style="color: #c678dd;">#include</span> <span style="color: #98c379;">&lt;Servo.h&gt;</span><br>
+                <span style="color: #c678dd;">#include</span> <span style="color: #98c379;">&lt;Keypad.h&gt;</span><br><br>
+                <span style="color: #e5c07b;">LiquidCrystal_I2C</span> <span style="color: #e06c75;">lcd</span>(<span style="color: #d19a66;">0x27</span>, <span style="color: #d19a66;">16</span>, <span style="color: #d19a66;">2</span>);<br>
+                <span style="color: #e5c07b;">Servo</span> <span style="color: #e06c75;">porta</span>;<br><br>
+                <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">byte</span> <span style="color: #e06c75;">LINHAS</span> = <span style="color: #d19a66;">4</span>;<br>
+                <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">byte</span> <span style="color: #e06c75;">COLUNAS</span> = <span style="color: #d19a66;">4</span>;<br><br>
+                <span style="color: #c678dd;">char</span> <span style="color: #e06c75;">teclas</span>[<span style="color: #e06c75;">LINHAS</span>][<span style="color: #e06c75;">COLUNAS</span>] = {<br><br>
+                &nbsp;&nbsp;{<span style="color: #98c379;">'1'</span>, <span style="color: #98c379;">'2'</span>, <span style="color: #98c379;">'3'</span>, <span style="color: #98c379;">'A'</span>},<br>
+                &nbsp;&nbsp;{<span style="color: #98c379;">'4'</span>, <span style="color: #98c379;">'5'</span>, <span style="color: #98c379;">'6'</span>, <span style="color: #98c379;">'B'</span>},<br>
+                &nbsp;&nbsp;{<span style="color: #98c379;">'7'</span>, <span style="color: #98c379;">'8'</span>, <span style="color: #98c379;">'9'</span>, <span style="color: #98c379;">'C'</span>},<br>
+                &nbsp;&nbsp;{<span style="color: #98c379;">'*'</span>, <span style="color: #98c379;">'0'</span>, <span style="color: #98c379;">'#'</span>, <span style="color: #98c379;">'D'</span>}<br><br>
+                };<br><br>
+                <span style="color: #c678dd;">byte</span> <span style="color: #e06c75;">pinosLinhas</span>[<span style="color: #e06c75;">LINHAS</span>] = {<span style="color: #d19a66;">2</span>, <span style="color: #d19a66;">3</span>, <span style="color: #d19a66;">4</span>, <span style="color: #d19a66;">5</span>};<br>
+                <span style="color: #c678dd;">byte</span> <span style="color: #e06c75;">pinosColunas</span>[<span style="color: #e06c75;">COLUNAS</span>] = {<span style="color: #d19a66;">6</span>, <span style="color: #d19a66;">7</span>, <span style="color: #d19a66;">8</span>, <span style="color: #d19a66;">9</span>};<br><br>
+                <span style="color: #e5c07b;">Keypad</span> <span style="color: #e06c75;">teclado</span> = <span style="color: #e5c07b;">Keypad</span>(<br>
+                &nbsp;&nbsp;<span style="color: #61afef;">makeKeymap</span>(<span style="color: #e06c75;">teclas</span>),<br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">pinosLinhas</span>,<br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">pinosColunas</span>,<br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">LINHAS</span>,<br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">COLUNAS</span><br>
+                );<br><br>
+                <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">ledVerde</span> = <span style="color: #d19a66;">11</span>;<br>
+                <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">ledVermelho</span> = <span style="color: #d19a66;">12</span>;<br><br>
+                <span style="color: #e5c07b;">String</span> <span style="color: #e06c75;">senha</span> = <span style="color: #98c379;">"1234"</span>;<br>
+                <span style="color: #e5c07b;">String</span> <span style="color: #e06c75;">digitada</span> = <span style="color: #98c379;">""</span>;<br><br>
+                <span style="color: #c678dd;">void</span> <span style="color: #61afef;">setup</span>() {<br><br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">porta</span>.<span style="color: #61afef;">attach</span>(<span style="color: #d19a66;">10</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">OUTPUT</span>);<br>
+                &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">OUTPUT</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">init</span>();<br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">backlight</span>();<br><br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">porta</span>.<span style="color: #61afef;">write</span>(<span style="color: #d19a66;">0</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">LOW</span>);<br>
+                &nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">HIGH</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Digite a"</span>);<br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">setCursor</span>(<span style="color: #d19a66;">0</span>, <span style="color: #d19a66;">1</span>);<br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"senha"</span>);<br><br>
+                }<br><br>
+                <span style="color: #c678dd;">void</span> <span style="color: #61afef;">loop</span>() {<br><br>
+                &nbsp;&nbsp;<span style="color: #c678dd;">char</span> <span style="color: #e06c75;">tecla</span> = <span style="color: #e06c75;">teclado</span>.<span style="color: #61afef;">getKey</span>();<br><br>
+                &nbsp;&nbsp;<span style="color: #c678dd;">if</span> (<span style="color: #e06c75;">tecla</span>) {<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c678dd;">if</span> (<span style="color: #e06c75;">tecla</span> == <span style="color: #98c379;">'#'</span>) {<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">verificarSenha</span>();<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c678dd;">else if</span> (<span style="color: #e06c75;">tecla</span> == <span style="color: #98c379;">'*'</span>) {<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">digitada</span> = <span style="color: #98c379;">""</span>;<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">clear</span>();<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Digite a"</span>);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">setCursor</span>(<span style="color: #d19a66;">0</span>, <span style="color: #d19a66;">1</span>);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"senha"</span>);<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c678dd;">else</span> {<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">digitada</span> += <span style="color: #e06c75;">tecla</span>;<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">setCursor</span>(<span style="color: #e06c75;">digitada</span>.<span style="color: #61afef;">length</span>() - <span style="color: #d19a66;">1</span>, <span style="color: #d19a66;">1</span>);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"*"</span>);<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+                &nbsp;&nbsp;}<br><br>
+                }<br><br>
+                <span style="color: #c678dd;">void</span> <span style="color: #61afef;">verificarSenha</span>() {<br><br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">clear</span>();<br><br>
+                &nbsp;&nbsp;<span style="color: #c678dd;">if</span> (<span style="color: #e06c75;">digitada</span> == <span style="color: #e06c75;">senha</span>) {<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Acesso"</span>);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">setCursor</span>(<span style="color: #d19a66;">0</span>, <span style="color: #d19a66;">1</span>);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Liberado"</span>);<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">HIGH</span>);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">LOW</span>);<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">porta</span>.<span style="color: #61afef;">write</span>(<span style="color: #d19a66;">90</span>);<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">delay</span>(<span style="color: #d19a66;">3000</span>);<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">porta</span>.<span style="color: #61afef;">write</span>(<span style="color: #d19a66;">0</span>);<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">LOW</span>);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">HIGH</span>);<br><br>
+                &nbsp;&nbsp;}<br><br>
+                &nbsp;&nbsp;<span style="color: #c678dd;">else</span> {<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Acesso"</span>);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">setCursor</span>(<span style="color: #d19a66;">0</span>, <span style="color: #d19a66;">1</span>);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Negado"</span>);<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">LOW</span>);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">HIGH</span>);<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">delay</span>(<span style="color: #d19a66;">2000</span>);<br><br>
+                &nbsp;&nbsp;}<br><br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">digitada</span> = <span style="color: #98c379;">""</span>;<br><br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">clear</span>();<br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Digite a"</span>);<br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">setCursor</span>(<span style="color: #d19a66;">0</span>, <span style="color: #d19a66;">1</span>);<br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"senha"</span>);<br><br>
+                }
+            </div>
+
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+                    <div style="background-color: #E8F5E9; border: 1px solid var(--cor2); padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧪 Experimentando o código</h5>
+                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Altere a senha para um conjunto de 4 digitos;</li>
+                            <li>Altere o tempo de abertura da cancela;</li>
+                            <li>Altere o angulo de abertura;</li>
+                            <li>Troque as as mensagens exibidas no display.</li>
+                        </ol>
+                    </div>
+
+                    <div style="background-color: #FFF8E1; border: 1px solid #FFE082; padding: 1.2rem; border-radius: 8px;">
+                                            <h5 style="color: #B78103; margin-bottom: 0.8rem; font-size: 1.05rem;">🏆 Desafio Prático</h5>
+                                            <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">Modifique o programa para que, após três tentativas consecutivas de senha incorreta, o sistema bloqueie novos acessos por 10 segundos, exibindo no display a mensagem "Sistema Bloqueado".</p>
+                                        </div>
+                                    </div>
+
+                                    <h4 style="color: var(--cor3); margin-bottom: 1rem;">❓ Questões de Fixação</h4>
+                                    <div style="background: var(--bg-light); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                                            <li>Qual é aprincipal função do teclado matricial no sistema desenvolvido nesta prática?</li>
+                                            <li>O que acontece quando o usuário digita uma senha incorreta?</li>
+                                            <li>Qual componente é responsável por simular a abertura e o fechamento da porta?</li>
+                                            <li>Explique a função do display LCD no sistema de controle de acesso.</li>
+                                            <li>Qual é a finalidade dos LEDs verde e vermelho durante o funcionamento do sistema?</li>
+                                        </ol>
+                    </div>
+            </div> 
+
+            <!-- ==========================================
+                 CONTEÚDO DA PRÁTICA 15
+                 ========================================== -->
+            <div id="mod5-pratica15" class="pratica-content">
+                <div style="background-color: var(--bg-light); border-left: 5px solid var(--cor1); padding: 1.2rem 1.5rem; border-radius: 4px; margin-bottom: 2rem;">
+                    <h4 style="color: var(--cor3); font-size: 1.25rem; margin-bottom: 0.5rem;">Prática 15: Almoxarifado Integrado (controle por senha)</h4>
+                    <p style="margin-bottom: 0;">Em um almoxarifado moderno, diversas informações precisam ser monitoradas continuamente para garantir a segurança dos materiais, o controle do estoque e o bom funcionamento das operações. A automação desses processos reduz falhas humanas, aumenta a eficiência e permite que situações de risco sejam identificadas rapidamente. Nesta prática será desenvolvido um sistema integrado de monitoramento utilizando o Arduino Uno. O projeto reunirá diversos componentes estudados ao longo desta apostila, como o sensor ultrassônico, o sensor de temperatura TMP36, o display LCD, o servo motor e os LEDs indicadores.</p>
+            </div>
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🎯 Objetivos & Competências</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Integrar diferentes sensores e atuadores em um único sistema;</li>
+                            <li>Monitorar simultaneamente temperatura e presença de objetos;</li>
+                            <li>Utilizar sinais visuais e sonoros para indicar diferentes condições de operação;</li>
+                            <li>Exibir informações em tempo real no display LCD;</li>
+                            <li>Desenvolver um projeto completo de automação aplicado à área de logística.</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #F9F9F9; padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧰 Materiais Necessários</h5>
+                        <ul class="info-list bullets" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Arduino Uno;</li>
+                            <li>Sensor ultrassônico HC-SR04;</li>
+                            <li>Sensor de temperatura TMP36;</li>
+                            <li>Display LCD 16×2 com interface I²C;</li>
+                            <li>LED verde;</li>
+                            <li>LED vermelho;</li>
+                            <li>Buzzer ativo;</li>
+                            <li>2x resistores de 220 Ω;</li>
+                            <li>Protoboard;</li>
+                            <li>Cabos jumper;</li>
+                            <li>Cabo USB.</li>
+                        </ul>
+                    </div>
+            </div>
+
+                <h4 style="color: var(--cor3); margin-bottom: 1rem;">Conceitos Fundamentais</h4>
+                <h5 style="color: var(--cor2); margin-top: 1.5rem;">Visão Geral</h5>
+            <p>O sistema permanece em funcionamento contínuo, realizando o monitoramento do ambiente do almoxarifado. Inicialmente, o sensor ultrassônico verifica se existe algum objeto posicionado na área monitorada, simulando a presença de materiais armazenados ou de um veículo em uma região específica. Ao mesmo tempo, o sensor de temperatura TMP36 mede continuamente a temperatura do ambiente, permitindo identificar situações que possam representar riscos para os materiais armazenados. O Arduino recebe as informações fornecidas pelos sensores, processa os dados e toma decisões de acordo com as condições encontradas. O display LCD apresenta ao operador mensagens sobre o estado atual do sistema, enquanto os LEDs indicam visualmente se a situação é considerada normal ou requer atenção. Caso a temperatura ultrapasse o limite estabelecido no programa, um buzzer é acionado para emitir um alerta sonoro, chamando a atenção do operador para a necessidade de verificar o ambiente. Dessa forma, o sistema integra monitoramento, sinalização visual e alerta sonoro, simulando uma aplicação de automação semelhante às utilizadas em depósitos, centros de distribuição e almoxarifados industriais.</p>
+            <div class="img-placeholder">
+                    <img src="../figuras/fluxograma_pratica15.png" alt="Esquema de ligação do resistor Pull-Down" style="max-width: 50%;">
+                    <p>Figura 1: Funcionamento sistema.</p>
+            </div>
+
+            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Esquema e Montagem do Circuito</h4>
+            <div style="overflow-x: auto; margin-bottom: 1.5rem;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--cor3, #ccc);">
+                            <th style="padding: 0.6rem 0.8rem; font-weight: bold;">Componente</th>
+                            <th style="padding: 0.6rem 0.8rem; font-weight: bold;">Conexão no Arduino</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">HC-SR04 VCC</td>
+                            <td style="padding: 0.5rem 0.8rem;">5 V</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">HC-SR04 GND</td>
+                            <td style="padding: 0.5rem 0.8rem;">GND</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">HC-SR04 SIG</td>
+                            <td style="padding: 0.5rem 0.8rem;">Pino digital 7</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">TMP36 VCC</td>
+                            <td style="padding: 0.5rem 0.8rem;">5 V</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">TMP36 VOUT</td>
+                            <td style="padding: 0.5rem 0.8rem;">A0</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">TMP36 GND</td>
+                            <td style="padding: 0.5rem 0.8rem;">GND</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">LCD SDA</td>
+                            <td style="padding: 0.5rem 0.8rem;">A4</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">LCD SCL</td>
+                            <td style="padding: 0.5rem 0.8rem;">A5</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">LCD VCC</td>
+                            <td style="padding: 0.5rem 0.8rem;">5 V</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">LCD GND</td>
+                            <td style="padding: 0.5rem 0.8rem;">GND</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">LED Verde</td>
+                            <td style="padding: 0.5rem 0.8rem;">Pino digital 11</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">LED Vermelho</td>
+                            <td style="padding: 0.5rem 0.8rem;">Pino digital 12</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 0.5rem 0.8rem;">Buzzer (+)</td>
+                            <td style="padding: 0.5rem 0.8rem;">Pino digital 10</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.5rem 0.8rem;">Buzzer (-)</td>
+                            <td style="padding: 0.5rem 0.8rem;">GND</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="img-placeholder">
+                    <img src="../figuras/pratica_15.png" alt="Montagem do circuito no Protoboard" style="max-width: 50%;">
+            </div>
+
+            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Código da Prática</h4>
+            <div style="background: #282c34; color: #abb2bf; padding: 1.2rem; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; overflow-x: auto;">
+                <span style="color: #c678dd;">#include</span> <span style="color: #98c379;">&lt;Wire.h&gt;</span><br>
+                <span style="color: #c678dd;">#include</span> <span style="color: #98c379;">&lt;LiquidCrystal_I2C.h&gt;</span><br><br>
+                <span style="color: #e5c07b;">LiquidCrystal_I2C</span> <span style="color: #e06c75;">lcd</span>(<span style="color: #d19a66;">0x27</span>, <span style="color: #d19a66;">16</span>, <span style="color: #d19a66;">2</span>);<br><br>
+                <span style="color: #5c6370; font-style: italic;">// HC-SR04 (modelo de 3 pinos do Tinkercad)</span><br>
+                <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">sensor</span> = <span style="color: #d19a66;">7</span>;<br><br>
+                <span style="color: #5c6370; font-style: italic;">// TMP36</span><br>
+                <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">tmp</span> = <span style="color: #d19a66;">A0</span>;<br><br>
+                <span style="color: #5c6370; font-style: italic;">// LEDs</span><br>
+                <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">ledVerde</span> = <span style="color: #d19a66;">11</span>;<br>
+                <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">ledVermelho</span> = <span style="color: #d19a66;">12</span>;<br><br>
+                <span style="color: #5c6370; font-style: italic;">// Buzzer</span><br>
+                <span style="color: #c678dd;">const</span> <span style="color: #c678dd;">int</span> <span style="color: #e06c75;">buzzer</span> = <span style="color: #d19a66;">10</span>;<br><br>
+                <span style="color: #c678dd;">float</span> <span style="color: #e06c75;">temperatura</span>;<br>
+                <span style="color: #c678dd;">long</span> <span style="color: #e06c75;">duracao</span>;<br>
+                <span style="color: #c678dd;">float</span> <span style="color: #e06c75;">distancia</span>;<br><br>
+                <span style="color: #c678dd;">void</span> <span style="color: #61afef;">setup</span>() {<br><br>
+                &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">OUTPUT</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">OUTPUT</span>);<br>
+                &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">OUTPUT</span>);<br>
+                &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">buzzer</span>, <span style="color: #d19a66;">OUTPUT</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">init</span>();<br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">backlight</span>();<br><br>
+                }<br><br>
+                <span style="color: #c678dd;">void</span> <span style="color: #61afef;">loop</span>() {<br><br>
+                &nbsp;&nbsp;<span style="color: #5c6370; font-style: italic;">// --------- Leitura do sensor ultrassônico ---------</span><br><br>
+                &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">OUTPUT</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">LOW</span>);<br>
+                &nbsp;&nbsp;<span style="color: #61afef;">delayMicroseconds</span>(<span style="color: #d19a66;">2</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">HIGH</span>);<br>
+                &nbsp;&nbsp;<span style="color: #61afef;">delayMicroseconds</span>(<span style="color: #d19a66;">5</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">LOW</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #61afef;">pinMode</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">INPUT</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">duracao</span> = <span style="color: #61afef;">pulseIn</span>(<span style="color: #e06c75;">sensor</span>, <span style="color: #d19a66;">HIGH</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">distancia</span> = <span style="color: #e06c75;">duracao</span> / <span style="color: #d19a66;">58.0</span>;<br><br>
+                &nbsp;&nbsp;<span style="color: #5c6370; font-style: italic;">// --------- Leitura do TMP36 ---------</span><br><br>
+                &nbsp;&nbsp;<span style="color: #c678dd;">int</span> <span style="color: #e06c75;">leitura</span> = <span style="color: #61afef;">analogRead</span>(<span style="color: #e06c75;">tmp</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #c678dd;">float</span> <span style="color: #e06c75;">tensao</span> = <span style="color: #e06c75;">leitura</span> * <span style="color: #d19a66;">5.0</span> / <span style="color: #d19a66;">1023.0</span>;<br><br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">temperatura</span> = (<span style="color: #e06c75;">tensao</span> - <span style="color: #d19a66;">0.5</span>) * <span style="color: #d19a66;">100.0</span>;<br><br>
+                &nbsp;&nbsp;<span style="color: #5c6370; font-style: italic;">// --------- Temperatura ---------</span><br><br>
+                &nbsp;&nbsp;<span style="color: #c678dd;">if</span> (<span style="color: #e06c75;">temperatura</span> &gt; <span style="color: #d19a66;">30</span>) {<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">tone</span>(<span style="color: #e06c75;">buzzer</span>, <span style="color: #d19a66;">1000</span>);<br><br>
+                &nbsp;&nbsp;}<br><br>
+                &nbsp;&nbsp;<span style="color: #c678dd;">else</span> {<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">noTone</span>(<span style="color: #e06c75;">buzzer</span>);<br><br>
+                &nbsp;&nbsp;}<br><br>
+                &nbsp;&nbsp;<span style="color: #5c6370; font-style: italic;">// --------- Ocupação ---------</span><br><br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">clear</span>();<br><br>
+                &nbsp;&nbsp;<span style="color: #c678dd;">if</span> (<span style="color: #e06c75;">distancia</span> &lt; <span style="color: #d19a66;">20</span>) {<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">LOW</span>);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">HIGH</span>);<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">setCursor</span>(<span style="color: #d19a66;">0</span>, <span style="color: #d19a66;">0</span>);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Area Ocupada"</span>);<br><br>
+                &nbsp;&nbsp;}<br><br>
+                &nbsp;&nbsp;<span style="color: #c678dd;">else</span> {<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVerde</span>, <span style="color: #d19a66;">HIGH</span>);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #61afef;">digitalWrite</span>(<span style="color: #e06c75;">ledVermelho</span>, <span style="color: #d19a66;">LOW</span>);<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">setCursor</span>(<span style="color: #d19a66;">0</span>, <span style="color: #d19a66;">0</span>);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"Area Livre"</span>);<br><br>
+                &nbsp;&nbsp;}<br><br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">setCursor</span>(<span style="color: #d19a66;">0</span>, <span style="color: #d19a66;">1</span>);<br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #e06c75;">temperatura</span>, <span style="color: #d19a66;">1</span>);<br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>((<span style="color: #c678dd;">char</span>)<span style="color: #d19a66;">223</span>);<br>
+                &nbsp;&nbsp;<span style="color: #e06c75;">lcd</span>.<span style="color: #61afef;">print</span>(<span style="color: #98c379;">"C"</span>);<br><br>
+                &nbsp;&nbsp;<span style="color: #61afef;">delay</span>(<span style="color: #d19a66;">500</span>);<br><br>
+                }
+            </div>
+
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; margin-bottom: 2rem;">
+                    <div style="background-color: #E8F5E9; border: 1px solid var(--cor2); padding: 1.2rem; border-radius: 8px;">
+                        <h5 style="color: var(--cor3); margin-bottom: 0.8rem; font-size: 1.05rem;">🧪 Experimentando o código</h5>
+                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                            <li>Altere o limite de temperatura para >25 e, em seguida, para >35;</li>
+                            <li>Modifique a distância de detecção;</li>
+                            <li>Modifique a mensagem exibida no display;</li>
+                            <li>Modifique a frequência do buzzer.</li>
+                        </ol>
+                    </div>
+
+                    <div style="background-color: #FFF8E1; border: 1px solid #FFE082; padding: 1.2rem; border-radius: 8px;">
+                                            <h5 style="color: #B78103; margin-bottom: 0.8rem; font-size: 1.05rem;">🏆 Desafio Prático</h5>
+                                            <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">Agora é sua vez de tornar o sistema ainda mais inteligente. Modifique o programa para que ele apresente quatro situações diferentes:</p>
+
+                                            <h4 style="color: var(--cor3); margin-bottom: 1rem;">Situações</h4>
+                                                <div style="overflow-x: auto; margin-bottom: 1.5rem;">
+                                                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                                                        <thead>
+                                                            <tr style="border-bottom: 2px solid var(--cor3, #ccc);">
+                                                                <th style="padding: 0.6rem 0.8rem; font-weight: bold;">Temperatura</th>
+                                                                <th style="padding: 0.6rem 0.8rem; font-weight: bold;">Área</th>
+                                                                <th style="padding: 0.6rem 0.8rem; font-weight: bold;">Comportamento esperado</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr style="border-bottom: 1px solid #ddd;">
+                                                                <td style="padding: 0.5rem 0.8rem;">Normal</td>
+                                                                <td style="padding: 0.5rem 0.8rem;">Livre</td>
+                                                                <td style="padding: 0.5rem 0.8rem;">LED verde aceso</td>
+                                                            </tr>
+                                                            <tr style="border-bottom: 1px solid #ddd;">
+                                                                <td style="padding: 0.5rem 0.8rem;">Normal</td>
+                                                                <td style="padding: 0.5rem 0.8rem;">Ocupado</td>
+                                                                <td style="padding: 0.5rem 0.8rem;">LED vermelho aceso</td>
+                                                            </tr>
+                                                            <tr style="border-bottom: 1px solid #ddd;">
+                                                                <td style="padding: 0.5rem 0.8rem;">Alta</td>
+                                                                <td style="padding: 0.5rem 0.8rem;">Livre</td>
+                                                                <td style="padding: 0.5rem 0.8rem;">LED verde + buzzer</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="padding: 0.5rem 0.8rem;">Alta</td>
+                                                                <td style="padding: 0.5rem 0.8rem;">Ocupada</td>
+                                                                <td style="padding: 0.5rem 0.8rem;">LED vermelho + buzzer</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <p>Como melhoria adicional, faça o display LCD informar simultaneamente a situação da área e a condição da temperatura. Por exemplo: "Área Livre Temp. Normal" ou "Área Ocupada Temp. Alta".</p>
+                                        </div>
+                                    </div>
+
+                                    <h4 style="color: var(--cor3); margin-bottom: 1rem;">❓ Questões de Fixação</h4>
+                                    <div style="background: var(--bg-light); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                                        <ol class="info-list" style="margin-bottom: 0; padding-left: 1.2rem;">
+                                            <li>Qual é a função desempenhada pelo sensor ultrassônico neste projeto?</li>
+                                            <li>Para que serve o sensor TMP36 e como ele contribui para o monitoramento do ambiente?</li>
+                                            <li>Em quais situações o buzzer é acionado pelo programa?</li>
+                                            <li>Explique a função dos LEDs verde e vermelho no sistema desenvolvido.</li>
+                                            <li>Qual é a importância do display LCD durante o funcionamento do sistema?</li>
+                                        </ol>
+                    </div>
+            </div> 
+
     </main>
-
-
-
-
-
-
-
 
     <!-- SCRIPT DE INTERATIVIDADE -->
     <script>
